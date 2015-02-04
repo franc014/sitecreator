@@ -5,10 +5,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\Config;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
+	protected $appends = ['gravatar','hasprofile'];
 
 	/**
 	 * The database table used by the model.
@@ -22,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['username', 'email', 'password','usertype_id'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -30,5 +32,35 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	public function profile(){
+		return $this->hasOne('App\Profile');
+	}
+	public function photo(){
+		return $this->morphOne('App\Photo','imageable');
+	}
+
+	protected function getGravatarAttribute(){
+		$email = $this->getAttribute('email');
+		$photo = $this->photo;//$this->profile->photo;
+		//dd($photo);
+		$defaultGravatar = urlencode(Config::get('directories.default_gravatar'));
+		//$url = Config::get('directories.user_photos').$photo->path;
+		if($photo===null){
+			//$photography = $this->photo->path;
+			$url = "http://www.gravatar.com/avatar/".md5(mb_strtolower($email))."?default=".$defaultGravatar."";
+		}else{
+			$url = Config::get('directories.user_photos').$photo->path;
+		}
+		return $url;
+	}
+
+	protected function getHasprofileAttribute(){
+		if($this->profile===null){
+			return false;
+		}
+		return true;
+	}
+
 
 }

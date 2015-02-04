@@ -11,19 +11,4 @@
 |
 */
 
-//Route::get('/', 'WelcomeController@index');
-/*home and authentication*/
-Route::get('home', ['middleware'=>['auth'],'uses'=> 'HomeController@index']);
-Route::get('/', 'HomeController@index');
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-
-
-/*Admin*/
-Route::get('/admin/home',['middleware'=>['auth'],'uses'=>'Admin\HomeController@index']);
-Route::get('/admin/user',['middleware'=>['auth'],'uses'=>'Admin\HomeController@profile']);
-
-
-//get('/tepr','Admin\HomeController@profile');
+get('/','HomeController@index');

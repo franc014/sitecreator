@@ -13,7 +13,7 @@
     <script src="/js/admin/html5shiv.js"></script>
     <script src="/js/admin/respond.min.js"></script>
     <![endif]-->
-    <script src="/js/bundle.js"></script>
+    <script src="/js/abundle.js"></script>
 </head>
 
 <body>

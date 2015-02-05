@@ -7,7 +7,9 @@ var homeController = function($scope){
     $scope.noProfileMsge = 'Este es tu primera sesión en este panel de control. '+
     'Por favor, a continuación completa tus datos personales.'+
         'Si no deseas actualizar tus datos, puedes hacerlo en otro momento desde [Perfil] y'+
-    'continuar con las otras opciones de este panel de control';
+    'continuar con las otras opciones de este panel de controll';
+
+
 
 }
 

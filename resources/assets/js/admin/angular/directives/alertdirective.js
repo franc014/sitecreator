@@ -3,7 +3,7 @@
  */
 var alertDirective = function(){
     return {
-        templateUrl:"../js/admin/angular/templates/alert.html",
+        templateUrl:"../../js/admin/angular/templates/alert.html",
         restrict:"EA",
         scope : {
             message:"="

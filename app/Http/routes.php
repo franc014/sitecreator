@@ -25,5 +25,9 @@ Route::controllers([
 Route::get('/admin/home',['middleware'=>['auth'],'uses'=>'Admin\HomeController@index']);
 Route::get('/admin/user',['middleware'=>['auth'],'uses'=>'Admin\HomeController@profile']);
 
-
+Route::resource('user','Admin\UserController');
 //get('/tepr','Admin\HomeController@profile');
+
+get('st',function(){
+	return view('layouts/prof/master');
+});

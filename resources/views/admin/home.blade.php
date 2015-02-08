@@ -14,11 +14,17 @@ Home
     <div class="row">
         <div class="col-md-8 col-lg-8" >
             <h1 >Panel de control </h1>
-            <h2>Bienvenida/o </h2>
+            <h2>Bienvenida/o <span ng-bind="user.username"></span></h2>
+            <input type="text" ng-model="user.username"/>
+            <button ng-click="saveUser()">gu</button>
             <p>Este es tu panel de control del contenido de tu Sitio Web Personal.
                 A continuación, puedes acceder a las diferentes opciones de edición:</p>
-
-
+            <span ng-bind="users.length"></span>
+            j<ul>
+                <li ng-repeat="user in users">
+                    <span ng-bind="user.username"></span>
+                </li>
+            </ul>
             <div alert class="alert alert-success" message="noProfileMsge" ng-show="showAlert">
 
             </div>

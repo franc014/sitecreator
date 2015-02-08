@@ -9,6 +9,7 @@ var alertDirective = function(){
             message:"="
         },
         controller:function($scope){
+
             $scope.showAlert = true;
             $scope.destroyAlert = function(){
                 $scope.$parent.showAlert = false;

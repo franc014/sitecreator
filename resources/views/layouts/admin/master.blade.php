@@ -13,7 +13,9 @@
     <script src="/js/admin/html5shiv.js"></script>
     <script src="/js/admin/respond.min.js"></script>
     <![endif]-->
+
     <script src="/js/abundle.js"></script>
+
 </head>
 
 <body>
@@ -25,14 +27,7 @@
 
 <script src="/js/admin/jquery-1.11.1.min.js"></script>
 <script src="/js/admin/bootstrap.min.js"></script>
-<script src="/js/admin/chart.min.js"></script>
-<script src="/js/admin/chart-data.js"></script>
-<script src="/js/admin/easypiechart.js"></script>
-<script src="/js/admin/easypiechart-data.js"></script>
-<script src="/js/admin/bootstrap-datepicker.js"></script>
 <script>
-    $('#calendar').datepicker({
-    });
 
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){

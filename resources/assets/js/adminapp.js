@@ -3,7 +3,7 @@ var $ = require('jquery');
 //var pusherf = require('../components/pusher/dist/pusher-index.js');
 
 var angular = require('./vendor/angular/angular-index.js');
-
+var angular_restmod = require('./vendor/angular-restmod/dist/angular-index.js');
 
 var testApp = angular.module('testApp',[]);
 

@@ -6,8 +6,9 @@ var alertDirective = function(){
         templateUrl:"../../js/admin/angular/templates/alert.html",
         restrict:"EA",
         scope : {
-            message:"="
+            message:"=msge"
         },
+
         controller:function($scope){
 
             $scope.showAlert = true;

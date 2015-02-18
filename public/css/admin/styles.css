@@ -9,7 +9,7 @@ Version: 1.0
 /*Global Styles*/
 
 body {
-	background: #f1f4f7;
+	background: #fff;
 	padding-top: 50px;
 	color: #5f6468;
 }
@@ -22,22 +22,25 @@ a, a:hover, a:focus {
 	color: #30a5ff;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/*h1, h2, h3, h4, h5, h6 {
 	color: #5f6468;
-}
+}*/
 
 h1 {
+    color:#6F8AB7;
 	font-weight: 300;
 	font-size: 40px;
 }
 
 h2 {
-	font-weight: 300;
+    color:#89BBFE;
+	font-weight: 800;
 	margin-bottom: 20px;
 }
 
 h3, h4 {
-	font-weight: 300;
+    color:#89BBFE;
+
 }
 
 .large {
@@ -292,7 +295,7 @@ a.bg-danger:hover {
 /*Panels*/
 
 .panel {
-	border: 0;
+	border: 1px solid #D8D6D4 !important;
 }
 
 .panel-heading {
@@ -492,6 +495,7 @@ a.bg-danger:hover {
 
 .navbar {
 	border: 0;
+    background-color: #494847!important;
 }
 
 .navbar input {
@@ -773,7 +777,7 @@ h1.page-header {
 }
 
 .panel-body input[type=checkbox]:checked + label { 
-	text-decoration: line-through;
+
 	color: #777; 
 }
 
@@ -866,6 +870,8 @@ h1.page-header {
 	margin-top: 20px;
 }
 
+/*icons*/
+
 /*home pannels*/
 .bio-panel  .panel-heading{
 	background-color: #87CBAC;
@@ -886,5 +892,28 @@ h1.page-header {
 .remove-button{
 	color:#B9466B
 }
+.open-info{
+	font-weight: bold;
+	color:white;
+	text-decoration: none!important;
+}
+.open-info:hover{
+	font-weight: lighter;
+	color:white;
+	text-decoration: none;
+}
+.open-info:visited{
+	font-weight: lighter;
+	color:#fff !important;
+	text-decoration: none;
+}
 
+.bar {
+	height: 30px;
+	background: #8AC4FF;
+}
+.intro-text {
+    color: #7A7978;
+    font-size: 16px;
+}
 

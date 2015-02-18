@@ -1,6 +1,8 @@
 <?php namespace App\Services;
 
+use App\Events\PopulateUserContentOptions;
 use App\User;
+use Illuminate\Support\Facades\Event;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
@@ -29,13 +31,16 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
+		$user = User::create([
 			'username' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
 			//subscriber user
 			'usertype_id' => 2
 		]);
+        //register web page default options and profile
+		Event::fire(new PopulateUserContentOptions($user->id));
+		return $user;
 	}
 
 }

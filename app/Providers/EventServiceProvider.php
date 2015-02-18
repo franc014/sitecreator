@@ -1,7 +1,13 @@
 <?php namespace App\Providers;
 
+use App\Events\FileUploader;
+use App\Events\RemoveFile;
+use App\Handlers\Events\FileUploaderHandler;
+use App\Handlers\Events\RemoveFileHandler;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use App\Events\PopulateUserContentOptions;
+use App\Handlers\Events\CreateUserContentOptions;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -14,6 +20,15 @@ class EventServiceProvider extends ServiceProvider {
 		'event.name' => [
 			'EventListener',
 		],
+		PopulateUserContentOptions::class=>[
+			CreateUserContentOptions::class
+		],
+		FileUploader::class=>[
+			FileUploaderHandler::class
+		],
+        RemoveFile::class=>[
+            RemoveFileHandler::class
+        ]
 	];
 
 	/**
@@ -26,7 +41,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		//
+
 	}
 
 }

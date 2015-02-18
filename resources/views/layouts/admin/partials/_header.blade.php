@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img width="25" height="25" src="{{$loggedUser['photo']}}" /> {{$loggedUser['username']}}</a>
+                <img width="25" height="25" src="{{--$loggedUser['photo']--}}" /> {{$loggedUser['username']}}</a>
             <ul class="user-menu" >
                 <li class="dropdown pull-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User <span class="caret"></span></a>

@@ -62,5 +62,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return true;
 	}
 
+	//belongs to many contenttypes
+    //pivot contenttype_user
+	protected function contenttypes(){
+		return $this->belongsToMany('App\Contenttype','usercontents')->withPivot('active');
+	}
 
 }

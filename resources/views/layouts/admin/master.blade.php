@@ -7,8 +7,11 @@
 
     <link href="/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="/css/admin/datepicker3.css" rel="stylesheet">
+    <!--link href="/css/admin/uploadfile.css" rel="stylesheet"-->
+    <link href="/css/admin/jquery.fileupload.css" rel="stylesheet">
     <link href="/css/admin/styles.css" rel="stylesheet">
-
+    <link href="/css/admin/mods.css" rel="stylesheet">
+    <link href="/css/admin/validations.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="/js/admin/html5shiv.js"></script>
     <script src="/js/admin/respond.min.js"></script>
@@ -18,16 +21,20 @@
 
 </head>
 
-<body>
+<body ng-cloak>
 @include('layouts.admin.partials._header')
 @include('layouts..admin.partials._sidebar')
 @yield('main_content')
 
 
-
+@section('javascripts')
 <script src="/js/admin/jquery-1.11.1.min.js"></script>
 <script src="/js/admin/bootstrap.min.js"></script>
+
+
 <script>
+
+
 
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
@@ -43,6 +50,7 @@
         if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })
 </script>
+@show
 </body>
 
 </html>

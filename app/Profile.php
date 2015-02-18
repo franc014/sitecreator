@@ -3,9 +3,13 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model {
+    protected $guarded = ['id'];
 
-	protected function user(){
+	public function user(){
         return $this->belongsTo('App\User');
+    }
+    public function photo(){
+        return $this->morphOne('App\Photo','imageable');
     }
 
 }

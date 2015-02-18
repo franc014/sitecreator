@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'default' => 'local',
+	'default' => 's3',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -50,10 +50,10 @@ return [
 
 		's3' => [
 			'driver' => 's3',
-			'key'    => 'your-key',
-			'secret' => 'your-secret',
-			'region' => 'your-region',
-			'bucket' => 'your-bucket',
+			'key'    => 'AKIAJZAD2LK465IR35MQ',
+			'secret' => 'R3fqb4uI2O+6aSnryrolqIQs4C/z1BMmd0mb9E96',
+			'region' => '',
+			'bucket' => 'profesionalxyz',
 		],
 
 		'rackspace' => [

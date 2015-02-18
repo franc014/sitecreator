@@ -1,7 +1,5 @@
-/**
- * Created by macintosh on 1/28/15.
- */
-var homeController = function($scope,UserService){
+
+var homeController = function($scope,UserService,UserContentType){
     //console.log($scope);
     $scope.showAlert = true;
     $scope.noProfileMsge = 'Este es tu primera sesión en este panel de control. '+
@@ -10,12 +8,12 @@ var homeController = function($scope,UserService){
     'continuar con las otras opciones de este panel de control.';
 
 
-    var user = UserService.$find(49);
-    var users = UserService.$search().$then(function(users){
-        console.log(users.$status);
-        $scope.users = users;
+    //var user = UserService.$find(49);
+    /*var data = UserContentType.$search().$then(function(data){
+        console.log(data);
+        //$scope.users = users;
         //console.log(users.$status);
-    });
+    });*/
     //users.$resolve();
 
 

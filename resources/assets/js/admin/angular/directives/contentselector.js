@@ -7,6 +7,7 @@ var contentSelector = function(MessageService,UserContentType){
         controller:function($scope,$timeout){
             $scope.infoContentSelector = MessageService.get('contentselector_info').message;
             var contenttypes = UserContentType.$search().$then(function(data){
+                console.log(data);
                 $scope.usercontenttypes = data;
             });
 

@@ -3,7 +3,6 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\BioEditionRequest;
-use App\Http\Requests\ProfileEditionRequest;
 use App\Http\Requests\UploadBiographyPhotoRequest;
 use App\Repositories\BioPhotoDBStorage;
 use App\Repositories\ProfileRepository;
@@ -41,8 +40,8 @@ class BiographyController extends Controller {
     public function index()
     {
         $userId = Auth::user()->id;
-        $profiles = $this->profileRepository->allProfiles($userId);
-        $data = ["profiles"=>$profiles,
+        $profiles = Profile::all();//$this->profileRepository->allProfiles($userId);
+        $data = ["bios"=>$profiles,
             "meta"=>["message"=>"Ok"]
         ];
         return Response::json($data,202);
@@ -78,10 +77,10 @@ class BiographyController extends Controller {
     {
         $userId = Auth::user()->id;
         $profile = $this->profileRepository->findByUserId($userId);
-        $data = ["profile"=>$profile,
+        $data = ["bio"=>$profile,
             "meta"=>["message"=>"Ok"]
         ];
-        return Response::json($data,202);
+        return Response::json($data,200);
     }
 
     /**

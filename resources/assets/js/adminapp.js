@@ -15,13 +15,12 @@ var ngMessages = require('./../vendor/angular-messages/angular-messages.min.js')
 //var jquery_file_upload = require('./../vendor/jquery-file-upload/js/jquery.fileupload.js');
 
 
-var testApp = angular.module('testApp',['restmod','ngFabForm','ngMessages']);
+var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages']);
 
-testApp.config(['restmodProvider','$httpProvider',function(restmodProvider,$httpProvider) {
+prfXyzApp.config(['restmodProvider','$httpProvider',function(restmodProvider, $httpProvider) {
     restmodProvider.rebase('AMSApi');
     $httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-
-    //restmodProvider.rebase('DefaultPacker');
+    restmodProvider.rebase('DefaultPacker');
 }]);
 
 var homeController = require('./admin/angular/homecontroller');
@@ -33,22 +32,24 @@ var userService = require('./admin/angular/services/userservice');
 var userContentTypeService = require('./admin/angular/services/usercontenttypeservice');
 var profileService = require('./admin/angular/services/profileservice');
 var bioService = require('./admin/angular/services/biographyservice');
+var thePacker = require('./admin/angular/services/thepacker');
 
 var alertDirective = require('./admin/angular/directives/alertdirective');
 var closeContentDirective = require('./admin/angular/directives/closecontentdirective');
 var contentSelectorDirective = require('./admin/angular/directives/contentselector');
 
-testApp.factory('Messages',[stc_messages]);
-testApp.factory('MessageService',['Messages','$timeout',messageService]);
-testApp.factory('UserService',['restmod',userService]);
-testApp.factory('ProfileService',['restmod',profileService]);
-testApp.factory('UserContentType',['restmod',userContentTypeService]);
-testApp.factory('BiographyService',['restmod',bioService]);
+prfXyzApp.factory('Messages',[stc_messages]);
+prfXyzApp.factory('MessageService',['Messages','$timeout',messageService]);
+prfXyzApp.factory('UserService',['restmod',userService]);
+prfXyzApp.factory('ProfileService',['restmod',profileService]);
+prfXyzApp.factory('UserContentType',['restmod',userContentTypeService]);
+prfXyzApp.factory('BiographyService',['restmod',bioService]);
+prfXyzApp.factory('ThePacker',[thePacker]);
 
-testApp.directive('alert',[alertDirective]);
-testApp.directive('closeContent',[closeContentDirective]);
-testApp.directive('contentSelector',['MessageService','UserContentType',contentSelectorDirective]);
+prfXyzApp.directive('alert',[alertDirective]);
+prfXyzApp.directive('closeContent',[closeContentDirective]);
+prfXyzApp.directive('contentSelector',['MessageService','UserContentType',contentSelectorDirective]);
 
-testApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
-testApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);
+prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
+prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);
 

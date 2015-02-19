@@ -31,7 +31,7 @@ Route::post('/biography/photo',['uses'=>'Admin\BiographyController@uploadPhoto']
 Route::get('/biography/uploadedphoto',['uses'=>'Admin\BiographyController@getUploadedPhoto']);
 
 /*resources*/
-Route::resource('biography','Admin\BiographyController');
+Route::resource('bio','Admin\BiographyController');
 Route::resource('user','Admin\UserController');
 Route::resource('usercontenttype','Admin\UserContenttypeController');
 

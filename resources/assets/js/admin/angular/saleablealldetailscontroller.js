@@ -1,13 +1,14 @@
 var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,MessageService){
 
-    var reset = function(){
+    /*var reset = function(){
         $scope.saleableDetailForm.$setPristine();
         $scope.detail = angular.copy({});
-    }
+    }*/
 
     var saleable_id = $scope.saleable.id;
     var details = SaleableDetailsService.$search({saleable_id:saleable_id}).$then(function(data){
         var items_number = data.length;
+        console.log(items_number);
         if(items_number==0){
             //var linkToNew = ". Crea ya uno nuevo!";
             MessageService.setNoItemsInfoMessage($scope,"detalles"," .Crea uno nuevo!");
@@ -42,7 +43,7 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
 
     $scope.newDetail = function(){
         $scope.showDetailForm = true;
-        $scope.saleableDetailForm.$setPristine();
+        //$scope.saleableDetailForm.$setPristine();
         var detail = SaleableDetailsService.$build();
         detail.saleable_id = saleable_id;
         detail.type = 0;
@@ -64,7 +65,7 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
             detail.$destroy().$then(function(data){
                 var meta = data.$response.data;
                 MessageService.setAlertMessage($scope,meta);
-                $scope.saleableDetailForm.$setPristine();
+                //$scope.saleableDetailForm.$setPristine();
 
                 var detail = SaleableDetailsService.$build();
                 detail.saleable_id = saleable_id;

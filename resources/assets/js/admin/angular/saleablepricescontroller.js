@@ -1,9 +1,9 @@
 var saleablePrices = function($scope,$rootScope,SaleablePriceService,MessageService){
 
-    var reset = function(){
+    /*var reset = function(){
         $scope.saleablePriceForm.$setPristine();
         $scope.price = angular.copy({});
-    }
+    }*/
 
     var saleable_id = $scope.saleable.id;
     var prices = SaleablePriceService.$search({saleable_id:saleable_id}).$then(function(data){
@@ -41,7 +41,7 @@ var saleablePrices = function($scope,$rootScope,SaleablePriceService,MessageServ
 
     $scope.newPrice = function(){
         $scope.showPriceForm = true;
-        $scope.saleablePriceForm.$setPristine();
+        //$scope.saleablePriceForm.$setPristine();
         var price = SaleablePriceService.$build();
         price.saleable_id = saleable_id;
         $scope.price = price;
@@ -63,7 +63,7 @@ var saleablePrices = function($scope,$rootScope,SaleablePriceService,MessageServ
                 var meta = data.$response.data;
 
                 MessageService.setAlertMessage($scope,meta);
-                $scope.saleablePriceForm.$setPristine();
+                //s$scope.saleablePriceForm.$setPristine();
 
                 var price = SaleablePriceService.$build();
                 price.saleable_id = saleable_id;

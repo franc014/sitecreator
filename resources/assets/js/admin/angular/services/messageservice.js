@@ -28,7 +28,7 @@ var messageService = function(Messages,$timeout){
             scope.result = "No se han encontrado "+datatype+additional;
             $timeout(function(){
                 scope.showNoItemsAlert = false;
-            },5000);
+            },8000);
         },
         setConfirmDeleteMessage:function(item, additional){
             return confirm("Realmente deseas eliminar este/a"+item+"?. "+additional+"");

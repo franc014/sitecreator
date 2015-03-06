@@ -1,8 +1,11 @@
 <div ng-messages="field.$error"
      class="validation">
     <ul class="list-unstyled validation-errors"
-        ng-show="field.$invalid && (field.$touched || field.$dirty || form.$triedSubmit)">
+        ng-show="field.$invalid &&  form.$triedSubmit">
         <li ng-message="required">Este campo es requerido</li>
+
+        <li ng-message="unique">Este campo es único</li>
+
         <li ng-message="password">This is not a valid password</li>
         <li ng-message="email"> This is not a valid email-address</li>
         <li ng-message="pattern">Your input does not match the requirements</li>

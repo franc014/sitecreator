@@ -13,43 +13,26 @@ use App\Events\RemoveFile;
 use App\Photo;
 use Illuminate\Support\Facades\Event;
 
-class BioPhotoDBStorage implements PhotoDBStorage{
+class BioPhotoDBStorage extends DBImageStorage implements PhotoDBStorage{
 
 
     /**
      * @var
      */
-    private $path;
+    protected $path;
     /**
      * @var
      */
-    private $idProfile;
+    protected $idProfile;
 
+    protected $model;
 
     function __construct($path, $idProfile)
     {
         $this->path = $path;
         $this->idProfile = $idProfile;
+        $this->model = new Photo();
     }
 
-    public function store()
-    {
-        $photoData = [
-            "path"=>$this->path,
-            "imageable_id"=>$this->idProfile,
-            "imageable_type"=>'App\Profile'
-        ];
-        //dd($photoData);
-        $photo = Photo::where('imageable_id',$this->idProfile)->first();
 
-        if($photo!==null){
-            Event::fire(new RemoveFile($photo->path));
-            $photo->update($photoData);
-            return $photo;
-        }else {
-            $newPhoto = Photo::create($photoData);
-            //$newPhoto->create($photoData);
-            return $newPhoto;
-        }
-    }
 }

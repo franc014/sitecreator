@@ -12,12 +12,13 @@ function user(){
 
 function loggedUserNames(){
     $user = user();
-    $firstName = $user->username;
-    $lastName = "";
-    if($user->hasprofile) {
-        $firstName = $user->profile->first_name;
-        $lastName = $user->profile->last_name;
+    $username = $user->username;
+    $firstName = $user->profile->firstname;
+    $lastName = $user->profile->lastname;
+    if($firstName==""){
+        return $username;
     }
+
     return $firstName." ".$lastName;
 }
 

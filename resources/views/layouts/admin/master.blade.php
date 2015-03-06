@@ -12,12 +12,14 @@
     <link href="/css/admin/styles.css" rel="stylesheet">
     <link href="/css/admin/mods.css" rel="stylesheet">
     <link href="/css/admin/validations.css" rel="stylesheet">
+
+
     <!--[if lt IE 9]>
     <script src="/js/admin/html5shiv.js"></script>
     <script src="/js/admin/respond.min.js"></script>
     <![endif]-->
 
-    <script src="/js/abundle.js"></script>
+
 
 </head>
 
@@ -28,6 +30,7 @@
 
 
 @section('javascripts')
+<script src="/js/abundle.js"></script>
 <script src="/js/admin/jquery-1.11.1.min.js"></script>
 <script src="/js/admin/bootstrap.min.js"></script>
 

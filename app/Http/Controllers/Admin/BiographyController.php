@@ -29,6 +29,8 @@ class BiographyController extends Controller {
     {
         $this->middleware('auth');
         $this->profileRepository = $profileRepository;
+        $this->x_image_size = Config::get('directories.imagesizes.photo_bio.x');
+        $this->y_image_size = Config::get('directories.imagesizes.photo_bio.y');
     }
 
 
@@ -117,11 +119,18 @@ class BiographyController extends Controller {
         //
     }
 
+    /**
+     * @param UploadBiographyPhotoRequest $request
+     * @param Filesystem $fileSystem
+     * @return mixed
+     */
     public function uploadPhoto(UploadBiographyPhotoRequest $request, Filesystem $fileSystem){
         //$uploadedFile = Input::file("photo");//$request->only(["photo"]);
         $uploadedFile = $request->file("photo");
         $file = new FileUploaded($uploadedFile);
-        $resizing = new ImageResizer(80,80);
+
+        $resizing = new ImageResizer($this->x_image_size,$this->y_image_size);
+
         $transformation = [$resizing];
         $userId = Auth::user()->id;
         $profile = Auth::user()->profile;
@@ -140,6 +149,10 @@ class BiographyController extends Controller {
         return $this->getImage($fileSystem,$imageCreated);
     }
 
+    /**
+     * @param Filesystem $fileSystem
+     * @return mixed
+     */
     public function getUploadedPhoto(Filesystem $fileSystem/*Filesystem $filesystem/*, Cloud $cloud*/){
 
         $photo = $this->profileRepository->getBioPhoto(Auth::user()->id);

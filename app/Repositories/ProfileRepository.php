@@ -51,6 +51,11 @@ class ProfileRepository {
         $this->model->create($data);
     }
 
+    public function getLogo($userId){
+        $profile = $this->findByUserId($userId);
+        return $profile->logo;
+    }
+
 
 
 

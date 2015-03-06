@@ -36,16 +36,17 @@ $(window).bind('load',function(){
                     $('#photo_box').empty();
                     $('#photo_box').prepend(spinner);
                 }
-
             },
             success: function (result, status,xhr) {
+                var x_size = result.width;
+                var y_size = result.height;
                 //console.log(result);
                 //var data = xhr;
                 setStatusBar(0);
                 setAlert('success',result.message);
                 unsetAlert(4000);
                 $('#photo_box').empty();
-                $('#photo_box').append('<img width="150" height="150" class="thumbnail" src="data:image/png;base64,'+result.img+'">');
+                $('#photo_box').append('<img width="'+x_size+'" height="'+y_size+'" class="thumbnail" src="data:image/png;base64,'+result.img+'">');
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 setStatusBar(0);
@@ -57,15 +58,18 @@ $(window).bind('load',function(){
 
         var ajaxObject = {
             type:"GET",
-            url:"/biography/uploadedphoto",
+            url:imageLoadPath,
             beforeSend:function(){
                 $('#photo_box').append(spinner);
             }
         }
         //load bio photo
         $.ajax(ajaxObject).done(function(data,a){
+
+            var x_size = data.width;
+            var y_size = data.height;
             $('#photo_box').empty('#antes');
-            $('#photo_box').append('<img width="150" height="150" class="thumbnail" src="data:image/jpeg;base64,'+data.img+'">');
+            $('#photo_box').append('<img width="'+x_size+'" height="'+y_size+'" class="thumbnail" src="data:image/jpeg;base64,'+data.img+'">');
         })
             .success(function(data,a,b){
                 //console.log(b)

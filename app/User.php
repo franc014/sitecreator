@@ -42,7 +42,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	protected function getGravatarAttribute(){
 		$email = $this->getAttribute('email');
-		$photo = $this->photo;//$this->profile->photo;
+		$photo = $this->profile->logo;
 		//dd($photo);
 		$defaultGravatar = urlencode(Config::get('directories.default_gravatar'));
 		//$url = Config::get('directories.user_photos').$photo->path;

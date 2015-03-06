@@ -11,5 +11,8 @@ class Profile extends Model {
     public function photo(){
         return $this->morphOne('App\Photo','imageable');
     }
+    public function logo(){
+        return $this->morphOne('App\Logo','imageable');
+    }
 
 }

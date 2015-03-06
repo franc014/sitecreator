@@ -38,7 +38,8 @@ class FileUploaderHandler {
 		$fileContents = $event->fileContents;
 		$fileName = $event->fileName;
         try{
-		    $this->filesystem->put($fileName,$fileContents);
+            //TODO: pass file visibility, for now all public
+		    $this->filesystem->put($fileName,$fileContents,'public');
             //return true;
         }catch (Exception $e){
             //return Response::json($e->getMessage(),404);

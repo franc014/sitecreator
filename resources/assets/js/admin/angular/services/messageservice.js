@@ -13,8 +13,27 @@ var messageService = function(Messages,$timeout){
             scope.result = data;
             $timeout(function(){
                 scope.ShowResultAlert = false;
-            },2000);
+            },4000);
+        },
+        setServerValidationMessage:function(scope,data){
+            scope.ShowServerErrors = true;
+            scope.result = "Los datos no se pudieron guardar"+
+                           " debido a los siguientes errores. Por favor corrígelos.";
+            $timeout(function(){
+                scope.ShowServerErrors = false;
+            },5000);
+        },
+        setNoItemsInfoMessage:function(scope,datatype,additional){
+            scope.showNoItemsAlert = true;
+            scope.result = "No se han encontrado "+datatype+additional;
+            $timeout(function(){
+                scope.showNoItemsAlert = false;
+            },5000);
+        },
+        setConfirmDeleteMessage:function(item, additional){
+            return confirm("Realmente deseas eliminar este/a"+item+"?. "+additional+"");
         }
+
     }
 };
 module.exports = messageService;

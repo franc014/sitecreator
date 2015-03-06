@@ -8,36 +8,6 @@ var homeController = function($scope,UserService,UserContentType){
     'continuar con las otras opciones de este panel de control.';
 
 
-    //var user = UserService.$find(49);
-    /*var data = UserContentType.$search().$then(function(data){
-        console.log(data);
-        //$scope.users = users;
-        //console.log(users.$status);
-    });*/
-    //users.$resolve();
-
-
-
-
-    //console.log();
-    //alert($scope.users.$status);
-
-    //console.log(UserService.$find(49));
-    //user.$then(function() {
-        //expect(user.email).toBeDefined();
-        //console.log(user.$resolve());
-    //});
-    //$scope.user = user;
-    /*$scope.$watch('user',function(){
-        console.log(user);
-    },true);*/
-    $scope.saveUser = function(){
-
-        /*user.$save().$then(function(data){
-            console.log(data);
-        });*/
-        user.$save();
-    }
 
 }
 

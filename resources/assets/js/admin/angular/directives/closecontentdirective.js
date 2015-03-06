@@ -1,7 +1,7 @@
 var closeContentDirective = function(){
     return {
         restrict:'EA',
-        template:'<a href="" ng-click="destroySection()" class="glyphicon glyphicon-remove pull-right remove-button"  ></a>',
+        template:'<a href="" ng-click="destroySection()" class="pull-right remove-button" data-icon="&#xe6fa" ></a>',
 
         scope:{remove:'&'},
         controller:function($scope){

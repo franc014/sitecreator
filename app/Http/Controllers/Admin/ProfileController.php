@@ -5,12 +5,14 @@ use App\Http\Requests;
 use App\Http\Requests\ProfileEditionRequest;
 use App\Http\Requests\UploadBiographyPhotoRequest;
 use App\Repositories\BioPhotoDBStorage;
+use App\Repositories\LogoDBStorage;
 use App\Repositories\ProfileRepository;
 use App\Services\File\FilePathChanger;
 use App\Services\File\FileProcessor;
 use App\Services\File\FileUploaded;
 use App\Services\File\ImageResizer;
 
+use App\Services\File\ImageRetriever;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Response;
 
 class ProfileController extends Controller {
 
-
+    use ImageRetriever;
 
     /**
      * @var ProfileRepository
@@ -29,6 +31,8 @@ class ProfileController extends Controller {
     {
         $this->middleware('auth');
         $this->profileRepository = $profileRepository;
+        $this->x_image_size = Config::get('directories.imagesizes.logo.x');
+        $this->y_image_size = Config::get('directories.imagesizes.logo.y');
     }
 
 
@@ -44,7 +48,7 @@ class ProfileController extends Controller {
         $data = ["profiles"=>$profiles,
             "meta"=>["message"=>"Ok"]
         ];
-        return Response::json($data,202);
+        return Response::json($data,200);
     }
 
     /**
@@ -80,7 +84,7 @@ class ProfileController extends Controller {
         $data = ["profile"=>$profile,
             "meta"=>["message"=>"Ok"]
         ];
-        return Response::json($data,202);
+        return Response::json($data,200);
     }
 
     /**
@@ -115,6 +119,51 @@ class ProfileController extends Controller {
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param UploadBiographyPhotoRequest $request
+     * @param Filesystem $fileSystem
+     * @return mixed
+     */
+    public function uploadLogo(UploadBiographyPhotoRequest $request, Filesystem $fileSystem){
+        //$uploadedFile = Input::file("photo");//$request->only(["photo"]);
+        $uploadedFile = $request->file("logo");
+        $file = new FileUploaded($uploadedFile);
+
+        $resizing = new ImageResizer($this->x_image_size,$this->y_image_size);
+        $transformation = [$resizing];
+        $userId = Auth::user()->id;
+        $profile = Auth::user()->profile;
+
+        $prefixPhotoBio = Config::get('directories.prefix.logo').$userId;
+        $relativePath = Config::get('directories.upload.logo');
+        $extension = 'png';
+
+        $pathChanger = new FilePathChanger($relativePath,$prefixPhotoBio,$extension);
+        $fileProperties = [
+            "path"=>$pathChanger->path()
+        ];
+        $dbStore = new LogoDBStorage($fileProperties['path'],$profile->id);
+        $processor = new FileProcessor($fileProperties['path'],$transformation,$file,$dbStore);
+        $imageCreated = $processor->process();
+        return $this->getImage($fileSystem,$imageCreated);
+    }
+
+    public function getUploadedLogo(Filesystem $fileSystem/*Filesystem $filesystem/*, Cloud $cloud*/){
+
+        $logo = $this->profileRepository->getLogo(Auth::user()->id);
+
+        if($logo) {
+            try {
+                return $this->getImage($fileSystem,$logo);
+            } catch (\Exception $e) {
+                return Response::make("No se ha encontrado la imagen. Intenta refrescar
+                el browser nuevamente por favor.", 404);
+            }
+        }
+        return $this->getDefaultImage($fileSystem);
+
     }
 
 }

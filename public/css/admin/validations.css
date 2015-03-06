@@ -13,7 +13,7 @@
     border-radius: 36px;
     color: #62b14c;
     transition: all ease-out 0.32s; }
-.validation-success:after {
+/*.validation-success:after {
     display: block;
     content: '\e013';
     font-family: 'Glyphicons Halflings'; }
@@ -21,7 +21,7 @@
     transition-delay: 0s;
     transition: all ease-out 0.12s;
     opacity: 0;
-    transform: rotate(360deg); }
+    transform: rotate(360deg); }*/
 
 .ng-hide-remove li {
     opacity: 0; }

@@ -22,8 +22,8 @@ class ProfileEditionRequest extends Request {
 	public function rules()
 	{
 		return [
-            "first_name"=>"required",
-            "last_name"=>"required",
+            "firstname"=>"required",
+            "lastname"=>"required",
 
 		];
 	}

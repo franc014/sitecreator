@@ -1,6 +1,4 @@
-
-<div  class="palette palette-clouds ">
-    <a href="" class="pull-right" data-icon="&#xe6fa" data-ng-click="hidePostForm()" ></a>
+<div  >
 
     <!--form role="form" class="dropzone" id="photoForm" name="photoForm" action="/user/photo"  -->
         <h4>Fotografía</h4> <span class="bg-warning" style="padding: 3px">OPCIONAL</span> <span class="intro-text ">: Coloca o actualiza la foto que será mostrada en tu biografía :</span>

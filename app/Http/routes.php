@@ -13,7 +13,9 @@
 
 //Route::get('/', 'WelcomeController@index');
 /*home and authentication*/
-use Intervention\Image\Facades\Image;
+
+
+use Illuminate\Support\Facades\App;
 
 Route::get('home', ['middleware'=>['auth'],'uses'=> 'HomeController@index']);
 Route::get('/', 'HomeController@index');
@@ -29,12 +31,19 @@ Route::get('/admin/{page}',['middleware'=>['auth'],'uses'=>'Admin\PagesControlle
 Route::get('/admin/user',['middleware'=>['auth'],'uses'=>'Admin\HomeController@profile']);
 Route::post('/biography/photo',['uses'=>'Admin\BiographyController@uploadPhoto']);
 Route::get('/biography/uploadedphoto',['uses'=>'Admin\BiographyController@getUploadedPhoto']);
+Route::post('/profile/logo',['uses'=>'Admin\ProfileController@uploadLogo']);
+Route::get('/profile/uploadedlogo',['uses'=>'Admin\ProfileController@getUploadedLogo']);
+Route::post('admin/newpassword/{id}',['uses'=>'Admin\ChangePasswordController@updatePassword']);
+
 
 /*resources*/
 Route::resource('bio','Admin\BiographyController');
+Route::resource('profile','Admin\ProfileController');
 Route::resource('user','Admin\UserController');
 Route::resource('usercontenttype','Admin\UserContenttypeController');
-
+Route::resource('saleable','Admin\SaleableController');
+Route::resource('saleabledetail','Admin\SaleableDetailController');
+Route::resource('saleableprice','Admin\SaleablePriceController');
 //get('/tepr','Admin\HomeController@profile');
 //TODO contact admin implementation
 
@@ -45,3 +54,4 @@ get('st',function(){
 
 	//return $img->response('jpg');
 });
+

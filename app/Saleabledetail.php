@@ -13,6 +13,9 @@ class Saleabledetail extends Model {
     protected function saleable(){
         return $this->belongsTo('App/Saleable');
     }
+    protected function photo(){
+        return $this->morphOne("App\Imageresource",'imageable');
+    }
 
     protected function getTypetagAttribute(){
         $type = $this->getAttribute('type');

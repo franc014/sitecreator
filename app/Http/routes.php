@@ -35,6 +35,8 @@ Route::post('/profile/logo',['uses'=>'Admin\ProfileController@uploadLogo']);
 Route::get('/profile/uploadedlogo',['uses'=>'Admin\ProfileController@getUploadedLogo']);
 Route::post('admin/newpassword/{id}',['uses'=>'Admin\ChangePasswordController@updatePassword']);
 
+Route::get('saleabledetail/{id}/icon','Admin\SaleableDetailController@getUploadedIcon');
+Route::post('uploadSaleableDetailIcon','Admin\SaleableDetailController@uploadDescriptionIcon');
 
 /*resources*/
 Route::resource('bio','Admin\BiographyController');

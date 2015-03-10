@@ -1,8 +1,5 @@
 'use strict'
-var $ = require('jquery');
-//var pusherf = require('../components/pusher/dist/pusher-index.js');
-
-
+var JQuery = require('jquery');
 var angular = require('./../vendor/angular/angular-index.js');
 var angular_restmod = require('./../vendor/angular-restmod/dist/angular-restmod-bundle.js');
 var res_style = require('./../vendor/angular-restmod/dist/styles/ams.min.js');
@@ -11,12 +8,16 @@ var stc_messages = require('./config/messages.js');
 
 var ngFabForm = require('./../vendor/ng-fab-form/dist/ng-fab-form.min.js');
 var ngMessages = require('./../vendor/angular-messages/angular-messages.min.js');
-//var dropzone = require('./../vendor/dropzone/dist/min/dropzone.min.js');
-//var jquery_aupload_file = require('./../vendor/jquery-uploadfile/js/jquery.uploadfile.min.js');
-//var jquery_file_upload = require('./../vendor/jquery-file-upload/js/jquery.fileupload.js');
+
+var textAngular = require('./../vendor/textAngular/dist/textAngular-rangy.min.js');
+var sanitize = require('./../vendor/textAngular/dist/textAngular-sanitize.min.js');
+var rangy = require('./../vendor/textAngular/dist/textAngular.min.js');
+
+var uploadLibp1 = require('../vendor/angularjs-file-upload/angular-file-upload-shim.min.js');
+var uploadLibp2 = require('../vendor/angularjs-file-upload/angular-file-upload.min.js');
 
 
-var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages']);
+var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages','textAngular','angularFileUpload']);
 
 prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function(restmodProvider, $httpProvider,ngFabFormProvider) {
     restmodProvider.rebase('AMSApi');
@@ -50,6 +51,7 @@ var saleableDetailService = require('./admin/angular/services/saleabledetails');
 var saleablePriceService = require('./admin/angular/services/saleableprice');
 var newPassword = require('./admin/angular/services/newpasswordservice');
 var numberFormat = require('./admin/angular/services/formatfilterservice');
+var fileProcessor = require('./admin/angular/services/fileprocessor');
 
 var alertDirective = require('./admin/angular/directives/alertdirective');
 var closeContentDirective = require('./admin/angular/directives/closecontentdirective');
@@ -60,6 +62,8 @@ var saleableDetails = require('./admin/angular/directives/saleabledetails');
 var saleableBasic = require('./admin/angular/directives/saleablebasic');
 var saleableDetailsList = require('./admin/angular/directives/saleabledetailslist');
 var saleablePricesList = require('./admin/angular/directives/saleablepriceslist');
+var halloEditor = require('./admin/angular/directives/hallodirective');
+
 
 prfXyzApp.factory('Messages',[stc_messages]);
 prfXyzApp.factory('MessageService',['Messages','$timeout',messageService]);
@@ -73,6 +77,7 @@ prfXyzApp.factory('BiographyService',['restmod',bioService]);
 prfXyzApp.factory('ThePacker',[thePacker]);
 prfXyzApp.factory('NewPassword',['$http',newPassword]);
 prfXyzApp.factory('NumberFormatFilter',[numberFormat]);
+prfXyzApp.factory('FileProcessor',['$upload','$http','MessageService',fileProcessor]);
 
 prfXyzApp.directive('alert',[alertDirective]);
 prfXyzApp.directive('closeContent',[closeContentDirective]);
@@ -82,6 +87,7 @@ prfXyzApp.directive('saleableDetails',['$templateCache','$compile','$rootScope',
 prfXyzApp.directive('saleableBasic',['SaleableService',saleableBasic]);
 prfXyzApp.directive('saleableDetailsList',[saleableDetailsList]);
 prfXyzApp.directive('saleablePricesList',[saleablePricesList]);
+prfXyzApp.directive('hallo',[halloEditor]);
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);
@@ -89,5 +95,5 @@ prfXyzApp.controller('UserCtrl',['$scope','$timeout','UserService','ProfileServi
 prfXyzApp.controller('SaleableCtrl',['$scope','$rootScope','$timeout','SaleableService','MessageService','SaleableDetailsService',saleableController]);
 prfXyzApp.controller('SaleableDetailCtrl',['$scope','$rootScope','SaleableService','MessageService','$element','$compile',saleableDetailController]);
 prfXyzApp.controller('saleableBasicCtrl',['$scope','$rootScope','SaleableService','MessageService',saleableBasicController]);
-prfXyzApp.controller('saleableAllDetailsCtrl',['$scope','$rootScope','SaleableDetailsService','MessageService',saleableAllDetailsController]);
+prfXyzApp.controller('saleableAllDetailsCtrl',['$scope','$rootScope','SaleableDetailsService','MessageService','FileProcessor',saleableAllDetailsController]);
 prfXyzApp.controller('saleablePriceCtrl',['$scope','$rootScope','SaleablePriceService','MessageService',saleablePriceController]);

@@ -11,14 +11,15 @@
     <link href="/css/admin/jquery.fileupload.css" rel="stylesheet">
     <link href="/css/admin/styles.css" rel="stylesheet">
     <link href="/css/admin/mods.css" rel="stylesheet">
-    <link href="/css/admin/validations.css" rel="stylesheet">
-
-
+    <!--link href="/css/admin/validations.css" rel="stylesheet"-->
+    <link href="/css/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/admin/textAngular.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="/js/admin/html5shiv.js"></script>
     <script src="/js/admin/respond.min.js"></script>
-    <![endif]-->
 
+    <![endif]-->
+    <link href="/css/admin/validations.css" rel="stylesheet">
 
 
 </head>

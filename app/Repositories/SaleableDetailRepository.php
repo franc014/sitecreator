@@ -25,7 +25,8 @@ class SaleableDetailRepository extends DBRepository{
         $this->model = $model;
     }
 
-
-
-
+    public function getDetailIcon($saleableId){
+        $detail = $this->model->find($saleableId);
+        return $detail->photo;
+    }
 }

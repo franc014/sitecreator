@@ -26,7 +26,7 @@
                     <tr >
                         <td ng-bind="saleable.title"></td>
                         <td >
-                            <span ng-bind="saleable.description | limitTo : 148 : 0"></span>
+                            <span ng-bind-html="saleable.description | limitTo : 148 : 0"></span>
                             <a href="" ng-click="editDetails(saleable)" ng-if="saleable.description.length >= 148">Ver todo...</a>
                         </td>
                         <td><a href="" ng-click="editDetails(saleable)" data-icon="&#xe606">Detalle</a></td>

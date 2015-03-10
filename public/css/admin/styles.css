@@ -1044,4 +1044,14 @@ switch check box
     padding: 20px;
 }
 
+/*wysiwig textAngular*/
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:20px 0;
+}
+
 

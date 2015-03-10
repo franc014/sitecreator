@@ -8,6 +8,8 @@
         <div class="row" >
             <div class="col-md-10 col-lg-10" >
                 @include('admin.services.partials._body')
+
+
             </div>
 
         </div>
@@ -25,9 +27,8 @@
 @stop
 @section('javascripts')
     @parent
-    <script src="/js/admin/jquery.ui.widget.js"></script>
-    <script src="/js/admin/jquery.fileupload.js"></script>
-    <!--script >var imageLoadPath = "/profile/uploadedlogo";</script-!!>
-    <script src="/js/admin/fileUploads.js"></script>
+
+
+
 
 @stop

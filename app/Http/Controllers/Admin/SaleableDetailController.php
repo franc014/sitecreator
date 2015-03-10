@@ -3,14 +3,22 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\DetailIconStoreRequest;
+use App\Repositories\DetailIconDBStorage;
 use App\Repositories\SaleableDetailRepository;
+use App\Services\File\FilePathChanger;
+use App\Services\File\FileProcessor;
+use App\Services\File\FileUploaded;
+use App\Services\File\ImageResizer;
+use App\Services\File\ImageRetriever;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-
+use Illuminate\Support\Facades\Config;
+use Illuminate\Contracts\Filesystem\Filesystem;
 class SaleableDetailController extends Controller {
 
-
+    use ImageRetriever;
     /**
      * @var SaleableDetailRepository
      */
@@ -25,6 +33,8 @@ class SaleableDetailController extends Controller {
         $this->saleableDetailRepository = $saleableDetailRepository;
         $this->auth = $auth;
         $this->middleware("auth");
+        $this->x_image_size = Config::get('directories.imagesizes.detail_icon.x');
+        $this->y_image_size = Config::get('directories.imagesizes.detail_icon.y');
     }
 
 
@@ -129,5 +139,47 @@ class SaleableDetailController extends Controller {
         $result = $this->saleableDetailRepository->remove($id);
         return Response::json($result,200);
 	}
+
+
+    public function uploadDescriptionIcon(DetailIconStoreRequest $request,Filesystem $fileSystem){
+        //$uploadedFile = Input::file("photo");//$request->only(["photo"]);
+        $uploadedFile = $request->file("file");
+
+        $saleableId = $request->get('data');
+        $file = new FileUploaded($uploadedFile);
+
+        $resizing = new ImageResizer($this->x_image_size,$this->y_image_size);
+        $transformation = [$resizing];
+
+        $prefix = Config::get('directories.prefix.detail_icon').$saleableId;
+
+        $relativePath = Config::get('directories.upload.detail_icon');
+        $extension = 'png';
+
+        $pathChanger = new FilePathChanger($relativePath,$prefix,$extension);
+        $fileProperties = [
+            "path"=>$pathChanger->path()
+        ];
+        $dbStore = new DetailIconDBStorage($fileProperties['path'],$saleableId);
+        $processor = new FileProcessor($fileProperties['path'],$transformation,$file,$dbStore);
+        $imageCreated = $processor->process();
+        return $this->getImage($fileSystem,$imageCreated);
+    }
+
+    public function getUploadedIcon(Filesystem $fileSystem, $id){
+        $saleableId = $id;
+        //$logo = $this->profileRepository->getLogo(Auth::user()->id);
+        $icon = $this->saleableDetailRepository->getDetailIcon($saleableId);
+        if($icon) {
+            try {
+                return $this->getImage($fileSystem,$icon);
+            } catch (\Exception $e) {
+                return Response::make("No se ha encontrado la imagen. Intenta refrescar
+                el browser nuevamente por favor.", 404);
+            }
+        }
+        return $this->getDefaultImage($fileSystem);
+
+    }
 
 }

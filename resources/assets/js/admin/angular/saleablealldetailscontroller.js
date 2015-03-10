@@ -1,4 +1,9 @@
-var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,MessageService){
+var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,MessageService,FileProcessor){
+    $scope.onFileSelect = function($files) {
+        $scope.files = $files;
+        console.log($scope.files);
+    };
+
 
     /*var reset = function(){
         $scope.saleableDetailForm.$setPristine();
@@ -31,18 +36,25 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
     }
 
     $scope.editDetail=function(detail){
+        //download detail icon to load
+        FileProcessor.download($scope,'/saleabledetail/'+detail.id+'/icon');
+        //$scope.descriptiveIcon = "";
         $scope.showDetailForm = true;
         $scope.detail = detail;
         $scope.updateDetail = function(){
             detail.$save().$then(function(data){
                 var meta = data.$metadata.meta;
                 MessageService.setAlertMessage($scope,meta);
+                //upload file
+                FileProcessor.upload($scope,'/uploadSaleableDetailIcon',data.id);
+
             });
         }
     }
 
     $scope.newDetail = function(){
         $scope.showDetailForm = true;
+
         //$scope.saleableDetailForm.$setPristine();
         var detail = SaleableDetailsService.$build();
         detail.saleable_id = saleable_id;
@@ -54,7 +66,9 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
                 var meta = data.$metadata.meta;
                 MessageService.setAlertMessage($scope,meta);
                 details.$refresh();
-                $scope.showDetailForm = false;
+                FileProcessor.upload($scope,'/uploadSaleableDetailIcon',data.id);
+                //$scope.showDetailForm = false;
+
             });
         }
     }

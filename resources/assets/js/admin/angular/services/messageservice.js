@@ -15,7 +15,7 @@ var messageService = function(Messages,$timeout){
                 scope.ShowResultAlert = false;
             },4000);
         },
-        setServerValidationMessage:function(scope,data){
+        setServerValidationMessage:function(scope){
             scope.ShowServerErrors = true;
             scope.result = "Los datos no se pudieron guardar"+
                            " debido a los siguientes errores. Por favor corrígelos.";

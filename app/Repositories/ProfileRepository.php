@@ -42,9 +42,9 @@ class ProfileRepository {
     public function create($userId){
 
         $data = [
-            "user_id"=>$userId,
-        "first_name"=>"",
-        "last_name"=>"",
+        "user_id"=>$userId,
+        "firstname"=>"",
+        "lastname"=>"",
         "title"=>"",
         "biography"=>""
         ];

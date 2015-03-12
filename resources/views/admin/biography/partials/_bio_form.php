@@ -7,6 +7,7 @@
     <form role="form"  id="postForm" name="postForm" ng-submit="updateBio()"  >
 
 
+
         <div ng-class="{'alert alert-success': has_success}" ng-bind="success_msg"></div>
 
         <div class="form-group" ng-class="{'has-error':errorBody}">

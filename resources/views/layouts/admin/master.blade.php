@@ -27,6 +27,10 @@
 <body ng-cloak>
 @include('layouts.admin.partials._header')
 @include('layouts..admin.partials._sidebar')
+<div ng-show="showSpinner" id="spinner" class="sk-spinner sk-spinner-double-bounce place-spinner">
+    <div class="sk-double-bounce1"></div>
+    <div class="sk-double-bounce2"></div>
+</div>
 @yield('main_content')
 
 

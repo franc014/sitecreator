@@ -1054,4 +1054,12 @@ switch check box
     margin:20px 0;
 }
 
+.place-spinner{
+    position: fixed!important;
+    bottom: 20px;
+    right: 150px;
+    z-index: 10000;
+
+}
+
 

@@ -29,6 +29,65 @@ prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function
         /*,setFormDirtyOnSubmit: true*/
     });
 
+    $httpProvider.interceptors.push(function($q,$rootScope,$timeout) {
+        return {
+            'request': function(config) {
+                $rootScope.showSpinner = true;
+                return config;
+            },
+
+            'response': function(response) {
+                $rootScope.noAuthorized = false;
+                $rootScope.showSpinner = false;
+                return response;
+            },
+            'requestError':function(rejection){
+                console.log(rejection);
+                return $q.reject(rejection);
+            },
+            'responseError':function(rejection){
+
+                var status = rejection.status;
+                switch (status){
+                    case 401:
+                        $rootScope.messageType = 'danger';
+                        $rootScope.noAuthorized = true;
+                        $rootScope.noAuthorizedMessage = rejection.data.noAuthMsge;
+                        $timeout(function(){
+                            location.href = "/logout";
+                        },3000);
+                        break;
+                    case 500:
+                        $rootScope.messageType = 'danger';
+                        $rootScope.noAuthorized = true;
+                        $rootScope.noAuthorizedMessage = "Se presentó un problema. Por favor contacte al Administrador";
+                        break;
+                    case 404:
+                        $rootScope.messageType = 'danger';
+                        $rootScope.noAuthorized = true;
+                        $rootScope.noAuthorizedMessage = "Se presentó un problema. Por favor contacte al Administrador";
+                        break;
+                    case 413:
+                        //$rootScope.messageType = 'danger';
+                        //$rootScope.fileTooLarge = true;
+                        //$rootScope.fileTooLargeMessage = "Está intentando subir un archivo demasiado pesado. El archivo no debe superar los 5MB";
+                        alert("Está intentando subir un archivo demasiado pesado. El archivo no debe superar los 5MB");
+                        location.reload();
+                        break;
+                    default :
+                        $rootScope.messageType = 'danger';
+                        $rootScope.noAuthorized = true;
+                        $rootScope.noAuthorizedMessage = "Se detectó un problema de conexión. " +
+                        "Por favor compruebe que está conectado a una red. Si persisten los problemas, por favor contacte al Administrador.";
+
+
+                }
+                return $q.reject(rejection);
+
+            }
+        };
+    });
+
 }]);
 
 var homeController = require('./admin/angular/homecontroller');

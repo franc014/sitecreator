@@ -1,0 +1,27 @@
+$title-color:#2E4560;
+$subtitle-color:lighten($title-color,20%);
+$paragraph-text-color:#525252;
+$intro-container:$blue-genesis;
+$service-targets-container:#E9F9C6;
+
+
+$footer-link-color:$navbar-default-link-color;
+$footer-intro-color:$genesis-contrast;
+$footer-text-color-hover:$navbar-default-link-hover-color;
+$footer-text-color-intro:lighten($footer-intro-color,10%);
+
+$user-footer:$blue-genesis;
+$owner-footer:$brand-primary;
+
+$success-button-color:$mint-softer;
+$error-button-color:$guayaba;
+$call:#65C360/*$success-button-color*/ ;
+
+$intro-text-color:$title-color;
+$title-text-color:lighten($intro-text-color,10%);
+
+
+$section-content-color:#FFE5BE;
+$section-content-text-color:#456990;
+$section-inversecontent-color:$genesis-contrast;
+$section-inversecontent-text-color:$section-content-color;

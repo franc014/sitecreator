@@ -24,7 +24,12 @@ class ContentypeRepository {
     }
 
     function getAll(){
-        return $this->model->all(['id']);
+        return $this->model->all();
+    }
+
+    public function getByTypeName($defaultHomePage)
+    {
+        return $this->model->where("type",$defaultHomePage)->first();
     }
     /*function create($data){
         $contentypes = $this->model->all();

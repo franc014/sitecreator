@@ -14,7 +14,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Cuenta <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/admin/profile"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                        <li><a href=""><span class="glyphicon glyphicon-cog"></span> Configuración</a></li>
+                        <li><a href="/admin/configuration"><span class="glyphicon glyphicon-cog"></span> Configuración</a></li>
                         <li><a href="/auth/logout"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
                     </ul>
                 </li>

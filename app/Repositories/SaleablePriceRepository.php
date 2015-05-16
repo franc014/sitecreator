@@ -24,5 +24,9 @@ class SaleablePriceRepository extends DBRepository{
         $this->model = $model;
     }
 
+    public function getPriceList($saleableId){
+        return $this->model->where("saleable_id",$saleableId)->get();
+    }
+
 
 }

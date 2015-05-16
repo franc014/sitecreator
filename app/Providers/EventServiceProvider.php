@@ -2,8 +2,10 @@
 
 use App\Events\FileUploader;
 use App\Events\RemoveFile;
+use App\Events\SendEmail;
 use App\Handlers\Events\FileUploaderHandler;
 use App\Handlers\Events\RemoveFileHandler;
+use App\Handlers\Events\SendEmailHandler;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Events\PopulateUserContentOptions;
@@ -28,9 +30,11 @@ class EventServiceProvider extends ServiceProvider {
 		],
         RemoveFile::class=>[
             RemoveFileHandler::class
+        ],
+        SendEmail::class=>[
+            SendEmailHandler::class
         ]
 	];
-
 	/**
 	 * Register any other events for your application.
 	 *
@@ -40,8 +44,6 @@ class EventServiceProvider extends ServiceProvider {
 	public function boot(DispatcherContract $events)
 	{
 		parent::boot($events);
-
-
 	}
 
 }

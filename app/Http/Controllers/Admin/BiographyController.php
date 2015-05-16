@@ -79,6 +79,7 @@ class BiographyController extends Controller {
     {
         $userId = Auth::user()->id;
         $profile = $this->profileRepository->findByUserId($userId);
+        //dd($profile->biophoto);
         $data = ["bio"=>$profile,
             "meta"=>["message"=>"Ok"]
         ];
@@ -99,12 +100,14 @@ class BiographyController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param BioEditionRequest $request
      * @return Response
      */
     public function update($id,BioEditionRequest $request)
     {
-        $result = $this->profileRepository->updateProfileByUserId(Auth::user()->id,$request->all());
+        //dd($request->all());
+        $result = $this->profileRepository->updateProfileByUserId(Auth::user()->id,$request->except("photo"));
         return Response::json($result,200);
     }
 

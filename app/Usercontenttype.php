@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usercontenttype extends Model {
     protected $guarded = ['id'];
     protected $table ="usercontents";
-    protected $appends = ['activebool'];
+    protected $appends = ['activebool','ishome'];
 
     public function contenttype(){
         return $this->belongsTo('App\Contenttype');
@@ -18,6 +18,15 @@ class Usercontenttype extends Model {
         }
         return false;
     }
+    public function getIshomeAttribute(){
+        $asHome = $this->getAttribute('ashome');
+        if($asHome==1){
+            return true;
+        }
+        return false;
+    }
+
+
 }
 
 

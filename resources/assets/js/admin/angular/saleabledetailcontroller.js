@@ -12,6 +12,7 @@ var saleableDetailCtrl = function($scope,$rootScope,SaleableService,MessageServi
     });
     $rootScope.$on('editDetails',function(event,saleable){
         $scope.saleable = saleable;
+        $scope.saleables.$refresh();
         $rootScope.$broadcast('editBasicDetail',saleable);
     })
 

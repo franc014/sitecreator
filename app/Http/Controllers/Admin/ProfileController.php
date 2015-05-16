@@ -14,6 +14,7 @@ use App\Services\File\ImageResizer;
 
 use App\Services\File\ImageRetriever;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
@@ -101,12 +102,13 @@ class ProfileController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param ProfileEditionRequest|Request $request
      * @return Response
      */
-    public function update($id,ProfileEditionRequest $request)
+    public function update($id,Request $request)
     {
-        $result = $this->profileRepository->updateProfileByUserId(Auth::user()->id,$request->all());
+        $result = $this->profileRepository->updateProfileByUserId(Auth::user()->id,$request->except("photo"));
         return Response::json($result,200);
     }
 

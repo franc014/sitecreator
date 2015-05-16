@@ -941,6 +941,19 @@ h1.page-header {
     font-size: 16px;
 }
 /*alert box, general*/
+/*global indications*/
+.place-spinner{
+    position: fixed!important;
+    bottom: 20px;
+    right: 150px;
+    z-index: 10000;
+}
+.system-alert{
+    position: fixed!important;
+    bottom: 20px;
+    right: 150px;
+    z-index: 10000;
+}
 .message{
     position: fixed!important;
     bottom: 0;
@@ -1053,13 +1066,33 @@ switch check box
     font-size: 100%;
     margin:20px 0;
 }
+/*remove styles of checkbox in horizontal grids or tables*/
+.data-grid-checkbox{
+    margin-left: 60px; padding-top: 0; margin-top: 0
+}
+/*style item to be seen as home page*/
+.is-home-tag{
+    background-color:#D1EC8A !important;
+    color:#5f6468
+}
 
-.place-spinner{
-    position: fixed!important;
-    bottom: 20px;
-    right: 150px;
-    z-index: 10000;
-
+.is-content-disbled-tag{
+    background-color:#BDC3C7 !important;
+    color:#5f6468
+}
+.is-content-enabled-tag{
+    background-color:#FFFFFF !important;
+    color:#5f6468
+}
+.content-form-edit{
+    background-color: #FFFBF6;
+    padding: 20px;
+}
+.content-tag-description{
+    background-color: #34495E;
+    margin: 5px;
+    padding: 5px;
+    color:#fff
 }
 
 

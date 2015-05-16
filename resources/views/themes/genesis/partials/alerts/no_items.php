@@ -1,0 +1,1 @@
+<div id="noItemsMessage" class="flash-noitems-message"></div>

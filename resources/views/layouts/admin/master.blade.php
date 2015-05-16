@@ -31,6 +31,7 @@
     <div class="sk-double-bounce1"></div>
     <div class="sk-double-bounce2"></div>
 </div>
+<div class="alert alert-danger system-alert" ng-show="showSystemAlert"><lead ng-bind-html="systemAlert"></lead></div>
 @yield('main_content')
 
 

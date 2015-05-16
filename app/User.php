@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Config;
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
-	protected $appends = ['gravatar','hasprofile'];
+	protected $appends = ['gravatar','hasprofile','names'];
 
 	/**
 	 * The database table used by the model.
@@ -39,6 +39,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function photo(){
 		return $this->morphOne('App\Photo','imageable');
 	}
+    public function saleable(){
+        return $this->hasMany('App\Saleable');
+    }
 
 	protected function getGravatarAttribute(){
 		$email = $this->getAttribute('email');
@@ -67,5 +70,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected function contenttypes(){
 		return $this->belongsToMany('App\Contenttype','usercontents')->withPivot('active');
 	}
+
+    protected function getNamesAttribute(){
+        $firstName = $this->getAttribute('username');
+        $lastName = "";
+        if($this->hasprofile){
+            if($this->profile->firstname!=""){
+                $firstName = $this->profile->firstname;
+            }
+            if($this->profile->lastname!=""){
+                $lastName = $this->profile->lastname;
+            }
+        }
+        return $firstName." ".$lastName;
+    }
 
 }

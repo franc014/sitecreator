@@ -8,6 +8,7 @@ var saleableController = function($scope,$rootScope,$timeout,
         if(items_number==0){
             var linkToNew = ". Crea ya uno nuevo!";
             MessageService.setNoItemsInfoMessage($scope,"servicios o productos",linkToNew);
+
         }/*else{
             $scope.saleables = data;
 
@@ -15,6 +16,7 @@ var saleableController = function($scope,$rootScope,$timeout,
     });
 
     $scope.saleables = saleables;
+
     $scope.removeSaleable = function(saleable){
         var confirmation = MessageService.setConfirmDeleteMessage(" servicio o producto"," Se destruirán también todos sus detalles.");
         if(confirmation){

@@ -32,12 +32,12 @@ prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function
     $httpProvider.interceptors.push(function($q,$rootScope,$timeout) {
         return {
             'request': function(config) {
+                $rootScope.showSystemAlert = false;
                 $rootScope.showSpinner = true;
                 return config;
             },
 
             'response': function(response) {
-                $rootScope.noAuthorized = false;
                 $rootScope.showSpinner = false;
                 return response;
             },
@@ -50,35 +50,46 @@ prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function
                 var status = rejection.status;
                 switch (status){
                     case 401:
-                        $rootScope.messageType = 'danger';
-                        $rootScope.noAuthorized = true;
-                        $rootScope.noAuthorizedMessage = rejection.data.noAuthMsge;
+                        $rootScope.showSpinner = false;
+                        $rootScope.showSystemAlert = true;
+                        $rootScope.systemAlert = "Ha caducado tu sesión. Debes ingresar nuevamente!";
                         $timeout(function(){
-                            location.href = "/logout";
-                        },3000);
+                            location.href = "/auth/logout";
+                        },4000);
                         break;
                     case 500:
-                        $rootScope.messageType = 'danger';
-                        $rootScope.noAuthorized = true;
-                        $rootScope.noAuthorizedMessage = "Se presentó un problema. Por favor contacte al Administrador";
+                        $rootScope.showSpinner = false;
+                        $timeout(function(){
+                            $rootScope.showSystemAlert = false;
+                        },3000);
+                        $rootScope.showSystemAlert = true;
+                        $rootScope.systemAlert = "Vaya! :( Hubo un problema en la respuesta del servidor. <br>" +
+                        "Por favor intenta la acción nuevamente o contacta al Administrador";
                         break;
                     case 404:
-                        $rootScope.messageType = 'danger';
-                        $rootScope.noAuthorized = true;
-                        $rootScope.noAuthorizedMessage = "Se presentó un problema. Por favor contacte al Administrador";
+                        $rootScope.showSpinner = false;
+                        $timeout(function(){
+                            $rootScope.showSystemAlert = false;
+                        },3000);
+                        $rootScope.showSystemAlert = true;
+                        $rootScope.systemAlert = "Vaya! :( No se encontró el servicio que requieres. <br>" +
+                        "Por favor intenta la acción nuevamente o contacta al Administrador";
                         break;
-                    case 413:
+                    /*case 413:
                         //$rootScope.messageType = 'danger';
                         //$rootScope.fileTooLarge = true;
                         //$rootScope.fileTooLargeMessage = "Está intentando subir un archivo demasiado pesado. El archivo no debe superar los 5MB";
                         alert("Está intentando subir un archivo demasiado pesado. El archivo no debe superar los 5MB");
                         location.reload();
-                        break;
+                        break;*/
                     default :
-                        $rootScope.messageType = 'danger';
-                        $rootScope.noAuthorized = true;
-                        $rootScope.noAuthorizedMessage = "Se detectó un problema de conexión. " +
-                        "Por favor compruebe que está conectado a una red. Si persisten los problemas, por favor contacte al Administrador.";
+                        $rootScope.showSpinner = false;
+                        $timeout(function(){
+                            $rootScope.showSystemAlert = false;
+                        },3000);
+                        $rootScope.showSystemAlert = true;
+                        $rootScope.systemAlert = "Se detectó un problema de conexión. <br>" +
+                        "Por favor comprueba que estás conectada/o a una red. Si persisten los problemas, <br> por favor contacta al Administrador.";
 
 
                 }
@@ -93,6 +104,7 @@ prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function
 var homeController = require('./admin/angular/homecontroller');
 var bioController = require('./admin/angular/biocontroller');
 var userController = require('./admin/angular/usercontroller');
+var configController = require('./admin/angular/configcontroller');
 var saleableController = require('./admin/angular/saleablecontroller');
 var saleableDetailController = require('./admin/angular/saleabledetailcontroller');
 var saleableBasicController = require('./admin/angular/basicdetailcontroller');
@@ -116,6 +128,7 @@ var alertDirective = require('./admin/angular/directives/alertdirective');
 var closeContentDirective = require('./admin/angular/directives/closecontentdirective');
 var contentSelectorDirective = require('./admin/angular/directives/contentselector');
 var prodileMenuDirective = require('./admin/angular/directives/profilemenu');
+var configMenuDirective = require('./admin/angular/directives/configmenu');
 
 var saleableDetails = require('./admin/angular/directives/saleabledetails');
 var saleableBasic = require('./admin/angular/directives/saleablebasic');
@@ -142,6 +155,7 @@ prfXyzApp.directive('alert',[alertDirective]);
 prfXyzApp.directive('closeContent',[closeContentDirective]);
 prfXyzApp.directive('contentSelector',['MessageService','UserContentType',contentSelectorDirective]);
 prfXyzApp.directive('profileMenu',[prodileMenuDirective]);
+prfXyzApp.directive('configMenu',[configMenuDirective]);
 prfXyzApp.directive('saleableDetails',['$templateCache','$compile','$rootScope',saleableDetails]);
 prfXyzApp.directive('saleableBasic',['SaleableService',saleableBasic]);
 prfXyzApp.directive('saleableDetailsList',[saleableDetailsList]);
@@ -151,6 +165,8 @@ prfXyzApp.directive('hallo',[halloEditor]);
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);
 prfXyzApp.controller('UserCtrl',['$scope','$timeout','UserService','ProfileService','MessageService','NewPassword',userController]);
+prfXyzApp.controller('ConfigCtrl',['$scope','$timeout','MessageService','UserContentType',configController]);
+
 prfXyzApp.controller('SaleableCtrl',['$scope','$rootScope','$timeout','SaleableService','MessageService','SaleableDetailsService',saleableController]);
 prfXyzApp.controller('SaleableDetailCtrl',['$scope','$rootScope','SaleableService','MessageService','$element','$compile',saleableDetailController]);
 prfXyzApp.controller('saleableBasicCtrl',['$scope','$rootScope','SaleableService','MessageService',saleableBasicController]);

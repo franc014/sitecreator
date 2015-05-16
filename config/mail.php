@@ -28,8 +28,8 @@ return [
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
-
+	//'host' => 'smtp.mailgun.org',
+    'host'=>'mailtrap.io',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -41,8 +41,8 @@ return [
 	|
 	*/
 
-	'port' => 587,
-
+	//'port' => 587,
+    'port'=>2525,
 	/*
 	|--------------------------------------------------------------------------
 	| Global "From" Address
@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => "jfandradea@gmail.com", 'name' => "Juan Francisco Andrade   "],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'encryption' => 'tls',
+	//'encryption' => 'tls',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,8 +80,8 @@ return [
 	|
 	*/
 
-	'username' => null,
-
+    //'username' => null,
+    'username'=>'338108fb4fe3cbab0',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Server Password
@@ -93,8 +93,8 @@ return [
 	|
 	*/
 
-	'password' => null,
-
+    //'password' => null,
+    'password' => 'd825774a9eb259',
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path

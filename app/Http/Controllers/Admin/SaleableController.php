@@ -47,18 +47,20 @@ class SaleableController extends Controller {
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
 	public function store(Request $request)
 	{
 		$data = [
             "user_id"=>$this->auth->user()->id,
             "title"=>$request->input('title'),
             "description"=>$request->input('description'),
-            "type"=>$request->input('type')
+            "type"=>$request->input('type'),
+            "featured"=>$request->input('featured')
         ];
         $result = $this->saleableRepository->saveModel($data);
         $dataResponse = [
@@ -100,7 +102,7 @@ class SaleableController extends Controller {
 	 */
 	public function update($id, Request $request)
 	{
-        $saleable = $this->saleableRepository->updateModel($id,$request->except(['tagtype','details','prices']));
+        $saleable = $this->saleableRepository->updateModel($id,$request->except(['tagtype','details','prices','detailed','layouttype','isfeatured']));
         $dataResponse = [
             "profile"=>$saleable,
             "meta"=>["result"=>"success","message"=>"Los datos han sido actualizados exitosamente"]

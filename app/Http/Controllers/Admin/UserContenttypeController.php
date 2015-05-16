@@ -94,15 +94,18 @@ class UserContenttypeController extends Controller {
 	 * @return Response
 	 */
 	public function update($id)
-	{
+	{   //dd(Input::all());
 		$active = 0;
 		if(Input::get('active')){
 			$active = 1;
 		}
 		$data = [
-			"active"=>$active
+			"active"=>$active,
+            "ashome"=>Input::get('ashome'),
+            "menualias"=>Input::get('menualias')
+
 		];
-		$updated = $this->usercontenttypeRepository->updateContent($id,$data);
+		$updated = $this->usercontenttypeRepository->updateContent($id,$data,$this->auth->user()->id);
 
 		return Response::json($updated, 202);
 		//dd(Input::get('active'));

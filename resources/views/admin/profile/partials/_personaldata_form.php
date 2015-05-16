@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="form-group col-sm-6" ng-class="{'has-error':errorBody}">
-                <label class="control-label" for="lastname">Celular</label><br>
+                <label class="control-label" for="lastname">Apellidos</label><br>
                 <div >
                     <input class="form-control" type="text" id="lastname" ng-model="profile.lastname" required>
                 </div>

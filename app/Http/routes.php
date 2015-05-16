@@ -17,8 +17,15 @@
 
 use Illuminate\Support\Facades\App;
 
+/*Route::get('/emailtest',function(){
+    Mail::send('emails.test',['client'=>"Juan Andrade"],function($message){
+        $message->to("jfandradea@gmail.com")->subject("SITECREATOR EMAIL DE PRUEBA");
+    });
+});*/
+
+
 Route::get('home', ['middleware'=>['auth'],'uses'=> 'HomeController@index']);
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -49,11 +56,16 @@ Route::resource('saleableprice','Admin\SaleablePriceController');
 //get('/tepr','Admin\HomeController@profile');
 //TODO contact admin implementation
 
+/*user web client*/
 
-get('st',function(){
-	//return view('layouts/prof/master');
-	//$img = Image::make('foo.jpg')->resize(300, 200);
+//pages router
+//home client
+Route::get('{username}', 'Site\HomeController@index');
+//page asked; e.g franc/contact
+Route::get('{username}/{page}', 'Site\PagesController@index');
+//display saleables
+Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@index');
+//store lead
+Route::post('lead',"Site\GuestController@storeLead");
 
-	//return $img->response('jpg');
-});
 

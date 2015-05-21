@@ -22,7 +22,7 @@
     <div class="container site-container2" >
         <div class="row">
             <div class="col-sm-9 col-md-9 service-content">
-                @if(!empty($saleables))
+                @if(empty($saleables))
                 @foreach(array_chunk($saleables->all(), 3) as $row)
                     <div class="row " >
                         @foreach( $row as $saleable)

@@ -18,7 +18,7 @@
         //dd($saleables->all());
         $username = $data["username"];
         $isContactPage = false;
-        dd($saleables->isEmpty());
+        dd($saleables);
     ?>
     <div class="container site-container2" >
         <div class="row">

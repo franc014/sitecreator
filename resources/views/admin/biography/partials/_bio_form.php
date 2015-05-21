@@ -12,14 +12,14 @@
 
         <div class="form-group" ng-class="{'has-error':errorBody}">
 
-        <textarea required id="body" name="body" class="form-control" rows="20" ng-model="profile.biography"
-              placeholder="Ingresa la descripción aquí"></textarea>
+
+            <text-angular placeholder="Ingresa la descripción aquí" ng-model="profile.biography" id="body" name="body" required></text-angular>
             <span class="help-block" ng-show="errorBody" ng-bind="errorBody"></span>
         </div>
         <div alert class="alert alert-{{result.result}}" msge="result.message" ng-show="ShowResultAlert"></div>
         <div class="form-group" >
             <button type="submit" class="btn btn-primary" ng-disabled="disableSaveButton" >Guardar</button>
-            <a href="" class="pull-right">Previsualizar Biografía</a>
+            <!--a href="" class="pull-right">Previsualizar Biografía</a-->
         </div>
     </form>
     <hr>

@@ -18,12 +18,12 @@
         //dd($saleables->all());
         $username = $data["username"];
         $isContactPage = false;
-        dd($saleables->isEmpty());
+        //dd($saleables->isEmpty());
     ?>
     <div class="container site-container2" >
         <div class="row">
             <div class="col-sm-9 col-md-9 service-content">
-                @if(empty($saleables))
+                @if(!$saleables->isEmpty())
                 @foreach(array_chunk($saleables->all(), 3) as $row)
                     <div class="row " >
                         @foreach( $row as $saleable)

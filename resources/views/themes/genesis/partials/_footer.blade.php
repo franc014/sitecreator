@@ -75,7 +75,7 @@
                     El mejor lugar para proyectar tu imagen profesional en Internet.</p-->
                 <p class="footer-text copy-right">Desarrollado con <span data-icon="&#xe6da"></span>con <a target="_blank" href="http://laravel.com/">LARAVEL</a> framework</p>
                 <p class="footer-text copy-right ">Derechos reservados &#169; <span >Juan Andrade Álvarez</a> </span></p>
-                <p class="footer-text copy-right">2015</p>
+                <p class="footer-text copy-right center-block">2015</p>
 
             </div>
         </div>

@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\App;
 
 Route::get('home', ['middleware'=>['auth'],'uses'=> 'HomeController@index']);
 Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

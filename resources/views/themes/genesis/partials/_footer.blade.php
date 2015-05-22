@@ -20,10 +20,10 @@
 
                         <div class="col-sm-2">
                             @if($socialValue[0]["social"]!="treehouse")
-                                <a href="{{$socialValue[0]["account"]}}" data-icon="&#xe{{htmlentities($socialValue[0]["icon"])}}">
+                                <a target="_blank" href="{{$socialValue[0]["account"]}}" data-icon="&#xe{{htmlentities($socialValue[0]["icon"])}}">
                                 </a>
                             @else
-                                <a href="{{$socialValue[0]["account"]}}" data-icon-x="&#xe7eb">
+                                <a target="_blank" href="{{$socialValue[0]["account"]}}" data-icon-x="&#xe7eb">
                                 </a>
                             @endif
                         </div>

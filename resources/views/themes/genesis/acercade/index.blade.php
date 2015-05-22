@@ -30,12 +30,13 @@
             </div>
 
             <div class="col-sm-5 col-md-5 about-image">
+                @if($profile->biophoto <> "")
                 <div class="row">
                     <div class="col-sm-12 ">
                         <img width="320" height="320" src="{{$profile->biophoto}}" class="img-responsive ">
                     </div>
-
                 </div>
+                @endif
                 <div class="row">
                     <div class="col-sm-12 ">
                         <div class="contact-widget row-gap-about-widgets"  >

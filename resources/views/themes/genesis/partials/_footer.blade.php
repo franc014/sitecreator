@@ -7,7 +7,7 @@
     <div class="container footer-content">
         <div class="row ">
             @if(!empty($socialItems))
-            <div class="col-sm-4 " data-anijs="if: scroll,on: window, do: fadeInDown animated">
+            <div class="col-sm-4 " data-anijs="if: load,on: window, do: fadeInDown animated">
                 <div class="row ">
                     <div class="col-sm-12" >
                         <p class="footer-intro">
@@ -54,7 +54,7 @@
                 </div>
             </div-->
 
-            <div class="col-sm-4 " data-anijs="if: scroll,on: window, do: fadeInDown animated">
+            <div class="col-sm-4 " data-anijs="if: load,on: window, do: fadeInDown animated">
                 <div class="row ">
                     <div class="col-sm-12" >
                         <p class="footer-intro">
@@ -76,7 +76,7 @@
 <footer class="owner-footer">
     <div class="container footer-content">
         <div class="row ">
-            <div class="col-sm-6 col-sm-offset-4" data-anijs="if: scroll,on: window, do: fadeInDown animated">
+            <div class="col-sm-6 col-sm-offset-4" data-anijs="if: load,on: window, do: fadeInDown animated">
                 <!--p class="footer-text copy-right">Este sitio es generado desde <a href="">www.profesional.xyz</a>. Visítalo!.
                     El mejor lugar para proyectar tu imagen profesional en Internet.</p-->
                 <p class="footer-text copy-right">Desarrollado con <span data-icon="&#xe6da"></span>con <a target="_blank" href="http://laravel.com/">LARAVEL</a> framework</p>

@@ -370,12 +370,12 @@ $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             #FFD9A1 !default;
+$navbar-default-color:             $genesis-contrast !default;
 $navbar-default-bg:                rgba(44, 81, 122, 0.92) !default;
 $navbar-default-border:            0;//darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
-$navbar-default-link-color:                #FFD9A1 !default;
+$navbar-default-link-color:                $genesis-contrast !default;
 $navbar-default-link-hover-color:          darken(#FFD9A1,15%) !default;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         #eeb868 !default;

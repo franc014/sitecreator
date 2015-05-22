@@ -19,7 +19,7 @@ $profile = $data["profile"];
             <span class="label-phrase">, (Celular): </span><br>
             <input type="text" id="cellular" name="cellular" class="form-control form-input">
 
-            <span class="label-phrase"> Adicionalmente quisiera comentarle lo siguiente:</span><br><br>
+            <span class="label-phrase"> A continuación mis comentarios:</span><br><br>
             <textarea rows="5" id="inquiry" name="inquiry" cols="150" class="form-control paragraph-textarea"></textarea>
 
 

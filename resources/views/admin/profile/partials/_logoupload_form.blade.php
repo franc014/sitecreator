@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-6"  >
-                <div id="photo_box" ></div>
+                <div id="photo_box" class="photo_box_class" ></div>
             </div>
         </div>
 

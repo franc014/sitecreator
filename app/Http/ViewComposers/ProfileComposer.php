@@ -61,13 +61,15 @@ class ProfileComposer extends CurrentRoute{
             "github"=>$profile->github,
             "vimeo"=>$profile->vimeo,
             "instagram"=>$profile->instagram,
-            "flickr"=>$profile->flickr
+            "flickr"=>$profile->flickr,
+            "linkedin"=>$profile->linkedin,
+            "treehouse"=>$profile->treehouse
         ];
 
         foreach($socialAccounts as $socialAccount =>$account){
             //dd($socialAccount);
             if($account!=""){
-                $socialItems[] = array(["icon"=>$socialIconsCodes["$socialAccount"], "account"=>$account]);
+                $socialItems[] = array(["icon"=>$socialIconsCodes["$socialAccount"], "account"=>$account,"social"=>$socialAccount]);
             }
         }
         return $socialItems;

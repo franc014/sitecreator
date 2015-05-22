@@ -19,6 +19,8 @@ return array(
         "github"=>"7b4",
         "vimeo"=>"79e",
         "instagram"=>"790",
-        "flickr"=>"7a3"
+        "flickr"=>"7a3",
+        "linkedin"=>"7c8",
+        "treehouse"=>""
     )
 );

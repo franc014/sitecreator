@@ -2,6 +2,7 @@
     <?php
         $profile = $data["profile"];
         $socialItems = $data["socialitems"];
+        //dd($socialItems);
     ?>
     <div class="container footer-content">
         <div class="row ">
@@ -18,8 +19,13 @@
                     @foreach($row as $socialItem => $socialValue)
 
                         <div class="col-sm-2">
-                            <a href="{{$socialValue[0]["account"]}}" data-icon="&#xe{{htmlentities($socialValue[0]["icon"])}}">
-                            </a>
+                            @if($socialValue[0]["social"]!="treehouse")
+                                <a href="{{$socialValue[0]["account"]}}" data-icon="&#xe{{htmlentities($socialValue[0]["icon"])}}">
+                                </a>
+                            @else
+                                <a href="{{$socialValue[0]["account"]}}" data-icon-x="&#xe7eb">
+                                </a>
+                            @endif
                         </div>
 
                     @endforeach

@@ -87,6 +87,22 @@
                     <input class="form-control" type="text" id="github" ng-model="profile.github" >
                 </div>
             </div>
+            <div class="form-group col-sm-6" ng-class="{'has-error':errorBody}">
+                <label class="control-label" for="linkedin">Linked In </label><br>
+                <div >
+                    <input class="form-control" type="text" id="linkedin" ng-model="profile.linkedin" >
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6" ng-class="{'has-error':errorBody}">
+                <label class="control-label" for="treehouse">Treehouse </label><br>
+                <div >
+                    <input class="form-control" type="text" id="treehouse" ng-model="profile.treehouse" >
+                </div>
+            </div>
+
 
         </div>
         <div class="row">

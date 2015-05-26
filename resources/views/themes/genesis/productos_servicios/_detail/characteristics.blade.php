@@ -34,7 +34,7 @@ $isContactPage = false;
             @endif
             <br>
             <div>
-                <a href="#contact-form" class="btn btn-success btn-lg" href="#">Solicitar</a>
+                <a href="#contact-form" class="btn btn-success btn-lg callout-service-detail" href="#">Solicitar</a>
             </div>
         </div>
 

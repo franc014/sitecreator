@@ -5510,3 +5510,6 @@ a.section-jumper {
   font-size: 16px; }
   a.section-jumper:hover, a.section-jumper:visited {
     text-decoration: none; }
+
+.callout-service-detail {
+  margin: 0 200px; }

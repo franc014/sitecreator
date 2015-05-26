@@ -1,7 +1,7 @@
 <?php
 $targets = $data["targets"];
 ?>
-@if(!empty($targets))
+@if(!$targets->isEmpty())
 <div class="targets-container" >
     <div class="targets-content">
 

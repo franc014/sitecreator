@@ -1,7 +1,7 @@
 <?php
 $restsaleables = $data["restsaleables"];
 ?>
-@if(!empty($restsaleables))
+@if(!$restsaleables->isEmpty())
 <div class="saleable-services-container" id="services">
     <div class="container services-content" >
 

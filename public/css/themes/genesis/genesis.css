@@ -5506,5 +5506,7 @@ a.contact-collaout {
   .service-main-details .targets {
     margin-top: 50px; }
 
-a.section-jumper:hover, a.section-jumper:visited {
-  text-decoration: none; }
+a.section-jumper {
+  font-size: 16px; }
+  a.section-jumper:hover, a.section-jumper:visited {
+    text-decoration: none; }

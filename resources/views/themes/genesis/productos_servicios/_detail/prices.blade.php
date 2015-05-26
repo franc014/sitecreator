@@ -48,9 +48,9 @@ $prices = $data["prices"];
                             <div class="panel-body">
 
                                 <p >
-                                   Para ofrecerte una descripción detallada del precio de este servicio o
-                                   producto, por favor, déjame tus datos y pronto me counicaré contigo.
-                                   Pulsa el botón contactar.
+                                   Para ofrecerle una descripción detallada del precio de este servicio o
+                                   producto, por favor, déjeme sus datos y pronto me counicaré.
+                                   Pulse el botón contactar.
                                 </p>
 
                             </div>

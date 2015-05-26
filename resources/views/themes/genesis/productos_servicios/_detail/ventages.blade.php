@@ -1,7 +1,7 @@
 <?php
 $ventages = $data["ventages"];
 ?>
-@if(!empty($ventages))
+@if(!$ventages->isEmpty())
 <div class="saleable-ventages-container" id="ventages">
     <div class="container ventages-content" >
 
@@ -22,7 +22,11 @@ $ventages = $data["ventages"];
 
                     <div class="caption">
                         <!--h3 class="ventages-thumbnail-title">Thumbnail label</h3-->
+
                         <p class="clearfix thumbnail-text" >
+                            <img data-anijs="if: mouseover, do: flipInY animated"
+                                 class="media-object img-circle center-block img-responsive" width="50" height="50"
+                                 src="{{$ventage->iconpath}}" alt="servicio">
                             {{$ventage->detail}}
                         </p>
                     </div>

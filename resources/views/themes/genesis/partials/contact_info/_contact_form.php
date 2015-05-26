@@ -1,5 +1,5 @@
-<p class="content-intro" >Escribe una sugerencia, comentario o requerimiento de servicio.</p>
-<p class="content-sub-intro">Será magnífico conocer tu feedback .</p>
+<p class="content-intro" >Escriba una sugerencia, comentario o requerimiento de servicio.</p>
+<p class="content-sub-intro">Será magnífico conocer su feedback .</p>
 <?php
 $profile = $data["profile"];
 

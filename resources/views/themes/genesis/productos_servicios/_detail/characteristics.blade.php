@@ -14,7 +14,7 @@ $isContactPage = false;
             <div>
                 {!! $saleable->description !!}
             </div>
-            @if(!empty($details))
+            @if(!$details->isEmpty())
                 <div>
                     <h2>Características</h2>
                     @foreach($details as $detail)

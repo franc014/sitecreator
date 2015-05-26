@@ -79,7 +79,7 @@
             <div class="col-sm-6 col-sm-offset-4" data-anijs="if: load,on: window, do: fadeInDown animated">
                 <!--p class="footer-text copy-right">Este sitio es generado desde <a href="">www.profesional.xyz</a>. Visítalo!.
                     El mejor lugar para proyectar tu imagen profesional en Internet.</p-->
-                <p class="footer-text copy-right">Desarrollado con <span data-icon="&#xe6da"></span>con <a target="_blank" href="http://laravel.com/">LARAVEL</a> framework</p>
+                <p class="footer-text copy-right">Desarrollado orgullosamente con <a target="_blank" href="http://laravel.com/">LARAVEL</a> framework</p>
                 <p class="footer-text copy-right ">Derechos reservados &#169; <span >Juan Andrade Álvarez - 2015 </span></p>
 
 

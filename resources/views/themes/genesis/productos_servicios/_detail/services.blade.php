@@ -24,7 +24,7 @@ $restsaleables = $data["restsaleables"];
                                     <!--img src="http://lorempixel.com/50/50/" class="center-block"-->
                                     <h3>{{$saleable->title}}</h3>
                                     <p >
-                                        {!!str_limit($saleable->description,100,"...")!!}<a href="/{{$saleable->user->username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
+                                        {!!str_limit($saleable->description,80,"...")!!}<a href="/{{$saleable->user->username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
                                     </p>
 
                                 </div>

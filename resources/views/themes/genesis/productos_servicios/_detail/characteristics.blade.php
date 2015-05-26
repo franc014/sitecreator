@@ -8,11 +8,12 @@ $isContactPage = false;
 
         <div class="col-sm-7 col-md-7 service-description">
             <h1  >{{$saleable->title}}
-                @include('themes.genesis.productos_servicios._detail.partials._section_nav')
+
             </h1>
 
             <div>
                 {!! $saleable->description !!}
+                <span>@include('themes.genesis.productos_servicios._detail.partials._section_nav')</span>
             </div>
             @if(!$details->isEmpty())
                 <div>

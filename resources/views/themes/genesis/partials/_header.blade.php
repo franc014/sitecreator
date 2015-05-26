@@ -47,7 +47,7 @@
     </div>
     <section class="subheader hidden-xs hidden-sm"  >
         <div class="row">
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-12 col-md-12">
                 <div data-anijs="if: load,on: window, do: flipInY animated">
                     @yield('page_title')
                     @yield('content_intro')

@@ -49,5 +49,6 @@
         var body = "{!! session('flash-success-message') !!}";
     </script>
     <script src="/js/themes/genesis/alerts.js"></script>
+    <script src="/js/themes/genesis/analytics.js"></script>
 </body>
 </html>

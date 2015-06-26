@@ -130,7 +130,7 @@ class ResumeController extends Controller {
             $data = ["resume" => $resume, "meta" => ["message" => "ok"]];
             return response($data, 200);
         }catch (ModelNotFoundException $mne){
-            $data = ["error" => "No se ha encontrado ningún résumé"];
+            $data = ["resume" => null, "meta" => ["message" => "error"]];
             return response($data, 200);
         }
     }

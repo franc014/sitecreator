@@ -9,8 +9,14 @@ var resumeHelper = function($http,MessageService){
         },
         getResume:function(scope,rootScope,path){
             $http.get(path).success(function(data){
-                rootScope.$emit("resumeChange",data);
-            }).error();
+                if(data.error=="") {
+                    rootScope.$emit("resumeChange", data);
+                }else{
+                    rootScope.$emit("noResumeFound");
+                }
+            }).error(function(data){
+                console.log(data);
+            });
 
         },
         publishResume:function(scope,rootScope,path){

@@ -212,4 +212,4 @@ prfXyzApp.controller('SaleableDetailCtrl',['$scope','$rootScope','SaleableServic
 prfXyzApp.controller('saleableBasicCtrl',['$scope','$rootScope','SaleableService','MessageService',saleableBasicController]);
 prfXyzApp.controller('saleableAllDetailsCtrl',['$scope','$rootScope','SaleableDetailsService','MessageService','FileProcessor',saleableAllDetailsController]);
 prfXyzApp.controller('saleablePriceCtrl',['$scope','$rootScope','SaleablePriceService','MessageService',saleablePriceController]);
-prfXyzApp.controller('resumeCtrl',['$scope','$rootScope','ResumeHelper',resumeController]);
+prfXyzApp.controller('resumeCtrl',['$scope','$rootScope','ResumeHelper','MessageService',resumeController]);

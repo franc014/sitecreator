@@ -1,6 +1,8 @@
-var resumeController = function($scope,$rootScope,ResumeHelper){
+var resumeController = function($scope,$rootScope,ResumeHelper,MessageService){
     ResumeHelper.dropDownList('/resume_drop_list',$scope);
     ResumeHelper.getResume($scope,$rootScope,'/publishedresume');
+
+
 
     $rootScope.$on("updateResumeList",function(){
         ResumeHelper.dropDownList('/resume_drop_list',$scope);

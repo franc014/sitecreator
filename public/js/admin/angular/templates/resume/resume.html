@@ -1,19 +1,21 @@
 <div class="row">
     <div class="col-sm-12 col-md-12">
-    <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+
     <div class="panel panel-default"  >
         <div class="panel-body" style="background-color: #2C3E50">
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
             <div class="row">
                 <div class="col-sm-5 col-md-5">
-                    <h4>Versión:
+
+                    <h4 ng-if="resume">Versión:
                         <span ng-bind="resume.name"></span>
                         <a href="" ng-click="showResumeEditForm()"><span data-icon="&#xe605"></span></a>
                         <a href="" ng-click="deleteResume(resume)"><span data-icon="&#xe6ac"></span></a>
                     </h4>
-                    <h4>Fecha de creación: <br><span ng-bind="resume.createdAt"></span></h4>
+                    <h4 ng-if="resume">Fecha de creación: <br><span ng-bind="resume.createdAt"></span></h4>
                 </div>
                 <div class="col-sm-3 col-md-3">
-                    <h4>Estado:<br>
+                    <h4 ng-if="resume">Estado:<br>
                         <span ng-if="resume.active==1" class="published-resume">Publicado</span>
                         <span ng-if="resume.active==0" class="unpublished-resume">No publicado</span>
                     </h4>
@@ -32,7 +34,7 @@
                 <div class="col-sm-3 col-md-3">
                     <button ng-click="newResume()" class="btn btn-success" data-icon="&#xe70a">Nuevo Résumé</button><br>
                     <br>
-                    <button ng-click="cloneResume(resume)" class="btn btn-default" data-icon="&#xe62c">Clonar Résumé</button>
+                    <button ng-if="resume" ng-click="cloneResume(resume)" class="btn btn-default" data-icon="&#xe62c">Clonar Résumé</button>
                 </div>
 
             </div>

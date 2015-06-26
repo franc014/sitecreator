@@ -6,26 +6,33 @@ var resumeDirective = function(MessageService,Resume,$timeout,ResumeHelper){
 
         },
         controller:function($scope,$rootScope){
+            $rootScope.$on('noResumeFound',function(){
+                MessageService.setNoItemsInfoMessage($scope, " résumés",
+                    ". Pulsa el botón Nuevo para crear");
+            })
             $rootScope.$on('resumeChange',function(event,args){
-                //console.log(args);
-                var resumes = Resume.$search().$then(function(data){
-                    $scope.resumes = data;
+                if(typeof args.resume !== "undefined")
+                {
+                    //console.log(args);
+                    var resumes = Resume.$search().$then(function (data) {
+                        $scope.resumes = data;
 
-                    if($scope.resumes.length==0){
-                        MessageService.setNoItemsInfoMessage($scope," résumés",
-                            ". Pulsa el botón Nuevo para crear uno");
-                    }
-                });
-
-
-                var resume = Resume.$find(args.resume.id);
-                $scope.resume = resume;
-                $scope.updateResume = function(){
-                    $scope.resume.$save().$then(function(data){
-                        var meta = data.$metadata.meta;
-                        MessageService.setAlertMessage($scope,meta);
-                        $scope.showResumeForm = false;
+                        if ($scope.resumes.length == 0) {
+                            MessageService.setNoItemsInfoMessage($scope, " résumés",
+                                ". Pulsa el botón Nuevo para crear uno");
+                        }
                     });
+
+
+                    var resume = Resume.$find(args.resume.id);
+                    $scope.resume = resume;
+                    $scope.updateResume = function () {
+                        $scope.resume.$save().$then(function (data) {
+                            var meta = data.$metadata.meta;
+                            MessageService.setAlertMessage($scope, meta);
+                            $scope.showResumeForm = false;
+                        });
+                    }
                 }
             });
 

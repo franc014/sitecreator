@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\ResumeRepository;
 use Illuminate\Auth\Guard;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -124,9 +125,14 @@ class ResumeController extends Controller {
     }
 
     public function getPublishedResume(){
-        $resume = $this->resumeRepository->getDefaultResume($this->auth->user()->id);
-        $data = ["resume"=>$resume,"meta"=>["message"=>"ok"]];
-        return response($data,200);
+        try {
+            $resume = $this->resumeRepository->getDefaultResume($this->auth->user()->id);
+            $data = ["resume" => $resume, "meta" => ["message" => "ok"]];
+            return response($data, 200);
+        }catch (ModelNotFoundException $mne){
+            $data = ["error" => "No se ha encontrado ningún résumé"];
+            return response($data, 200);
+        }
     }
 
     public function publishResume($id){

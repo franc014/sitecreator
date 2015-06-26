@@ -30,7 +30,7 @@
                             <a href="" ng-click="editDetails(saleable)" ng-if="saleable.description.length >= 148">Ver todo...</a>
                         </td>
                         <td><a href="" ng-click="editDetails(saleable)" data-icon="&#xe606">Detalle</a></td>
-                        <td><a href="" ng-click = "removeSaleable(saleable)" data-icon="&#xe6a8">Eliminar</a></td>
+                        <td><a href="" ng-click = "removeSaleable(saleable)" data-icon="&#xe6ac">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <?php
         $profile = $data["profile"];
+        //dd($profile->user->username);
         $homeItem = $data["home_item"];
-    //dd($navItems);
+    //dd($homeItem);
     ?>
     <div class="container-fluid">
         <div class="navbar-header">

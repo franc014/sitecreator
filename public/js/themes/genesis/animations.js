@@ -14,7 +14,7 @@ $('.subheader').attr('style',';background-repeat:no-repeat;background-image: '+p
 
 /*smooth scroll*/
 
-$('a[href*=#]').click(function() {
+$('a[href*=#]').not(".no-scroll").click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
         && location.hostname == this.hostname) {
         var $target = $(this.hash);

@@ -1,0 +1,153 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+        <h3 class="panel-title" id="-collapsible-list-group-">
+            <a class="" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="true" aria-controls="collapseListGroup1">
+                Experiencia de trabajo
+            </a>
+            <a class="pull-right" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="true" aria-controls="collapseListGroup1"><span data-icon="&#xe6be"></span></a></h3>
+    </div>
+    <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
+        <div >
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+            <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Experiencias de trabajo<span ><a href="" data-icon="&#xe70a" ng-click="newExperience()" class="btn btn-md btn-success pull-right">Nueva</a></span> </h4>
+
+                </div>
+                <div class="panel-body" >
+                    <!--div ng-show="showedExperienceForm"-->
+                        <div ng-show="formShown">
+                        <form class="form-block"  role="form"  id="experienceForm" name="experienceForm" ng-submit="updateExperience()"  >
+                            <h3>
+                                <span class="wizard-title" ng-if="!experience.id">Nueva experiencia</span>
+                                <span ng-if="experience.id" class="wizard-title">Editando experiencia</span>
+                            </h3>
+                            <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="title">Cargo / Título</label><br>
+                                    <input type="text" class="form-control" id="title" name="title" ng-model="experience.title" required >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="place">Lugar (Empresa, Oficina, Organización)</label><br>
+                                    <input type="text" id="place" class="form-control" name="place" ng-model="experience.place" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-6" >
+                                    <label class="control-label" for="locality">Localidad (País,Provincia,Región, Ciudad)</label><br>
+                                    <input type="text" id="locality" class="form-control" name="locality" ng-model="experience.locality" required>
+                                </div>
+                            </div>
+                            <h4>Fecha inicial</h4>
+                            <div class="row">
+                                <div class="form-group col-sm-3" >
+                                    <label class="control-label" for="initmonth">Mes</label><br>
+                                    <select ng-options="month for month in monthoptions"
+                                            ng-model="experience.initmonth"
+                                            id="initmonth" name="initmonth">
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-3" >
+                                    <label class="control-label" for="inityear">Año</label><br>
+                                    <input ng-pattern="/^[12][0-9]{3}$/"
+                                           validation-msg-pattern="Por favor ingresa un año válido en formato YYYY, ejemplo: 2014"
+                                           type="text" id="inityear" class="form-control" name="inityear"
+                                           ng-model="experience.inityear" required>
+                                </div>
+                            </div>
+                            <h4>Fecha final</h4>
+                            <div class="row">
+                                <div class="form-group col-sm-3" >
+                                    <label class="control-label" for="endmonth">Mes</label><br>
+                                    <select ng-options="month for month in monthoptions" ng-model="experience.endmonth" id="endmonth" name="endmonth"></select>
+                                </div>
+                                <div class="form-group col-sm-3" >
+                                    <label class="control-label" for="endyear">Año</label><br>
+                                    <input type="text" ng-pattern="/^[12][0-9]{3}$/"
+                                           validation-msg-pattern="Por favor ingresa un año válido en formato YYYY, ejemplo: 2014"
+                                           id="endyear" class="form-control" name="endyear" ng-model="experience.endyear" required>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label" for="current">Continúo en este lugar</label><br>
+                                    <div >
+                                        <input  type="checkbox" id="current" ng-checked="experience.currentplace"
+                                                ng-model="experience.currentplace"/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="detail">Descripción</label><br>
+                                    <text-angular  id="detail" name="detail" ng-model="experience.detail"></text-angular>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                                    <div class="col-sm-4"><a href="" ng-click="closeForm()" class="pull-right">Cancelar</a></div>
+
+                                </div>
+                            </div>
+                        </form>
+
+                        <hr>
+                    </div>
+
+
+                    <table class="table table-responsive" data-toggle="table" ng-show = "gridShown" >
+                        <thead>
+                        <tr>
+                            <th data-field="title">Cargo / Título</th>
+                            <th data-field="place">Lugar</th>
+                            <th data-field="Descripción">Descripción</th>
+                            <th data-field="disable">Habilitar / Deshabilitar</th>
+                            <th data-field="edit"></th>
+                            <th data-field="delete"></th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="experience in experiences" class="item-list">
+                        <tr >
+                            <td ng-bind="experience.title"></td>
+                            <td ng-bind="experience.place"></td>
+                            <td >
+                                <span ng-bind-html="experience.detail | limitTo : 50 : 0"></span>
+                                <a href="" ng-click="editExperience(experience)" ng-if="experience.detail.length >= 50">Ver todo...</a>
+                            </td>
+                            <td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="status" ng-click="changeStatus($event,experience)"
+                                           ng-checked="experience.statusbool" ng-model="experience.statusbool"
+                                            />
+
+                                </div>
+                            </td>
+                            <td><a href="" ng-click="editExperience(experience)" data-icon="&#xe606">Editar</a></td>
+                            <td><a href="" ng-click = "removeExperience(experience)" data-icon="&#xe6ac">Eliminar</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>

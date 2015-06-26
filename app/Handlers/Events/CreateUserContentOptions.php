@@ -18,10 +18,11 @@ class CreateUserContentOptions {
     private $profileRepository;
 
     /**
-	 * Create the event handler.
-	 *
-	 * @return void
-	 */
+     * Create the event handler.
+     *
+     * @param UsercontenttypeRepository $usercontenttypeRepository
+     * @param ProfileRepository $profileRepository
+     */
 	public function __construct(UsercontenttypeRepository $usercontenttypeRepository, ProfileRepository $profileRepository)
 	{
 		//

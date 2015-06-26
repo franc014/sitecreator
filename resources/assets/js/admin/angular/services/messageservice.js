@@ -1,7 +1,7 @@
 var messageService = function(Messages,$timeout){
     return {
         get:function (name) {
-        return Messages.filter(function( obj ) {
+            return Messages.filter(function( obj ) {
             // coerce both obj.id and id to numbers
             // for val & type comparison
                 //return +obj.name === +name;

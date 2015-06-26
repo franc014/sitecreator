@@ -26,6 +26,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         $this->composeNavigation();
         $this->composeSaleableLists();
         $this->composeSaleableDetail();
+        $this->composeResume();
         //$this->composeContactPage();
 	}
 
@@ -79,6 +80,13 @@ class ViewComposerServiceProvider extends ServiceProvider {
     public function getLayoutPartials()
     {
         return $this->layoutPartials;
+    }
+
+    public function composeResume()
+    {
+        view()->composer([
+            $this->themeDirectory."resume.index"
+        ],'App\Http\ViewComposers\ResumeComposer');
     }
 
 }

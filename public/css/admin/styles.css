@@ -1100,4 +1100,22 @@ switch check box
     background-color: #000000 ;
     }
 
+.published-resume{
+    padding: 3px;
+    background-color: #2980B9;
+    font-size: 11px;
+    color: white;
+}
+.unpublished-resume{
+    padding: 3px;
+    background-color: #F39C12;
+    font-size: 11px;
+    color: white;
+}
+
+.form-block{
+    background-color: #ecf0f1;
+    padding: 20px;
+}
+
 

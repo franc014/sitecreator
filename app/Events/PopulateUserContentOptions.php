@@ -12,11 +12,11 @@ class PopulateUserContentOptions extends Event {
 	 */
 	public $user_id;
 
-	/**
-	 * Create a new event instance.
-	 *
-	 * @return void
-	 */
+    /**
+     * Create a new event instance.
+     *
+     * @param $user_id
+     */
 	public function __construct($user_id)
 	{
 		//

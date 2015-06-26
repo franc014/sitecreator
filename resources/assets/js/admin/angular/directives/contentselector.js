@@ -11,7 +11,7 @@ var contentSelector = function(MessageService,UserContentType){
             });
 
             $scope.updateContent = function($event,usercontent){
-                console.log(usercontent);
+
                 var checkbox = $event.target;
                 var action = (checkbox.checked ? true: false);
 

@@ -20,6 +20,7 @@
 
     <![endif]-->
     <link href="/css/admin/validations.css" rel="stylesheet">
+    <link href="/css/global/nganimations.css" rel="stylesheet">
 
 
 </head>
@@ -38,6 +39,7 @@
 @section('javascripts')
 <script src="/js/abundle.js"></script>
 <script src="/js/admin/jquery-1.11.1.min.js"></script>
+<script src="/js/admin/jquery-ui.min.js"></script>
 <script src="/js/admin/bootstrap.min.js"></script>
 
 

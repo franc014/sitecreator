@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+    <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+    <div class="panel panel-default"  >
+        <div class="panel-body" style="background-color: #2C3E50">
+            <div class="row">
+                <div class="col-sm-5 col-md-5">
+                    <h4>Versión:
+                        <span ng-bind="resume.name"></span>
+                        <a href="" ng-click="showResumeEditForm()"><span data-icon="&#xe605"></span></a>
+                        <a href="" ng-click="deleteResume(resume)"><span data-icon="&#xe6ac"></span></a>
+                    </h4>
+                    <h4>Fecha de creación: <br><span ng-bind="resume.createdAt"></span></h4>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <h4>Estado:<br>
+                        <span ng-if="resume.active==1" class="published-resume">Publicado</span>
+                        <span ng-if="resume.active==0" class="unpublished-resume">No publicado</span>
+                    </h4>
+                    <button class="btn btn-info" ng-click = "publication(resume,true)"
+                            ng-if="resume.active==0">
+                        <span >Publicar</span>
+                    </button>
+
+                    <button class="btn btn-warning" ng-click = "publication(resume,false)"
+                            ng-if="resume.active==1">
+                        <span >Quitar publicación</span>
+                    </button>
+
+
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <button ng-click="newResume()" class="btn btn-success" data-icon="&#xe70a">Nuevo Résumé</button><br>
+                    <br>
+                    <button ng-click="cloneResume(resume)" class="btn btn-default" data-icon="&#xe62c">Clonar Résumé</button>
+                </div>
+
+            </div>
+            <br>
+            <div alert class="alert alert-{{result.result}}" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div  res="resume"  resume-edit-form ng-show="showedEditResumeForm" close="closeAfterUpdate(data)"></div>
+            <div resume-form ng-show="showedResumeForm" close="closeAfterCreate(data)" ></div>
+        </div>
+    </div>
+</div>
+</div>
+
+

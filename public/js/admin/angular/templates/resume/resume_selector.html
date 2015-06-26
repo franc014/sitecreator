@@ -1,0 +1,24 @@
+<div class="panel panel-blue" style="margin-top: 50px">
+    <div class="panel-heading dark-overlay">
+        <span class="glyphicon glyphicon-th"></span>
+        Secciones Résumé
+        <a href="" class="open-info glyphicon glyphicon-info-sign "  ng-click="showAlert=true"></a>
+
+    </div>
+    <div class="panel-body">
+        <div alert class="alert alert-info" msge="infoResumeSelector" ng-show="showAlert"></div>
+        <div alert class="alert alert-{{result.result}}" msge="result.message" ng-show="ShowResultAlert"></div>
+
+        <ul class="todo-list" ng-repeat = "section in sections">
+            <li class="todo-list-item">
+                <div class="checkbox">
+                    <!--input type="checkbox" id="checkbox" ng-click="updateContent($event,usercontent)"
+                           ng-checked="usercontent.activebool" ng-model="usercontent.activebool" /-->
+                    <!--label >{{section.alias}}</label-->
+                    <a href="#{{section.link}}">{{section.alias}}</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>

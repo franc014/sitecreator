@@ -6,8 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="ZlgY77YUSaEM_HK042TwcvMNPJgkjF8u8nlk9Fz-2ms" />
 	<title>Juan Andrade | @yield('page_title_window')</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<link href="/css/themes/genesis/genesis.css" rel="stylesheet">
+    <link href="/css/themes/genesis/genesis.css" rel="stylesheet">
     <link rel="stylesheet" href="http://anijs.github.io/lib/animationcss/animate.css">
     <link rel="stylesheet" type="text/css" href="/css/themes/genesis/sweet-alert.css">
     <link href="/js/themes/genesis/pace/themes/custom/pace-theme-barber-shop.css" rel="stylesheet">

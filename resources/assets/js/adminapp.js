@@ -16,8 +16,10 @@ var rangy = require('./../vendor/textAngular/dist/textAngular.min.js');
 var uploadLibp1 = require('../vendor/angularjs-file-upload/angular-file-upload-shim.min.js');
 var uploadLibp2 = require('../vendor/angularjs-file-upload/angular-file-upload.min.js');
 
+var nganimate = require('./../vendor/angular_animate/angular-animate.min.js');
 
-var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages','textAngular','angularFileUpload']);
+
+var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages','textAngular','angularFileUpload','ngAnimate']);
 
 prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function(restmodProvider, $httpProvider,ngFabFormProvider) {
     restmodProvider.rebase('AMSApi');
@@ -110,6 +112,7 @@ var saleableDetailController = require('./admin/angular/saleabledetailcontroller
 var saleableBasicController = require('./admin/angular/basicdetailcontroller');
 var saleableAllDetailsController = require('./admin/angular/saleablealldetailscontroller');
 var saleablePriceController = require('./admin/angular/saleablepricescontroller');
+var resumeController = require('./admin/angular/resumecontroller');
 
 var messageService = require('./admin/angular/services/messageservice');
 var userService = require('./admin/angular/services/userservice');
@@ -123,12 +126,31 @@ var saleablePriceService = require('./admin/angular/services/saleableprice');
 var newPassword = require('./admin/angular/services/newpasswordservice');
 var numberFormat = require('./admin/angular/services/formatfilterservice');
 var fileProcessor = require('./admin/angular/services/fileprocessor');
+var resumeService = require('./admin/angular/services/resumeservice');
+var resumeHelper = require('./admin/angular/services/resumehelper');
+var experienceService = require('./admin/angular/services/experience');
+var helpersService = require('./admin/angular/services/helpers');
+var educationService = require('./admin/angular/services/education');
+var skillService = require('./admin/angular/services/skill');
+var languageService = require('./admin/angular/services/language');
+var interestService = require('./admin/angular/services/interest');
 
 var alertDirective = require('./admin/angular/directives/alertdirective');
 var closeContentDirective = require('./admin/angular/directives/closecontentdirective');
 var contentSelectorDirective = require('./admin/angular/directives/contentselector');
 var prodileMenuDirective = require('./admin/angular/directives/profilemenu');
 var configMenuDirective = require('./admin/angular/directives/configmenu');
+
+var resumeSelectorDirective = require('./admin/angular/directives/resume/resumeselector');
+var resumeDirective = require('./admin/angular/directives/resume/resumedirective');
+var resumeEditForm = require('./admin/angular/directives/resume/resumeeditform');
+var resumeForm = require('./admin/angular/directives/resume/resumeform');
+var resumeExperience = require('./admin/angular/directives/resume/experience');
+var resumeSections = require('./admin/angular/directives/resume/sections');
+var resumeEducation = require('./admin/angular/directives/resume/education');
+var resumeSkill = require('./admin/angular/directives/resume/skill');
+var resumeLanguage = require('./admin/angular/directives/resume/language');
+var resumeInterest = require('./admin/angular/directives/resume/interest');
 
 var saleableDetails = require('./admin/angular/directives/saleabledetails');
 var saleableBasic = require('./admin/angular/directives/saleablebasic');
@@ -150,6 +172,14 @@ prfXyzApp.factory('ThePacker',[thePacker]);
 prfXyzApp.factory('NewPassword',['$http',newPassword]);
 prfXyzApp.factory('NumberFormatFilter',[numberFormat]);
 prfXyzApp.factory('FileProcessor',['$upload','$http','MessageService',fileProcessor]);
+prfXyzApp.factory('Resume',['restmod',resumeService]);
+prfXyzApp.factory('Experience',['restmod',experienceService]);
+prfXyzApp.factory('ResumeHelper',['$http','MessageService',resumeHelper]);
+prfXyzApp.factory('Helper',[helpersService]);
+prfXyzApp.factory('Education',['restmod',educationService]);
+prfXyzApp.factory('Skill',['restmod',skillService]);
+prfXyzApp.factory('Language',['restmod',languageService]);
+prfXyzApp.factory('Interest',['restmod',interestService]);
 
 prfXyzApp.directive('alert',[alertDirective]);
 prfXyzApp.directive('closeContent',[closeContentDirective]);
@@ -161,6 +191,16 @@ prfXyzApp.directive('saleableBasic',['SaleableService',saleableBasic]);
 prfXyzApp.directive('saleableDetailsList',[saleableDetailsList]);
 prfXyzApp.directive('saleablePricesList',[saleablePricesList]);
 prfXyzApp.directive('hallo',[halloEditor]);
+prfXyzApp.directive('resumeSelector',['MessageService',resumeSelectorDirective]);
+prfXyzApp.directive('resume',['MessageService','Resume','$timeout','ResumeHelper',resumeDirective]);
+prfXyzApp.directive('resumeEditForm',['MessageService','Resume','$timeout',resumeEditForm]);
+prfXyzApp.directive('resumeForm',['MessageService','Resume','$timeout',resumeForm]);
+prfXyzApp.directive('resumeExperience',['MessageService','Experience','$timeout','Helper',resumeExperience]);
+prfXyzApp.directive('resumeSections',['Resume',resumeSections]);
+prfXyzApp.directive('resumeEducation',['MessageService','Education','$timeout','Helper',resumeEducation]);
+prfXyzApp.directive('resumeSkill',['MessageService','Skill','$timeout','Helper',resumeSkill]);
+prfXyzApp.directive('resumeLanguage',['MessageService','Language','$timeout','Helper',resumeLanguage]);
+prfXyzApp.directive('resumeInterest',['MessageService','Interest','$timeout','Helper',resumeInterest]);
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);
@@ -172,3 +212,4 @@ prfXyzApp.controller('SaleableDetailCtrl',['$scope','$rootScope','SaleableServic
 prfXyzApp.controller('saleableBasicCtrl',['$scope','$rootScope','SaleableService','MessageService',saleableBasicController]);
 prfXyzApp.controller('saleableAllDetailsCtrl',['$scope','$rootScope','SaleableDetailsService','MessageService','FileProcessor',saleableAllDetailsController]);
 prfXyzApp.controller('saleablePriceCtrl',['$scope','$rootScope','SaleablePriceService','MessageService',saleablePriceController]);
+prfXyzApp.controller('resumeCtrl',['$scope','$rootScope','ResumeHelper',resumeController]);

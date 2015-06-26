@@ -1,5 +1,5 @@
 <div >
-    <h4>Perfiles de redes sociales: <span class="intro-text pull-right"><a href="#profile-options" data-icon="&#xe730"></a></span></h4>
+    <h4>Perfiles de redes sociales: <span class="intro-text pull-right"><a href="#profile-options" data-icon="&#xe741"></a></span></h4>
     <span class="intro-text"></span>
     <form role="form"  id="socialForm" name="socialForm" ng-submit="updateSocialInfo()"  >
         <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>

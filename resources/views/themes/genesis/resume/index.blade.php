@@ -1,0 +1,55 @@
+@extends('themes.genesis.layout.app')
+@section('page_title_window')
+    Résumé
+@endsection
+@section('page_title')
+    <h1 data-icon="&#xe671">Résumé</h1>
+@endsection
+@section('content_intro')
+    <p>
+       Información profesional y habilidades
+    </p>
+@endsection
+@section('content')
+    <?php
+    $resume = $data["resume"];
+    $experiences = $resume->experiences;
+    $educations = $resume->educations;
+    $skills = $resume->skills;
+    $languages = $resume->languages;
+    $interests = $resume->interests;
+
+
+    ?>
+    <div class="container-fluid site-container">
+        <div class="row" style="padding: 60px">
+            <div class="col-sm-8 col-md-8">
+                <ul class="media-list">
+                    <section id="experience">
+                    @include("themes.genesis.resume.partials.experiences")
+                    </section>
+                    <section id="education">
+                    @include("themes.genesis.resume.partials.educations")
+                    </section>
+                    <section id="skills">
+                    @include("themes.genesis.resume.partials.skills")
+                    </section>
+                    <section id="languages">
+                    @include("themes.genesis.resume.partials.languages")
+                    </section>
+                    <section id="interests">
+                    @include("themes.genesis.resume.partials.interests")
+                    </section>
+
+                </ul>
+            </div>
+
+            <div class="col-sm-4 col-md-4">
+                <section style="padding: 15px">
+                    @include("themes.genesis.resume.resume_menu")
+                </section>
+            </div>
+        </div>
+    </div>
+
+@endsection

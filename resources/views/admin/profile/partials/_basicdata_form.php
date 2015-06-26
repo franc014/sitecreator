@@ -1,6 +1,6 @@
 <hr>
 <div >
-    <h4>Información básica:<span class="intro-text pull-right"><a href="#profile-options" data-icon="&#xe730"></a></span></h4>
+    <h4>Información básica:<span class="intro-text pull-right"><a href="#profile-options" ></a></span></h4>
 
     <form  role="form"  id="postForm" name="postForm" ng-submit="updateUser()"  >
         <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>

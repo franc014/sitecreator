@@ -1,6 +1,8 @@
 /* Typography
 ================================= */
 @import "_genesis_custom_variables";
+@import "_side_nav";
+
 
 @font-face {
   font-family: 'icomoon';
@@ -186,6 +188,64 @@
   }
 }
 
+@mixin drop-pannel($header-bg,$header-txt-color, $body-bg,$body-txt-color){
+
+  .panel-heading{
+    border-bottom: 3px solid $header-bg;
+    .panel-title{
+      margin-top: -10px;
+      color: $header-txt-color
+    }
+    height:20px;
+    background-color: $header-bg;
+    color: $header-txt-color;
+    .paragraph-in-header{
+      color: lighten($header-txt-color,10%);
+    }
+  }
+  .panel-body{
+    background-color: $body-bg;
+    color: $body-txt-color;
+    .paragraph-in-body{
+      padding: 20px;
+      color: $body-txt-color;
+    }
+  }
+}
+
+/*media new style*/
+@mixin media-box($media-object-font-size,$media-object-color,$media-object-divider-color){
+  margin-bottom: 2px;
+
+  .media-object-icon{
+    font-size: $media-object-font-size;
+    color:$media-object-color
+  }
+  .media-object-revealer{
+    font-size: $media-object-font-size / 2;
+    color:$media-object-color
+  }
+  .media-object-divider{
+    background-color: $media-object-divider-color;
+    height: 2px;
+    margin-top:1px;
+    margin-botton:1px
+  }
+  .media-heading{
+    font-size: $media-object-font-size;
+    color: $media-object-color;
+  }
+  .media-header-paragraph{
+    line-height: 1;
+  }
+   .item-body{
+
+      h4{
+        color:$mint-stronger;
+        font-style: oblique;
+      }
+  }
+}
 
 h1 {
   font-weight: 200;
@@ -691,6 +751,37 @@ a.section-jumper{
   margin: 0 200px;
 }
 
+/*.experiences-panel-group{
+  border: none!important;
+  @include drop-pannel(tomato,white, white,black);
+}
+.experience-panel-group{
+  padding: 20px;
+  @include drop-pannel(tomato,white, white,black);
+}*/
+
+
+/* resume */
+.resume-sections{
+  @include side-navigation($brand-primary, $genesis-contrast, saturate($yellow-sand,60%));
+}
+
+.media-section{
+
+  @include media-box(32px,$title-text-color,saturate($yellow-sand,60%))
+}
+
+.media-section-item{
+
+  @include media-box(24px,$title-text-color,#E67E22)
+}
+/*link inside alert box bootstrap*/
+a.link-to-site{
+ color: $brand-primary;
+  &:hover{
+    color: lighten($brand-primary,20%);
+  }
+}
 
 
 

@@ -1,0 +1,95 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading3">
+        <h3 class="panel-title" id="-collapsible-list-group-">
+            <a class="" data-toggle="collapse" href="#collapseListGroup3" aria-expanded="true" aria-controls="collapseListGroup3">
+                Habilidades
+            </a>
+            <a class="pull-right" data-toggle="collapse" href="#collapseListGroup3" aria-expanded="true" aria-controls="collapseListGroup3"><span data-icon="&#xe6be"></span></a></h3>
+    </div>
+    <div id="collapseListGroup3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading3" aria-expanded="true">
+        <div >
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+            <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Habilidades<span ><a href="" data-icon="&#xe70a" ng-click="newSkill()" class="btn btn-md btn-success pull-right">Nueva</a></span> </h4>
+
+                </div>
+                <div class="panel-body" >
+                    <!--div ng-show="showedExperienceForm"-->
+                        <div ng-show="formShown">
+                        <form class="form-block"  role="form"  id="skillForm" name="skillForm" ng-submit="updateSkill()"  >
+                            <h3>
+                                <span class="wizard-title" ng-if="!skill.id">Nueva habilidad</span>
+                                <span ng-if="skill.id" class="wizard-title">Editando habilidad</span>
+                            </h3>
+                            <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="title">Nombre</label><br>
+                                    <input type="text" class="form-control" id="title" name="title" ng-model="skill.title" required >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="detail">Descripción</label><br>
+                                    <text-angular  id="detail" name="detail" ng-model="skill.detail"></text-angular>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                                    <div class="col-sm-4"><a href="" ng-click="closeForm()" class="pull-right">Cancelar</a></div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <hr>
+                    </div>
+
+
+                    <table class="table table-responsive" data-toggle="table" ng-show = "gridShown" >
+                        <thead>
+                        <tr>
+                            <th data-field="title">Nombre</th>
+                            <th data-field="Descripción">Descripción</th>
+                            <th data-field="disable">Habilitar / Deshabilitar</th>
+                            <th data-field="edit"></th>
+                            <th data-field="delete"></th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="skill in skills" class="item-list">
+                        <tr >
+                            <td ng-bind="skill.title"></td>
+                            <td >
+                                <span ng-bind-html="skill.detail | limitTo : 50 : 0"></span>
+                                <a href="" ng-click="editSkill(skill)" ng-if="skill.detail.length >= 50">Ver todo...</a>
+                            </td>
+                            <td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="status" ng-click="changeStatus($event,skill)"
+                                           ng-checked="skill.statusbool" ng-model="skill.statusbool"
+                                            />
+
+                                </div>
+                            </td>
+                            <td><a href="" ng-click="editSkill(skill)" data-icon="&#xe606">Editar</a></td>
+                            <td><a href="" ng-click = "removeSkill(skill)" data-icon="&#xe6ac">Eliminar</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>

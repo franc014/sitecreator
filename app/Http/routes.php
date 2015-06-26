@@ -46,6 +46,10 @@ Route::post('admin/newpassword/{id}',['uses'=>'Admin\ChangePasswordController@up
 Route::get('saleabledetail/{id}/icon','Admin\SaleableDetailController@getUploadedIcon');
 Route::post('uploadSaleableDetailIcon','Admin\SaleableDetailController@uploadDescriptionIcon');
 
+Route::get('resume_drop_list','Admin\ResumeController@getResumeDropList');
+Route::get('publishedresume','Admin\ResumeController@getPublishedResume');
+Route::post('publish_resume/{id}','Admin\ResumeController@publishResume');
+Route::post('clone_resume/{id}','Admin\ResumeController@cloneResume');
 /*resources*/
 Route::resource('bio','Admin\BiographyController');
 Route::resource('profile','Admin\ProfileController');
@@ -54,6 +58,13 @@ Route::resource('usercontenttype','Admin\UserContenttypeController');
 Route::resource('saleable','Admin\SaleableController');
 Route::resource('saleabledetail','Admin\SaleableDetailController');
 Route::resource('saleableprice','Admin\SaleablePriceController');
+
+Route::resource('resume','Admin\ResumeController');
+Route::resource('experience','Admin\ExperienceController');
+Route::resource('education','Admin\EducationController');
+Route::resource('skill','Admin\SkillController');
+Route::resource('language','Admin\LanguageController');
+Route::resource('interest','Admin\ProfinterestController');
 //get('/tepr','Admin\HomeController@profile');
 //TODO contact admin implementation
 

@@ -61,6 +61,7 @@ class ResumeController extends Controller {
         $data = [
             "user_id"=>$user_id,
             "name"=>$request->get("name"),
+            "biography_id"=>$request->get("biography_id"),
             "active"=>0
         ];
         $result = $this->resumeRepository->saveResume($user_id,$data);
@@ -100,7 +101,8 @@ class ResumeController extends Controller {
      */
 	public function update($id,Request $request)
 	{
-        $result = $this->resumeRepository->updateResume($id,$request->all());
+        //dd($request->all());
+        $result = $this->resumeRepository->updateResume($id,$request->except(["biography"]));
         return Response::json($result,200);
 	}
 

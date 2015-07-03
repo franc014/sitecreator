@@ -151,6 +151,8 @@ var resumeEducation = require('./admin/angular/directives/resume/education');
 var resumeSkill = require('./admin/angular/directives/resume/skill');
 var resumeLanguage = require('./admin/angular/directives/resume/language');
 var resumeInterest = require('./admin/angular/directives/resume/interest');
+var bioDirective = require('./admin/angular/directives/biographies/biography');
+
 
 var saleableDetails = require('./admin/angular/directives/saleabledetails');
 var saleableBasic = require('./admin/angular/directives/saleablebasic');
@@ -193,14 +195,16 @@ prfXyzApp.directive('saleablePricesList',[saleablePricesList]);
 prfXyzApp.directive('hallo',[halloEditor]);
 prfXyzApp.directive('resumeSelector',['MessageService',resumeSelectorDirective]);
 prfXyzApp.directive('resume',['MessageService','Resume','$timeout','ResumeHelper',resumeDirective]);
-prfXyzApp.directive('resumeEditForm',['MessageService','Resume','$timeout',resumeEditForm]);
-prfXyzApp.directive('resumeForm',['MessageService','Resume','$timeout',resumeForm]);
+prfXyzApp.directive('resumeEditForm',['MessageService','Resume','ResumeHelper','$timeout',resumeEditForm]);
+prfXyzApp.directive('resumeForm',['MessageService','Resume','ResumeHelper','$timeout',resumeForm]);
 prfXyzApp.directive('resumeExperience',['MessageService','Experience','$timeout','Helper',resumeExperience]);
 prfXyzApp.directive('resumeSections',['Resume',resumeSections]);
 prfXyzApp.directive('resumeEducation',['MessageService','Education','$timeout','Helper',resumeEducation]);
 prfXyzApp.directive('resumeSkill',['MessageService','Skill','$timeout','Helper',resumeSkill]);
 prfXyzApp.directive('resumeLanguage',['MessageService','Language','$timeout','Helper',resumeLanguage]);
 prfXyzApp.directive('resumeInterest',['MessageService','Interest','$timeout','Helper',resumeInterest]);
+prfXyzApp.directive('biography',['MessageService','BiographyService','$timeout','Helper',bioDirective]);
+
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);

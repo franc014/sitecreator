@@ -36,7 +36,7 @@ class ResumeRepository extends DBRepository{
     }
 
     public function getAllByUserId($userId){
-        $resumes = $this->model->where("user_id",$userId)->get();
+        $resumes = $this->model->with('biography')->where("user_id",$userId)->get();
         return $resumes;
     }
 
@@ -46,7 +46,7 @@ class ResumeRepository extends DBRepository{
     }
 
     public function getPublishedResume($user_id){
-        $resume = $this->model->where("user_id",$user_id)->where("active",1)->firstOrFail();
+        $resume = $this->model->with('biography')->where("user_id",$user_id)->where("active",1)->firstOrFail();
         return $resume;
     }
 
@@ -61,7 +61,7 @@ class ResumeRepository extends DBRepository{
     }
 
     public function getResume($user_id,$id){
-        $resume = $this->model->where("user_id",$user_id)->where("id",$id)->firstOrFail();
+        $resume = $this->model->with('biography')->where("user_id",$user_id)->where("id",$id)->firstOrFail();
         return $resume;
     }
 

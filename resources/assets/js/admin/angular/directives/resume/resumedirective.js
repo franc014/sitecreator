@@ -13,6 +13,8 @@ var resumeDirective = function(MessageService,Resume,$timeout,ResumeHelper){
             $rootScope.$on('resumeChange',function(event,args){
                 if(typeof args.resume !== "undefined")
                 {
+                    //biographies dropdown list
+                    //ResumeHelper.bioDropDownList('/bio_drop_list',$scope);
                     //console.log(args);
                     var resumes = Resume.$search().$then(function (data) {
                         $scope.resumes = data;
@@ -77,6 +79,7 @@ var resumeDirective = function(MessageService,Resume,$timeout,ResumeHelper){
 
             $scope.showResumeEditForm = function(resume){
                 $scope.showedEditResumeForm = true;
+                $rootScope.$emit("editResume",resume);
             }
 
 

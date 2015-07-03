@@ -7,6 +7,11 @@ var resumeHelper = function($http,MessageService){
                 scope.resume = scope.resumes[5];
             }).error();
         },
+        bioDropDownList:function(path,scope){
+            $http.get(path).success(function(data){
+                scope.bios = data.bios;
+            }).error();
+        },
         getResume:function(scope,rootScope,path){
             $http.get(path).then(function(data){
                 var resume = data.data.resume;

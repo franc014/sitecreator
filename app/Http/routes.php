@@ -46,6 +46,7 @@ Route::post('admin/newpassword/{id}',['uses'=>'Admin\ChangePasswordController@up
 Route::get('saleabledetail/{id}/icon','Admin\SaleableDetailController@getUploadedIcon');
 Route::post('uploadSaleableDetailIcon','Admin\SaleableDetailController@uploadDescriptionIcon');
 
+Route::get('bio_drop_list','Admin\BiographyController@getBioDropList');
 Route::get('resume_drop_list','Admin\ResumeController@getResumeDropList');
 Route::get('publishedresume','Admin\ResumeController@getPublishedResume');
 Route::post('publish_resume/{id}','Admin\ResumeController@publishResume');

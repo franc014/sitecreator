@@ -10,13 +10,27 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-12" >
-                        <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
-                        <div class="col-sm-offset-4 col-sm-4 "><a href="" ng-click = "closeForm()"  >Cancelar</a></div>
-                    </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 col-md-4">Biografía
+                    <select id="resume-drop-list"  ng-model="resume.biography_id"
+                            ng-options="key as value for (key, value) in bios ">
+
+                    </select>
+
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group col-sm-12" >
+                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                    <div class="col-sm-offset-4 col-sm-4 "><a href="" ng-click = "closeForm()"  >Cancelar</a></div>
                 </div>
             </div>
+
         </form>
     </div>
 </div>

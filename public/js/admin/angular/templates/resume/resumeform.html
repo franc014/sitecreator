@@ -9,12 +9,23 @@
                         <input class="form-control" type="text" id="resumename" ng-model="resume.name" required>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-12" >
-                        <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
-                        <div class="col-sm-offset-4 col-sm-4 "><a href="" ng-click = "closeForm()"  >Cancelar</a></div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-4 col-md-4">Biografía
+                    <select id="resume-drop-list"  ng-model="resume.biography_id"
+                            ng-options="key as value for (key, value) in bios ">
+                        <option value="">-- Selecciona la biografía --</option>
+                    </select>
+
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group col-sm-12" >
+                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                    <div class="col-sm-offset-4 col-sm-4 "><a href="" ng-click = "closeForm()"  >Cancelar</a></div>
                 </div>
             </div>
         </form>

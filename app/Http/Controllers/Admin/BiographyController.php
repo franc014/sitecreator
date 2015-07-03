@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\BioEditionRequest;
 use App\Http\Requests\UploadBiographyPhotoRequest;
+use App\Repositories\BiographyRepository;
 use App\Repositories\BioPhotoDBStorage;
 use App\Repositories\ProfileRepository;
 use App\Services\File\FilePathChanger;
@@ -11,10 +12,13 @@ use App\Services\File\FileProcessor;
 use App\Services\File\FileUploaded;
 use App\Services\File\ImageResizer;
 use App\Services\File\ImageRetriever;
+use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
+
 
 class BiographyController extends Controller {
 
@@ -24,13 +28,23 @@ class BiographyController extends Controller {
      * @var ProfileRepository
      */
     private $profileRepository;
+    /**
+     * @var BiographyRepository
+     */
+    private $biographyRepository;
+    /**
+     * @var Guard
+     */
+    private $auth;
 
-    function __construct( ProfileRepository $profileRepository)
+    function __construct( ProfileRepository $profileRepository, BiographyRepository $biographyRepository,Guard $auth)
     {
         $this->middleware('auth');
         $this->profileRepository = $profileRepository;
         $this->x_image_size = Config::get('directories.imagesizes.photo_bio.x');
         $this->y_image_size = Config::get('directories.imagesizes.photo_bio.y');
+        $this->biographyRepository = $biographyRepository;
+        $this->auth = $auth;
     }
 
 
@@ -41,12 +55,13 @@ class BiographyController extends Controller {
      */
     public function index()
     {
-        $userId = Auth::user()->id;
-        $profiles = Profile::all();//$this->profileRepository->allProfiles($userId);
-        $data = ["bios"=>$profiles,
-            "meta"=>["message"=>"Ok"]
+        $parent = [
+            "foreign"=>"user_id",
+            "value"=>$this->auth->user()->id
         ];
-        return Response::json($data,202);
+        $results = $this->biographyRepository->getAllByParentId($parent);
+        $data = ["bios"=>$results,"meta"=>["message"=>"ok"]];
+        return response($data,200);
     }
 
     /**
@@ -62,11 +77,22 @@ class BiographyController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
+     * @param Request $request
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $data = ["user_id"=>$this->auth->user()->id,
+            "title"=>$request->get("title"),
+            "detail"=>$request->get("detail"),
+
+        ];
+        $result = $this->biographyRepository->saveBio
+        (
+            $data
+        );
+        return Response::json($result,200);
     }
 
     /**
@@ -77,13 +103,7 @@ class BiographyController extends Controller {
      */
     public function show($id)
     {
-        $userId = Auth::user()->id;
-        $profile = $this->profileRepository->findByUserId($userId);
-        //dd($profile->biophoto);
-        $data = ["bio"=>$profile,
-            "meta"=>["message"=>"Ok"]
-        ];
-        return Response::json($data,200);
+
     }
 
     /**
@@ -101,13 +121,20 @@ class BiographyController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  int $id
-     * @param BioEditionRequest $request
+     * @param BioEditionRequest|Request $request
      * @return Response
      */
-    public function update($id,BioEditionRequest $request)
+    public function update($id,Request $request)
     {
-        //dd($request->all());
-        $result = $this->profileRepository->updateProfileByUserId(Auth::user()->id,$request->except("photo"));
+        $data = ["user_id"=>$this->auth->user()->id,
+            "title"=>$request->get("title"),
+            "detail"=>$request->get("detail"),
+            "status"=>$request->get("status")
+        ];
+        $result = $this->biographyRepository->updateBio(
+            $id,
+            $data
+        );
         return Response::json($result,200);
     }
 
@@ -119,7 +146,8 @@ class BiographyController extends Controller {
      */
     public function destroy($id)
     {
-        //
+        $result = $this->biographyRepository->remove($id);
+        return Response::json($result,200);
     }
 
     /**
@@ -170,6 +198,12 @@ class BiographyController extends Controller {
         }
         return $this->getDefaultImage($fileSystem);
 
+    }
+
+    public function getBioDropList(){
+        $bios = $this->biographyRepository->getBioDropList($this->auth->user()->id);
+        $data = ["bios"=>$bios,"meta"=>["message"=>"ok"]];
+        return response($data,200);
     }
 
 }

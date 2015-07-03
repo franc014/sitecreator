@@ -35,6 +35,10 @@ class Resume extends Model {
         return $this->hasMany('App\Profinterest');
     }
 
+    public function biography(){
+        return $this->belongsTo('App\Biography');
+    }
+
     public function delete(){
         $this->experiences()->delete();
         $this->educations()->delete();

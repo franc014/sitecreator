@@ -9,10 +9,11 @@
 
                     <h4 ng-if="resume">Versión:
                         <span ng-bind="resume.name"></span>
-                        <a href="" ng-click="showResumeEditForm()"><span data-icon="&#xe605"></span></a>
+                        <a href="" ng-click="showResumeEditForm(resume)"><span data-icon="&#xe605"></span></a>
                         <a href="" ng-click="deleteResume(resume)"><span data-icon="&#xe6ac"></span></a>
                     </h4>
                     <h4 ng-if="resume">Fecha de creación: <br><span ng-bind="resume.createdAt"></span></h4>
+                    <h4 ng-if="resume">Biografía relacionada:<span ng-bind="resume.biography.title"></span></h4>
                 </div>
                 <div class="col-sm-3 col-md-3">
                     <h4 ng-if="resume">Estado:<br>

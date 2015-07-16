@@ -18,11 +18,11 @@ class PagesController extends Controller {
 
     function __construct(SaleableRepository $saleableRepository)
     {
-        $this->saleableRepository = $saleableRepository;
         $this->theme = Config::get('pages.theme');
     }
 
-    public function index($userName, $page){
+    /*public function index($userName,$version, $page){
+        //dd($version."f");
         try {
             if ($page == "productos_servicios") {
                 return $this->indexService($userName);
@@ -40,6 +40,12 @@ class PagesController extends Controller {
         }
 
         return redirect("/".$userName."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
+    }*/
+
+    public function contacto($userName,$version){
+        return view($this->theme . "contacto" . '.index');
     }
+
+
 
 }

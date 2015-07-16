@@ -11,6 +11,7 @@ var resumeDirective = function(MessageService,Resume,$timeout,ResumeHelper){
                     ". Pulsa el botón Nuevo para crear");
             })
             $rootScope.$on('resumeChange',function(event,args){
+
                 if(typeof args.resume !== "undefined")
                 {
                     //biographies dropdown list
@@ -65,6 +66,21 @@ var resumeDirective = function(MessageService,Resume,$timeout,ResumeHelper){
                     ResumeHelper.publishResume($scope,$rootScope,"/publish_resume/"+resume.id)
                 }  else{
                     resume.active = 0;
+                    resume.$save().$then(function(data){
+                        var meta = data.$metadata.meta;
+                        MessageService.setAlertMessage($scope,meta);
+                    });
+                }
+
+            }
+
+            $scope.setDefault = function(resume, isDefault){
+                if(isDefault) {
+                    resume.default = 1;
+                    //publish resume
+                    ResumeHelper.publishResume($scope,$rootScope,"/default_resume/"+resume.id)
+                }  else{
+                    resume.default = 0;
                     resume.$save().$then(function(data){
                         var meta = data.$metadata.meta;
                         MessageService.setAlertMessage($scope,meta);

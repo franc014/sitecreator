@@ -46,7 +46,7 @@ class ResumeRepository extends DBRepository{
     }
 
     public function getPublishedResume($user_id){
-        $resume = $this->model->with('biography')->where("user_id",$user_id)->where("active",1)->firstOrFail();
+        $resume = $this->model->with('biography')->where("user_id",$user_id)->where("default",1)->firstOrFail();
         return $resume;
     }
 
@@ -65,11 +65,26 @@ class ResumeRepository extends DBRepository{
         return $resume;
     }
 
+    public function isThereADefault($user_id){
+        $defaultResumes = $this->model->where("user_id",$user_id)->where("default",1)->get();
+        if($defaultResumes->count()==0){
+            return false;
+        }
+        return true;
+    }
+
+
     public function saveResume($user_id,$data){
+        $countResumes = $this->getAllByUserId($user_id)->count();
         $resume = $this->saveModel($data);
         if($resume!=null){
             $this->resumeSectionRepository->createUserSections($user_id,$resume->id);
         }
+        if($countResumes==0 ) {
+            $resume->default = 1;
+            $resume->save();
+        }
+
         return $dataResponse = [
             "resume"=>$resume,
             "meta"=>["result"=>"success","message"=>"El résumé ha sido creado exitosamente"]
@@ -77,7 +92,10 @@ class ResumeRepository extends DBRepository{
     }
 
     public function updateResume($id,$data){
+        //$firstResume = $this->model->where("user_id",$data["user_id"])->firstOrFail();
         $result = $this->updateModel($id,$data);
+        //dd($this->isThereADefault($data["user_id"]));
+
         return $dataResponse = [
             "resume"=>$result,
             "meta"=>["result"=>"success","message"=>"El résumé ha sido actualizado exitosamente"]
@@ -103,7 +121,7 @@ class ResumeRepository extends DBRepository{
     }
 
     public function publishResume($id){
-        $this->unpublishActiveResumes();
+        //$this->unpublishActiveResumes();
         $resume = $this->model->find($id);
         $resume->active = 1;
         $resume->save();
@@ -115,12 +133,38 @@ class ResumeRepository extends DBRepository{
 
     }
 
-    private function unpublishActiveResumes()
+    public function defaultResume($id){
+        $this->removeDefaultResumes();
+        $resume = $this->model->find($id);
+        $resume->default = 1;
+        $resume->save();
+
+        return $dataResponse = [
+            "resume"=>$resume,
+            "meta"=>["result"=>"success","message"=>"El résumé ha sido definido como predeterminado"]
+        ];
+
+    }
+
+
+
+    /*private function unpublishActiveResumes()
     {
         $activeResumes = $this->model->where("active",1)->get();
         if($activeResumes->count()>=1){
             foreach($activeResumes as $resume){
                 $resume->active = 0;
+                $resume->save();
+            }
+        }
+    }*/
+
+    private function removeDefaultResumes()
+    {
+        $defaultResumes = $this->model->where("default",1)->get();
+        if($defaultResumes->count()>=1){
+            foreach($defaultResumes as $resume){
+                $resume->default = 0;
                 $resume->save();
             }
         }
@@ -174,10 +218,26 @@ class ResumeRepository extends DBRepository{
 
     public function getResumeAndSections($user_name) {
         try {
-        $user = $this->userRepository->getUserByUserName($user_name);
-        return $this->model->withRelations()->where("user_id",$user->id)->where("active",1)->firstOrFail();
+            $user = $this->userRepository->getUserByUserName($user_name);
+            return $this->model->withRelations()->where("user_id",$user->id)->where("default",1)->firstOrFail();
         }catch (ModelNotFoundException $mnfe){
-        abort(404);
+            abort(404);
+        }
+    }
+
+    public function defaultByUserName($userName){
+        $user_id = $this->userRepository->getUserByUserName($userName)->id;
+        return $this->getPublishedResume($user_id);
+    }
+
+    public function resumeByVersion($version){
+        try {
+            $resumeId = substr($version, strrpos($version, '-') + 1);
+            $resume = $this->model->with('biography')->findOrFail($resumeId);
+            return $resume;
+        }catch (ModelNotFoundException $mnfe){
+            //dd($mnfe);
+            abort(404);
         }
     }
 

@@ -14,28 +14,39 @@
                     </h4>
                     <h4 ng-if="resume">Fecha de creación: <br><span ng-bind="resume.createdAt"></span></h4>
                     <h4 ng-if="resume">Biografía relacionada:<span ng-bind="resume.biography.title"></span></h4>
+                    <!--h4 ng-if="resume.active">Url:<a href="{{resume.url}}" ng-bind="resume.url"></a></h4-->
                 </div>
                 <div class="col-sm-3 col-md-3">
                     <h4 ng-if="resume">Estado:<br>
                         <span ng-if="resume.active==1" class="published-resume">Publicado</span>
-                        <span ng-if="resume.active==0" class="unpublished-resume">No publicado</span>
+                        <span ng-if="resume.active==0" class="unpublished-resume">No publicado</span><br>
+                        <span ng-if="resume.default==1" class="default-resume">predeterminado</span>
+                        <span ng-if="resume.default==0" class="nodefault-resume">No predeterminado</span>
                     </h4>
-                    <button class="btn btn-info" ng-click = "publication(resume,true)"
+                    <button  class="btn btn-info reset-white-space" ng-click = "publication(resume,true)"
                             ng-if="resume.active==0">
-                        <span >Publicar</span>
+                       Publicar
                     </button>
 
-                    <button class="btn btn-warning" ng-click = "publication(resume,false)"
+                    <button  class="btn btn-warning reset-white-space" ng-click = "publication(resume,false)"
                             ng-if="resume.active==1">
-                        <span >Quitar publicación</span>
+                       Quitar publicación
                     </button>
+
+
 
 
                 </div>
                 <div class="col-sm-3 col-md-3">
-                    <button ng-click="newResume()" class="btn btn-success" data-icon="&#xe70a">Nuevo Résumé</button><br>
+                    <button ng-click="newResume()" class="btn btn-success reset-white-space" data-icon="&#xe70a">Nuevo Résumé</button><br>
                     <br>
-                    <button ng-if="resume" ng-click="cloneResume(resume)" class="btn btn-default" data-icon="&#xe62c">Clonar Résumé</button>
+                    <button ng-if="resume" ng-click="cloneResume(resume)" class="btn btn-default reset-white-space" data-icon="&#xe62c">Clonar Résumé</button>
+                    <br><br>
+                    <button ng-if="resume.default==0 && !resume.theresaunique" class="btn btn-default reset-white-space" ng-click = "setDefault(resume,true)" ng-if="resume">
+                        Predeterminar
+                    </button>
+
+
                 </div>
 
             </div>
@@ -43,8 +54,7 @@
             <div alert class="alert alert-{{result.result}}" msge="result.message" ng-show="ShowResultAlert"></div>
             <div  res="resume"  resume-edit-form ng-show="showedEditResumeForm" close="closeAfterUpdate(data)"></div>
             <div resume-form ng-show="showedResumeForm" close="closeAfterCreate(data)" ></div>
-        </div>
-    </div>
+
 </div>
 </div>
 

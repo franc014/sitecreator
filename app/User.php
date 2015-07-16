@@ -71,6 +71,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsToMany('App\Contenttype','usercontents')->withPivot('active');
 	}
 
+    protected function resumes(){
+        return $this->hasMany('App\Resume');
+    }
+
     protected function getNamesAttribute(){
         $firstName = $this->getAttribute('username');
         $lastName = "";

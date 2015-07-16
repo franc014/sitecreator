@@ -3,6 +3,7 @@
         $profile = $data["profile"];
         //dd($profile->user->username);
         $homeItem = $data["home_item"];
+        $version = $data["version"];
     //dd($homeItem);
     ?>
     <div class="container-fluid">
@@ -13,7 +14,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/{{$profile->user->username}}/{{$homeItem->url}}" data-anijs="if: load,on: window, do: fadeInDown animated">
+            <a class="navbar-brand" href="/{{$profile->user->username}}/{{$version}}/{{$homeItem->url}}" data-anijs="if: load,on: window, do: fadeInDown animated">
                 <img src="{{$profile->user->gravatar}}" width="50" height="50" class="brand-icon">
                 @if($profile->firstname!="" && $profile->lastname!="")
                     <span class="brand-name">{{$profile->firstname." ".$profile->lastname}}</span>
@@ -30,11 +31,11 @@
 
                 @if (Auth::guest())
                     @foreach($navItems as $item)
-                    <li data-anijs="if: load,on: window, do: fadeInDown animated"><a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a></li>
+                    <li data-anijs="if: load,on: window, do: fadeInDown animated"><a href="/{{$profile->user->username}}/{{$version}}/{{$item->url}}">{{$item->menualias}}</a></li>
                     @endforeach
                 @else
                     @foreach($navItems as $item)
-                        <li data-anijs="if: load,on: window, do: fadeInDown animated"><a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a></li>
+                        <li data-anijs="if: load,on: window, do: fadeInDown animated"><a href="/{{$profile->user->username}}/{{$version}}/{{$item->url}}">{{$item->menualias}}</a></li>
                     @endforeach
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

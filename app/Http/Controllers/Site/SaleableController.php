@@ -2,17 +2,37 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\Client\SaleableRepository;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 
 class SaleableController extends Controller {
 
-	public function index($username,$saleable,$id){
-        //dd("h");
+    /**
+     * @var SaleableRepository
+     */
+    private $saleableRepository;
+    private $theme;
+
+    function __construct(SaleableRepository $saleableRepository)
+    {
+        $this->saleableRepository = $saleableRepository;
+        $this->theme = Config::get('pages.theme');
+    }
+
+	public function index($username,$version){
+        $featuredSaleable = $this->saleableRepository->getFeaturedSaleable($username);
+        if($featuredSaleable===null){
+            return view($this->theme.'.productos_servicios'.'.index');
+        }
+
+        return redirect("/".$username."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
+
+
+    }
+
+    public function detail(){
         $theme = Config::get('pages.theme');
-        /*if($type=="simple") {
-            return view($theme . 'productos_servicios._detail_simple.index');
-        }*/
         return view($theme . 'productos_servicios._detail.index');
     }
 

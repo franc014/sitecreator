@@ -9,6 +9,7 @@ namespace App\Http\ViewComposers;
 
 use App\Repositories\Client\ContenttypeRepository;
 use App\Repositories\Client\ProfileRepository;
+use App\Repositories\ResumeRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
@@ -25,23 +26,32 @@ class ProfileComposer extends CurrentRoute{
      * @var ContenttypeRepository
      */
     private $contenttypeRepository;
+    /**
+     * @var ResumeRepository
+     */
+    private $resumeRepository;
+    private $version;
 
-    function __construct(ProfileRepository $profileRepository, ContenttypeRepository $contenttypeRepository)
-    {
+    function __construct(ProfileRepository $profileRepository, ContenttypeRepository $contenttypeRepository, ResumeRepository $resumeRepository)
+    {   $this->resumeRepository = $resumeRepository;
+        $this->route = Route::current();
         $this->profileRepository = $profileRepository;
         $socialIconsDefinition = Config::get("socialicons.icomoon");
+        $this->version = $this->resumeRepository->defaultByUserName($this->getRouteParameter('username'))->version;
         foreach($socialIconsDefinition as $iconName => $icoValue ){
             $this->socialIcons[$iconName] =$icoValue;
         }
-        $this->route = Route::current();
+
         $this->contenttypeRepository = $contenttypeRepository;
+
     }
 
     public function compose(View $view){
         $profile = $this->profileRepository->getProfileByUserName($this->getRouteParameter('username'));
+
         $socialItems = $this->getSocialItems($profile);
         $homeItem = $this->contenttypeRepository->getHomeItemByUserName($this->getRouteParameter('username'));
-        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems];
+        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems,"version"=>$this->version];
         $view->with("data",$data);
     }
 

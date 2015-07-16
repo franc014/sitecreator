@@ -73,7 +73,7 @@
                             <td>
                                 <div  class="checkbox data-grid-checkbox" >
                                     <input type="checkbox" id="status" ng-click="changeStatus($event,bio)"
-                                           ng-checked="bio.statusbool" ng-model="bio.statusbool"
+                                           ng-checked="bio.statusbool" ng-model="bio.statusbool" ng-disabled="bio.isused"
                                             />
 
                                 </div>
@@ -83,7 +83,9 @@
                         </tr>
                         </tbody>
                     </table>
-
+                    <div class="alert alert-warning">Las biografías cuyos checkmarks de "Habilitar/deshabilitar"
+                        están desactivados
+                        están siendo utilizadas por alguna versión de résumé.</div>
                 </div>
             </div>
 

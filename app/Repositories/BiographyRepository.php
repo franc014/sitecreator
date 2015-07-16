@@ -46,4 +46,6 @@ class BiographyRepository extends DBRepository{
         return $bios;
     }
 
+
+
 }

@@ -13,11 +13,13 @@
 @section('content')
     <?php
     $profile = $data["profile"];
-    $isContactPage = false;
+    $version = $data["version"];
+    $bio = $bio;
+    //$isContactPage = false;
     ?>
     <div class="container-fluid site-container">
         <div class="row about-content" >
-            @if($profile->biography!="")
+            @if($bio->detail!="")
             <div class="col-sm-7 about-text" >
                 @if($profile->firstname!="" && $profile->lastname!="")
                     <h1 >{{$profile->firstname." ".$profile->lastname}}</h1>
@@ -25,7 +27,7 @@
                     <h1>{{$profile->user->username}}</h1>
                 @endif
                 <p >
-                   {!!$profile->biography!!}
+                   {!!$bio->detail!!}
                 </p>
             </div>
 
@@ -47,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <a  href="/{{$profile->user->username}}/contacto" data-icon="&#xe645" class="contact-collaout row-gap-about-widgets" >Contactar</a>
+                        <a  href="/{{$profile->user->username}}/{{$version}}/contacto" data-icon="&#xe645" class="contact-collaout row-gap-about-widgets" >Contactar</a>
                     </div>
 
                 </div>

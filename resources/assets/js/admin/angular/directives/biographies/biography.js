@@ -10,6 +10,7 @@ var bioDirective = function(MessageService,Bio,$timeout,Helper){
             Helper.enableForm($scope,false);
 
                     var bios = Bio.$search().$then(function (data) {
+                        console.log(data);
                         $scope.bios = data;
                         if ($scope.bios.length == 0) {
                             MessageService.setNoItemsInfoMessage($scope, " biografías",

@@ -6,14 +6,43 @@ use Carbon\Carbon as Carbon;
 
 class Resume extends Model {
     use SoftDeletes;
-	protected $guarded = ["id","ispublished"];
-    protected $appends = ["ispublished"];
+	protected $guarded = ["id","ispublished","theresaunique","isdefault","url","version"];
+    protected $appends = ["ispublished","isdefault","theresaunique","url","version"];
     protected $dates = ['deleted_at'];
     protected $children = ["experiences","educations","skills","languages","interests"];
 
     public function getIspublishedAttribute(){
         $active = $this->getAttribute("active");
         if($active==1){
+            return true;
+        }
+        return false;
+    }
+
+    public function getVersionAttribute(){
+        $versionId = $this->getAttribute("id");
+        $versionName = $this->getAttribute("name");
+        return $versionName."-".$versionId;
+    }
+
+    public function getIsdefaultAttribute(){
+        $active = $this->getAttribute("default");
+        if($active==1){
+            return true;
+        }
+        return false;
+    }
+
+    public function getUrlAttribute(){
+        $user_name = $this->user->username;
+        $versionId = $this->getAttribute("id");
+        $versionName = $this->getAttribute("name");
+        $base_url = url()."/".$user_name."/".$versionName.$versionId;
+        return $base_url;
+    }
+
+    public function getTheresauniqueAttribute(){
+        if($this->all()->count()==1){
             return true;
         }
         return false;
@@ -39,6 +68,10 @@ class Resume extends Model {
         return $this->belongsTo('App\Biography');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     public function delete(){
         $this->experiences()->delete();
         $this->educations()->delete();
@@ -56,6 +89,7 @@ class Resume extends Model {
         $newResume = $this->replicate();
         $newResume->setAttribute("name","clon-".$randomName);
         $newResume->setAttribute("active",0);
+        $newResume->setAttribute("default",0);
         $newResume->setAttribute("cloned_id",$oldId);
         $newResume->save();
         return $newResume;

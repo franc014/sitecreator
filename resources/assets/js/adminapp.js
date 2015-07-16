@@ -152,7 +152,7 @@ var resumeSkill = require('./admin/angular/directives/resume/skill');
 var resumeLanguage = require('./admin/angular/directives/resume/language');
 var resumeInterest = require('./admin/angular/directives/resume/interest');
 var bioDirective = require('./admin/angular/directives/biographies/biography');
-
+var resumeList = require('./admin/angular/directives/resume/resumelist');
 
 var saleableDetails = require('./admin/angular/directives/saleabledetails');
 var saleableBasic = require('./admin/angular/directives/saleablebasic');
@@ -204,7 +204,7 @@ prfXyzApp.directive('resumeSkill',['MessageService','Skill','$timeout','Helper',
 prfXyzApp.directive('resumeLanguage',['MessageService','Language','$timeout','Helper',resumeLanguage]);
 prfXyzApp.directive('resumeInterest',['MessageService','Interest','$timeout','Helper',resumeInterest]);
 prfXyzApp.directive('biography',['MessageService','BiographyService','$timeout','Helper',bioDirective]);
-
+prfXyzApp.directive('resumeList',['MessageService','Resume','$timeout','Helper',resumeList]);
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);

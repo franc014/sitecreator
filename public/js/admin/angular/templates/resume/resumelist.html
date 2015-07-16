@@ -1,0 +1,93 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+        <h3 class="panel-title" id="-collapsible-list-group-">
+            <a class="" data-toggle="collapse" href="#collapseListGroup2" aria-expanded="true" aria-controls="collapseListGroup2">
+                Résumés
+            </a>
+            <a class="pull-right" data-toggle="collapse" href="#collapseListGroup2" aria-expanded="true" aria-controls="collapseListGroup2"><span data-icon="&#xe6be"></span></a></h3>
+    </div>
+    <div id="collapseListGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading2" aria-expanded="true">
+        <div >
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+            <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Résumés<span ><a href="" data-icon="&#xe70a" ng-click="newEducation()" class="btn btn-md btn-success pull-right">Nuevo</a></span> </h4>
+
+                </div>
+                <div class="panel-body" >
+                    <!--div ng-show="showedExperienceForm"-->
+                        <div ng-show="formShown">
+                        <form class="form-block"  role="form"  id="resumeForm" name="resumeForm" ng-submit="updateEducation()"  >
+                            <h3>
+                                <span class="wizard-title" ng-if="!resume.id">Nuevo résumé</span>
+                                <span ng-if="resume.id" class="wizard-title">Editando résumé</span>
+                            </h3>
+                            <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="name">Nombre de la versión</label><br>
+                                    <input type="text" class="form-control" id="name" name="name" ng-model="resume.name" required >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                                    <div class="col-sm-4"><a href="" ng-click="closeForm()" class="pull-right">Cancelar</a></div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <hr>
+                    </div>
+
+
+                    <table class="table table-responsive"  ng-show = "gridShown" >
+                        <thead>
+                        <tr>
+                            <th data-field="version">Versión</th>
+                            <th data-field="url">URL</th>
+                            <th data-field="default">Predeterminado</th>
+                            <th data-field="publish">Publicado</th>
+                            <th data-field="edit"></th>
+                            <th data-field="delete"></th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="resume in resumes" class="item-list">
+                        <tr >
+                            <td ><a href="" ng-click="showDetail(resume)" ng-bind="resume.name"></a></td>
+                            <td ><a href="{{resume.url}}" class="btn btn-info btn-xs">Ver Url</a></td>
+                            <td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="default" ng-click="setDefault($event,resume)"
+                                           ng-checked="resume.isdefault" ng-model="resume.isdefault"
+                                            />
+
+                                </div>
+                            </td>
+                            <td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="status" ng-click="changeStatus($event,resume)"
+                                           ng-checked="resume.ispublished" ng-model="resume.ispublished"
+                                            />
+
+                                </div>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>

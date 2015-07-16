@@ -34,6 +34,7 @@ var resumeHelper = function($http,MessageService){
         cloneResume:function(scope,rootScope,path){
             $http.post(path).success(function(data){
                 rootScope.$emit("resumeChange",data);
+                rootScope.$emit("updateResumeList",data);
                 var meta = data.meta;
                 MessageService.setAlertMessage(scope,meta);
 

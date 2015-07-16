@@ -1118,4 +1118,20 @@ switch check box
     padding: 20px;
 }
 
+.default-resume{
+    padding: 3px;
+    background-color: #27AE60;
+    font-size: 11px;
+    color: white;
+}
+.nodefault-resume{
+    padding: 3px;
+    background-color: #16A085;
+    font-size: 11px;
+    color: white;
+}
+
+.reset-white-space{
+    white-space: normal;
+}
 

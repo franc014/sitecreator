@@ -50,6 +50,7 @@ Route::get('bio_drop_list','Admin\BiographyController@getBioDropList');
 Route::get('resume_drop_list','Admin\ResumeController@getResumeDropList');
 Route::get('publishedresume','Admin\ResumeController@getPublishedResume');
 Route::post('publish_resume/{id}','Admin\ResumeController@publishResume');
+Route::post('default_resume/{id}','Admin\ResumeController@setAsDefault');
 Route::post('clone_resume/{id}','Admin\ResumeController@cloneResume');
 /*resources*/
 Route::resource('bio','Admin\BiographyController');
@@ -73,12 +74,21 @@ Route::resource('interest','Admin\ProfinterestController');
 
 //pages router
 //home client
-Route::get('{username}', 'Site\HomeController@index');
+//Route::get('{username}', 'Site\HomeController@index');
+Route::get('{username}/{version?}', 'Site\HomeController@index');
+
+
+//Route::get('{username}/{version}', 'Site\HomeController@index');
 //page asked; e.g franc/contact
-Route::get('{username}/{page}', 'Site\PagesController@index');
+Route::get('{username}/{version}/acercade', 'Site\AboutController@index');
+Route::get('{username}/{version}/resume/', 'Site\ResumeController@index');
+Route::get('{username}/{version}/contacto/', 'Site\PagesController@contacto');
+
 //display saleables
-Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@index');
+Route::get('{username}/{version}/productos_servicios', 'Site\SaleableController@index');
+Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
+
 //store lead
-Route::post('lead',"Site\GuestController@storeLead");
+Route::post('lead','Site\GuestController@storeLead');
 
 

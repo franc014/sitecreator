@@ -102,7 +102,7 @@ class ResumeController extends Controller {
 	public function update($id,Request $request)
 	{
         //dd($request->all());
-        $result = $this->resumeRepository->updateResume($id,$request->except(["biography"]));
+        $result = $this->resumeRepository->updateResume($id,$request->except(["biography","user"]));
         return Response::json($result,200);
 	}
 
@@ -139,6 +139,11 @@ class ResumeController extends Controller {
 
     public function publishResume($id){
         $result = $this->resumeRepository->publishResume($id);
+        return Response::json($result,200);
+    }
+
+    public function setAsDefault($id){
+        $result = $this->resumeRepository->defaultResume($id);
         return Response::json($result,200);
     }
 

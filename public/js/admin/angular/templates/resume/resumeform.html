@@ -13,7 +13,7 @@
 
             <div class="row">
                 <div class="col-sm-4 col-md-4">Biografía
-                    <select id="resume-drop-list"  ng-model="resume.biography_id"
+                    <select required id="resume-drop-list"  ng-model="resume.biography_id"
                             ng-options="key as value for (key, value) in bios ">
                         <option value="">-- Selecciona la biografía --</option>
                     </select>

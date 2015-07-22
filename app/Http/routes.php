@@ -94,6 +94,6 @@ Route::get('{username}/productos_servicios', 'Site\SaleableController@index');
 Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
 
 //store lead
-//Route::post('lead','Site\GuestController@storeLead');
+Route::post('lead','Site\GuestController@storeLead');
 
 

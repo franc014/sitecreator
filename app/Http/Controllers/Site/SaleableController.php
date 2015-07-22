@@ -20,7 +20,7 @@ class SaleableController extends Controller {
         $this->theme = Config::get('pages.theme');
     }
 
-	public function index($username,$version){
+	public function index($username){
         $featuredSaleable = $this->saleableRepository->getFeaturedSaleable($username);
         if($featuredSaleable===null){
             return view($this->theme.'.productos_servicios'.'.index');

@@ -1,4 +1,4 @@
-var bioDirective = function(MessageService,Bio,$timeout,Helper){
+var bioDirective = function(MessageService,Bio,$timeout,Helper,$http){
     return {
         templateUrl:"../../js/admin/angular/templates/biographies/biographies.html",
         restrict:"EA",
@@ -62,6 +62,7 @@ var bioDirective = function(MessageService,Bio,$timeout,Helper){
                         if (confirmation) {
                             bio.$destroy().$then(function (data) {
                                 var meta = data.$response.data;
+                                $scope.bios.$refresh();
                                 MessageService.setAlertMessage($scope, meta);
                             });
                         }
@@ -76,6 +77,20 @@ var bioDirective = function(MessageService,Bio,$timeout,Helper){
                         bio.$save().$then(function (data) {
                             $scope.bios.$refresh();
                             var meta = data.$metadata.meta;
+                            MessageService.setAlertMessage($scope, meta);
+                        });
+                    };
+
+                    $scope.setDef = function ($event, bio) {
+                        console.log("aqui");
+                        /*var checkbox = $event.target;
+                        var action = (checkbox.checked ? true : false);
+
+                        bio.status = action;*/
+                        $http.post("/biography/setDefault/"+bio.id).success(function(data){
+                            $scope.bios.$refresh();
+                            console.log(data);
+                            var meta = data.meta;
                             MessageService.setAlertMessage($scope, meta);
                         });
                     };

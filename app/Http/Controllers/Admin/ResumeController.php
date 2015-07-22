@@ -61,7 +61,6 @@ class ResumeController extends Controller {
         $data = [
             "user_id"=>$user_id,
             "name"=>$request->get("name"),
-            "biography_id"=>$request->get("biography_id"),
             "active"=>0
         ];
         $result = $this->resumeRepository->saveResume($user_id,$data);

@@ -13,16 +13,20 @@
 @section('content')
     <?php
     $resume = $data["resume"];
-    $experiences = $resume->experiences;
-    $educations = $resume->educations;
-    $skills = $resume->skills;
-    $languages = $resume->languages;
-    $interests = $resume->interests;
-
-
+    if($resume!=null){
+        $experiences = $resume->experiences;
+        $educations = $resume->educations;
+        $skills = $resume->skills;
+        $languages = $resume->languages;
+        $interests = $resume->interests;
+    }
     ?>
+
     <div class="container-fluid site-container">
         <div class="row" style="padding: 60px">
+            @if($resume ===null)
+                @include("themes.genesis.partials.alerts.no_items")
+            @else
             <div class="col-sm-8 col-md-8">
                 <ul class="media-list">
                     <section id="experience">
@@ -49,7 +53,9 @@
                     @include("themes.genesis.resume.resume_menu")
                 </section>
             </div>
+            @endif
         </div>
     </div>
+
 
 @endsection

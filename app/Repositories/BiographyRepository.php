@@ -10,6 +10,8 @@ namespace App\Repositories;
 
 
 use App\Biography;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Redirect;
 
 class BiographyRepository extends DBRepository{
 
@@ -27,6 +29,15 @@ class BiographyRepository extends DBRepository{
 
     public function saveBio($data){
         $bio = $this->saveModel($data);
+        //check if no bios
+        $bios = $this->model->where("user_id",$data["user_id"])
+            ->where("id","<>",$bio->id)->get();
+            //dd($bios->isEmpty());
+            //no bios: update default = 1
+            if($bios->isEmpty()){
+                $bio->default = 1;
+                $bio->save();
+            }
         return $dataResponse = [
             "bio"=>$bio,
             "meta"=>["result"=>"success","message"=>"La biografía fue creada exitosamente"]
@@ -40,10 +51,44 @@ class BiographyRepository extends DBRepository{
             "meta"=>["result"=>"success","message"=>"La biografía ha sido actualizada exitosamente"]
         ];
     }
+    public function deleteBio($id) {
+        $bio = $this->model->find($id);
+        $bios = $this->model->where("id","<>",$id)->get();
+        if($bio->default==1 ){
+            if(!$bios->isEmpty()){
+                $otherBio = $this->model->where("id","<>",$id)->firstOrFail();
+                try{
+                    $otherBio->default = 1;
+                    $otherBio->save();
+                }catch (ModelNotFoundException $nf){
+                    //abort(404);
+                }
+            }else{
+                //dd("empty");
+                return $this->remove($id);
+            }
+
+        }
+        return $this->remove($id);
+    }
 
     public function getBioDropList($user_id){
         $bios = $this->model->where('user_id',$user_id)->where("status",1)->lists('title','id');
         return $bios;
+    }
+
+    public function setAsDefault($userId,$bioId){
+        //select default bio
+        $defaultBio = $this->getDefaultBio($userId);
+        $defaultBio->default = 0;
+        $defaultBio->save();
+
+        $data = ["default" => 1];
+        return $this->updateBio($bioId,$data);
+    }
+
+    public function getDefaultBio($userId){
+        return $this->model->where("user_id",$userId)->where("default",1)->first();
     }
 
 

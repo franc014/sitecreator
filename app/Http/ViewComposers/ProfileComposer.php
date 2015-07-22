@@ -37,7 +37,7 @@ class ProfileComposer extends CurrentRoute{
         $this->route = Route::current();
         $this->profileRepository = $profileRepository;
         $socialIconsDefinition = Config::get("socialicons.icomoon");
-        $this->version = $this->resumeRepository->defaultByUserName($this->getRouteParameter('username'))->version;
+        //$this->version = $this->resumeRepository->defaultByUserName($this->getRouteParameter('username'))->version;
         foreach($socialIconsDefinition as $iconName => $icoValue ){
             $this->socialIcons[$iconName] =$icoValue;
         }
@@ -51,7 +51,7 @@ class ProfileComposer extends CurrentRoute{
 
         $socialItems = $this->getSocialItems($profile);
         $homeItem = $this->contenttypeRepository->getHomeItemByUserName($this->getRouteParameter('username'));
-        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems,"version"=>$this->version];
+        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems];
         $view->with("data",$data);
     }
 

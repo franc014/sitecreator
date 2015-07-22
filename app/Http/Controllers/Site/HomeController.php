@@ -28,12 +28,12 @@ class HomeController extends Controller {
 
     public function index($userName,$version=null){
         $homeItem = $this->contenttypeRepository->getHomeItemByUserName($userName);
-        if($version==null) {
+        /*if($version==null) {
             $version = $this->resumeRepository->defaultByUserName($userName)->version;
-        }
+        }*/
 
         try {
-            return redirect($userName . "/$version/" . $homeItem->url);
+            return redirect($userName ."/". $homeItem->url);
         }catch (ModelNotFoundException $mnfe){
             return redirect()->home();
         }

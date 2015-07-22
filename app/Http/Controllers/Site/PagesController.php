@@ -9,14 +9,9 @@ use Illuminate\Support\Facades\Config;
 
 class PagesController extends Controller {
 
-
-    /**
-     * @var SaleableRepository
-     */
-    private $saleableRepository;
     private $theme;
 
-    function __construct(SaleableRepository $saleableRepository)
+    function __construct()
     {
         $this->theme = Config::get('pages.theme');
     }

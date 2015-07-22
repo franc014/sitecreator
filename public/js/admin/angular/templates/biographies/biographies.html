@@ -58,7 +58,8 @@
                         <tr>
                             <th data-field="title">Nombre</th>
                             <th data-field="Descripción">Descripción</th>
-                            <th data-field="disable">Habilitar / Deshabilitar</th>
+                            <th data-field="disable">Publicado</th>
+                            <th data-field="defaulrt">Predeterminada</th>
                             <th data-field="edit"></th>
                             <th data-field="delete"></th>
                         </tr>
@@ -78,8 +79,17 @@
 
                                 </div>
                             </td>
+                            <td >
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input  type="checkbox" id="default" ng-click="setDef($event,bio)"
+                                           ng-checked="bio.defaultbool" ng-model="bio.defaultbool" ng-disabled="bio.isused || bio.defaultbool"
+                                            />
+
+                                </div>
+                            </td>
+
                             <td><a href="" ng-click="editBio(bio)" data-icon="&#xe606">Editar</a></td>
-                            <td><a href="" ng-click = "removeBio(bio)" data-icon="&#xe6ac">Eliminar</a></td>
+                            <td><a  ng-if="!bio.isused" href="" ng-click = "removeBio(bio)" data-icon="&#xe6ac">Eliminar</a></td>
                         </tr>
                         </tbody>
                     </table>

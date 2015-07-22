@@ -13,8 +13,9 @@
 @section('content')
     <?php
     $profile = $data["profile"];
-    $version = $data["version"];
-    $bio = $bio;
+    //$version = $data["version"];
+    $bio = $biography;
+    //dd($bio);
     //$isContactPage = false;
     ?>
     <div class="container-fluid site-container">
@@ -49,7 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <a  href="/{{$profile->user->username}}/{{$version}}/contacto" data-icon="&#xe645" class="contact-collaout row-gap-about-widgets" >Contactar</a>
+                        <a  href="/{{$profile->user->username}}/contacto" data-icon="&#xe645" class="contact-collaout row-gap-about-widgets" >Contactar</a>
                     </div>
 
                 </div>

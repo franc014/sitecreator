@@ -219,9 +219,11 @@ class ResumeRepository extends DBRepository{
     public function getResumeAndSections($user_name) {
         try {
             $user = $this->userRepository->getUserByUserName($user_name);
-            return $this->model->withRelations()->where("user_id",$user->id)->where("default",1)->firstOrFail();
+            return $this->model->withRelations()->where("user_id",$user->id)->where("default",1)->where("active",1)->firstOrFail();
         }catch (ModelNotFoundException $mnfe){
-            abort(404);
+            //dd($mnfe->getMessage());
+            //abort(404);
+            return null;
         }
     }
 

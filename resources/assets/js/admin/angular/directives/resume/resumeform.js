@@ -16,6 +16,7 @@ var resumeCreationDirective = function(MessageService,Resume,ResumeHelper,$timeo
                 var resume = Resume.$build();
                 $scope.resume = resume;
 
+
                 $scope.createResume = function(){
                     //console.log(resume);
                     resume.$save().$then(function(data){

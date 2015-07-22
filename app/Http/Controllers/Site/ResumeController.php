@@ -23,8 +23,8 @@ class ResumeController extends Controller {
         $this->theme = Config::get('pages.theme');
     }
 
-    public function index($username,$version){
-
+    public function index($username){
+            //dd($username);
             $resume = $this->resumeRepository->getResumeAndSections($username);
             $data = ["resume" => $resume];
             return view($this->theme . 'resume' . '.index')->with("data",$data);

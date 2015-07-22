@@ -203,7 +203,7 @@ prfXyzApp.directive('resumeEducation',['MessageService','Education','$timeout','
 prfXyzApp.directive('resumeSkill',['MessageService','Skill','$timeout','Helper',resumeSkill]);
 prfXyzApp.directive('resumeLanguage',['MessageService','Language','$timeout','Helper',resumeLanguage]);
 prfXyzApp.directive('resumeInterest',['MessageService','Interest','$timeout','Helper',resumeInterest]);
-prfXyzApp.directive('biography',['MessageService','BiographyService','$timeout','Helper',bioDirective]);
+prfXyzApp.directive('biography',['MessageService','BiographyService','$timeout','Helper','$http',bioDirective]);
 prfXyzApp.directive('resumeList',['MessageService','Resume','$timeout','Helper',resumeList]);
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);

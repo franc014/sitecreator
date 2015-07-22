@@ -14,7 +14,7 @@ if($("#noItemsMessage").hasClass("flash-noitems-message")){
         title: "Sin info...?",
         text: "No se encontró información para desplegar en esta sección. " +
         "Si eres Administrador del sitio, se recomienda que la ingreses ahora. " +
-        "Tambiñen puedes intentar configurando otra sección como página principal.",
+        "También puedes intentar configurando otra sección como página principal.",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
@@ -27,7 +27,7 @@ if($("#noItemsMessage").hasClass("flash-noitems-message")){
             if (isConfirm) {
                 location.href="/auth/login";
             } else {
-                location.href="/";
+                location.href=document.referrer;
             }
         }
 )

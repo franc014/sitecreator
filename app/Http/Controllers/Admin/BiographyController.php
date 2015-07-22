@@ -146,7 +146,7 @@ class BiographyController extends Controller {
      */
     public function destroy($id)
     {
-        $result = $this->biographyRepository->remove($id);
+        $result = $this->biographyRepository->deleteBio($id);
         return Response::json($result,200);
     }
 
@@ -204,6 +204,12 @@ class BiographyController extends Controller {
         $bios = $this->biographyRepository->getBioDropList($this->auth->user()->id);
         $data = ["bios"=>$bios,"meta"=>["message"=>"ok"]];
         return response($data,200);
+    }
+
+    public function setDefault($id)
+    {
+        $result = $this->biographyRepository->setAsDefault($this->auth->user()->id,$id);
+        return Response::json($result,200);
     }
 
 }

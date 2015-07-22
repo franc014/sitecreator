@@ -37,7 +37,7 @@ class PagesController extends Controller {
         return redirect("/".$userName."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
     }*/
 
-    public function contacto($userName,$version){
+    public function contacto($userName){
         return view($this->theme . "contacto" . '.index');
     }
 

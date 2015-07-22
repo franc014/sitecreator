@@ -86,7 +86,7 @@ Route::get('{username}/acercade', 'Site\BioController@index');
 //Route::get('{username}/{version}/acercade', 'Site\AboutController@index');
 //Route::get('{username}/{version}/resume/', 'Site\ResumeController@index');
 Route::get('{username}/resume', 'Site\ResumeController@index');
-//Route::get('{username}/{version}/contacto/', 'Site\PagesController@contacto');
+Route::get('{username}/contacto/', 'Site\PagesController@contacto');
 
 //display saleables
 //Route::get('{username}/{version}/productos_servicios', 'Site\SaleableController@index');

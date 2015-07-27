@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Biography;
+use App\Repositories\Client\UserRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Redirect;
 
@@ -20,11 +21,16 @@ class BiographyRepository extends DBRepository{
      * @var Biography
      */
     protected $model;
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
 
-    function __construct(Biography $model)
+    function __construct(Biography $model, UserRepository $userRepository)
     {
 
         $this->model = $model;
+        $this->userRepository = $userRepository;
     }
 
     public function saveBio($data){
@@ -88,7 +94,12 @@ class BiographyRepository extends DBRepository{
     }
 
     public function getDefaultBio($userId){
-        return $this->model->where("user_id",$userId)->where("default",1)->first();
+        return $this->model->where("user_id",$userId)->where("default",1)->firstOrFail();
+    }
+
+    public function getDefaultBioByUserName($userName){
+        $user = $this->userRepository->getUserByUserName($userName);
+        return $this->model->where("user_id",$user->id)->where("status",1)->where("default",1)->firstOrFail();
     }
 
 

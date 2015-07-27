@@ -27,9 +27,9 @@ class BioController extends Controller {
         $this->auth = $auth;
     }
 
-    public function index(){
+    public function index($userName){
         try{
-            $bio = $this->biographyRepository->getDefaultBio($this->auth->user()->id);
+            $bio = $this->biographyRepository->getDefaultBioByUserName($userName);
             return view($this->theme . "acercade" . '.index')->with("biography",$bio);
         }catch (ModelNotFoundException $ne){
             abort(404);

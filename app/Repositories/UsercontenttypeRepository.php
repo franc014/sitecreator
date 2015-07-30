@@ -58,7 +58,8 @@ class UsercontenttypeRepository {
                 "active"=>1,
                 "asHome"=>$contenttype->setashome,
                 "url"=>$contenttype->pagelink,
-                "menualias"=>$contenttype->type
+                "menualias"=>$contenttype->type,
+                "order"=>$contenttype->order
             ];
             $this->model->create($data);
         }

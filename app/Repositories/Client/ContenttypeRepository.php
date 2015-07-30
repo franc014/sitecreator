@@ -33,7 +33,9 @@ class ContenttypeRepository {
         $user = $this->userRepository->getUserByUserName($userName);
         $userId = $user->id;
         $contents = $this->usercontenttype->where("user_id",$userId)
-                              ->where("active",1)->get();
+                              ->where("active",1)
+                              ->orderBy("order")
+            ->get();
         return $contents;
     }
 

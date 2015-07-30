@@ -3,11 +3,11 @@
     $saleable = $data["saleable"];
 ?>
 @section('page_title')
-    <h1 data-icon="&#xe6ae">{{$saleable->title}}</h1>
+    <h1 data-icon="&#xe6ae">Servicio: {{$saleable->title}}</h1>
 @endsection
 @section('content_intro')
     <p >
-        {!!str_limit($saleable->description,100,"...")!!}
+         {!!str_limit($saleable->description,100,"...")!!}
     </p>
 @endsection
 

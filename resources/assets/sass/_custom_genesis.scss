@@ -85,7 +85,7 @@
       color: $text-color;
       padding: 0;
       margin: 20px 0 25px 0;
-      text-align: center!important;
+      text-align: left!important;
     };
 
     .#{$section}-thumbnail {
@@ -303,6 +303,14 @@ body{
 }
 .subheader{
 
+  @media (max-width: 767px) {
+    min-height: 200px;
+  }
+  @media (min-width: 991px) {
+    min-height: 100px;
+  }
+
+
   width: 100%;
   margin:15px auto;
   padding: 2px 0 60px 20px;
@@ -322,6 +330,8 @@ body{
     padding: 0;
     color: $title-text-color;
   }
+
+
 }
 
 
@@ -716,9 +726,19 @@ a.contact-collaout{
 }
 
 .service-main-details{
+  @media (max-width: 767px) {
+    margin-top: 250px;
+    .service-description {
+      padding: 40px;
+      h1 {
+        font-size: 25px;
+      }
+
+    }
+  }
   margin-top: 200px;
   .service-description{
-    padding: 80px;
+    padding: 60px;
     h1{
       color: $title-text-color;
       font-weight: bold;
@@ -733,7 +753,6 @@ a.contact-collaout{
       color: $paragraph-text-color;
       letter-spacing: 1px;
       line-height: 1.5;
-
     }
   }
   .targets{
@@ -772,7 +791,6 @@ a.section-jumper{
 }
 
 .media-section-item{
-
   @include media-box(24px,$title-text-color,#E67E22)
 }
 /*link inside alert box bootstrap*/
@@ -782,6 +800,12 @@ a.link-to-site{
     color: lighten($brand-primary,20%);
   }
 }
+
+/*tweeks styles*/
+.service-detail{
+  text-align: left;
+}
+
 
 
 

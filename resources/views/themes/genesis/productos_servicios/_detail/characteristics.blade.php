@@ -24,7 +24,7 @@ $isContactPage = false;
                                 <img data-anijs="if: mouseover, do: flipInY animated" class="media-object img-circle" width="80" height="80" src="{{$detail->iconpath}}" alt="servicio">
                             </div>
                             <div class="media-body">
-                                <p>
+                                <p class="service-detail">
                                     {{$detail->detail}}
                                 </p>
                             </div>

@@ -9,7 +9,7 @@ var t = new Trianglify({
     bleed:250
 
 });
-var pattern = t.generate(2020, 186);
+var pattern = t.generate(2020, 300);
 $('.subheader').attr('style',';background-repeat:no-repeat;background-image: '+pattern.dataUrl);
 
 /*smooth scroll*/

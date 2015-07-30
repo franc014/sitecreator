@@ -50,7 +50,6 @@ $prices = $data["prices"];
                                 <p >
                                    Para ofrecerle una descripción detallada del precio de este servicio o
                                    producto, por favor, déjeme sus datos y pronto me comunicaré.
-                                   Pulse el botón contactar.
                                 </p>
 
                             </div>

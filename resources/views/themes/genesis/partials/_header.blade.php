@@ -47,7 +47,7 @@
             </ul>
         </div>
     </div>
-    <section class="subheader hidden-xs hidden-sm"  >
+    <section class="subheader"  >
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <div data-anijs="if: load,on: window, do: flipInY animated">

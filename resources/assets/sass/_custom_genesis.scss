@@ -429,6 +429,7 @@ body{
     /*media queries*/
     @media (max-width: 767px) {
       margin: 0 5px;
+
     }
     margin: 0 40px;
     padding: 20px;
@@ -444,6 +445,7 @@ body{
         font-size: 18px;
 
         text-align: justify;
+        word-spacing: 2px;
         padding-right: 10px;
       }
     };

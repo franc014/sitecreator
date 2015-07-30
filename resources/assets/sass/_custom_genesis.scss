@@ -3,6 +3,7 @@
 @import "_genesis_custom_variables";
 @import "_side_nav";
 
+body { overflow-x: hidden;}
 
 @font-face {
   font-family: 'icomoon';
@@ -305,9 +306,11 @@ body{
 
   @media (max-width: 767px) {
     min-height: 200px;
+    width: 100%;
   }
   @media (min-width: 991px) {
     min-height: 100px;
+    width: 100%;
   }
 
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" >
     <?php
         $profile = $data["profile"];
         //dd($profile->user->username);
@@ -25,7 +25,7 @@
 
         </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 
             <ul class="nav navbar-nav navbar-right" >
 
@@ -47,16 +47,15 @@
             </ul>
         </div>
     </div>
-    <section class="subheader"  >
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <div data-anijs="if: load,on: window, do: flipInY animated">
-                    @yield('page_title')
-                    @yield('content_intro')
 
-                </div>
-            </div>
-        </div>
-
-    </section>
 </nav>
+<section class="subheader"  >
+
+            <div data-anijs="if: load,on: window, do: flipInY animated">
+                @yield('page_title')
+                @yield('content_intro')
+
+            </div>
+
+
+</section>

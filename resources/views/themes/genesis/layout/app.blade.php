@@ -22,6 +22,7 @@
 </head>
 <body>
     @include('themes.genesis.partials._header')
+
     <div id="messageSet" class="none {{ Session::has('flash-success-message') ? 'flash-success-message':''  }}"></div>
     @if($errors->any())
         <div id="errorsSet">

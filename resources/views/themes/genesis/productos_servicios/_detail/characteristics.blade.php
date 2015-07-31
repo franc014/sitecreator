@@ -33,12 +33,14 @@ $isContactPage = false;
                 </div>
             @endif
             <br>
-
-            <a href="#contact-form" class="btn btn-success btn-lg " href="#">Solicitar</a>
-
+            <div>
+                <a href="#contact-form" class="btn btn-success btn-lg " href="#">Solicitar</a>
+            </div>
         </div>
 
-
+        <div class="col-sm-5 col-md-5 targets" >
+            @include('themes.genesis.productos_servicios._detail.targets')
+        </div>
         <!--div class="col-sm-6">
 
             <ul class="nav nav-pills pull-right service-menu">

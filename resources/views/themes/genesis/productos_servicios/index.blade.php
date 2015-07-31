@@ -8,8 +8,8 @@
 @endsection
 @section('content_intro')
 <p>
-    Es un gusto poder apoyarte en tus proyectos profesionales.
-    Es por eso que ponemos a tu disposición la siguiente gama de servicios tecnológicos.
+    Es un gusto poder apoyarle en sus proyectos profesionales.
+    Es por eso que ponemos a tu disposición la siguiente gama de servicios.
 </p>
 @endsection
 @section('content')

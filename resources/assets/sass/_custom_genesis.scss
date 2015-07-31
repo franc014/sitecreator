@@ -418,7 +418,10 @@ body{
 }
 /*about styles*/
 .site-container{
-
+  @media (max-width: 767px) {
+    margin: 0 5px;
+    margin:200px 0 ;
+  }
   margin:220px 0 ;
   max-height: 100%;
   min-height: 100%;
@@ -428,7 +431,7 @@ body{
   .about-content{
     /*media queries*/
     @media (max-width: 767px) {
-      margin: 0 5px;
+      margin: 0 2px;
 
     }
     margin: 0 40px;
@@ -439,6 +442,9 @@ body{
         color: $title-text-color;
         font-size: 50px;
         font-family: $font-family-serif;
+        @media (max-width: 767px) {
+          font-size: 22px;
+        }
       };
       p{
         color:$paragraph-text-color;
@@ -810,10 +816,10 @@ a.link-to-site{
 
 .brand-name, .navbar-nav{
   @media (max-width: 767px) {
-    font-size: 12px;
+    font-size: 14px;
   }
   @media (max-width: 992px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 

@@ -3,7 +3,7 @@
     Email Marketing
 @endsection
 @section('page_title')
-    <div class="container-fluid" >
+    <div class="container" >
         <div class="row">
             <div class="col-sm-8 center-block pull-right" ><h1 data-icon="&#xe6ae">Email Marketing</h1></div>
 

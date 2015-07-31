@@ -17,7 +17,7 @@
     @include('themes.genesis.productos_servicios._detail.ventages')
     @include('themes.genesis.productos_servicios._detail.prices')
     @include('themes.genesis.productos_servicios._detail.services')
-    <div class="container-fluid form-container-option-one" id="contact-form">
+    <div class="container form-container-option-one" id="contact-form">
         <div class="row">
             <div class="col-sm-9 col-md-9 form-content-section">
                 @include("themes.genesis.partials.contact_info._contact_form")

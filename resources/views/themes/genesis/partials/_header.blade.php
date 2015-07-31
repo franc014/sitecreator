@@ -49,7 +49,7 @@
     </div>
 
 </nav>
-<section class="subheader"  >
+<section class=" subheader"  >
 
             <div data-anijs="if: load,on: window, do: flipInY animated">
                 @yield('page_title')

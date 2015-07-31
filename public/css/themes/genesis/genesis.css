@@ -4892,8 +4892,7 @@ body {
 .subheader {
   width: 100%;
   margin: 15px auto;
-  padding: 2px 0 60px 20px;
-  height: 135px;
+  padding: 2px 0 40px 20px;
   background-color: #EEB868;
   color: #456990;
   position: absolute;

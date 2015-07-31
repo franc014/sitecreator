@@ -3,7 +3,7 @@ $details = $data["details"];
 $isContactPage = false;
 
 ?>
-<div class="container-fluid service-main-details"  id="characteristics">
+<div class="container service-main-details"  id="characteristics">
     <div class="row">
 
         <div class="col-sm-7 col-md-7 service-description">

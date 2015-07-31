@@ -5047,8 +5047,7 @@ body {
     .site-container .about-content .about-text p {
       color: #525252;
       font-size: 18px;
-      text-align: justify;
-      word-spacing: 2px;
+      text-align: left;
       padding-right: 10px; }
     .site-container .about-content .about-image {
       max-width: 320px;

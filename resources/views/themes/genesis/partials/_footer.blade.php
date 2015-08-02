@@ -66,7 +66,7 @@
                         <p class="footer-text" data-icon="&#xe642"> Teléfono: <a href="tel:aaa">{{$profile->phone}}</a></p>
                         <p class="footer-text" data-icon="&#xe658"> Celular: <a href="tel:aaa">{{$profile->cellular}}</a></p>
                         <p class="footer-text" data-icon="&#xe785"> Email: <a href="mailto:aaa">{{$profile->user->email}}</a></p>
-                        <p class="footer-text">Además, no dudes en <a href="/{{$profile->user->username}}/contacto">escribirme</a>. Será un gusto responder sus inquitudes.</p>
+                        <p class="footer-text">Además, no dude en <a href="/{{$profile->user->username}}/contacto">escribirme</a>. Será un gusto responder sus inquitudes.</p>
                     </div>
                 </div>
             </div>

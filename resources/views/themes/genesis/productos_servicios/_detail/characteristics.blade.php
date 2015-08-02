@@ -3,7 +3,7 @@ $details = $data["details"];
 $isContactPage = false;
 
 ?>
-<div class="container service-main-details"  id="characteristics">
+<div class="container-fluid service-main-details"  id="characteristics">
     <div class="row">
 
         <div class="col-sm-7 col-md-7 service-description">
@@ -20,11 +20,11 @@ $isContactPage = false;
                     <h2>Características</h2>
                     @foreach($details as $detail)
                         <div class="media">
-                            <div class="media-left media-middle">
-                                <img data-anijs="if: mouseover, do: flipInY animated" class="media-object img-circle" width="80" height="80" src="{{$detail->iconpath}}" alt="servicio">
+                            <div class="media-left " >
+                                <img   data-anijs="if: mouseover, do: flipInY animated" class="media-object img-circle icon-feature" width="80" height="80" src="{{$detail->iconpath}}" alt="servicio">
                             </div>
-                            <div class="media-body">
-                                <p class="service-detail">
+                            <div class="media-body ">
+                                <p class="service-detail ">
                                     {{$detail->detail}}
                                 </p>
                             </div>

@@ -5511,7 +5511,17 @@ a.contact-collaout {
       .service-main-details .service-description {
         padding: 40px; }
         .service-main-details .service-description h1 {
-          font-size: 25px; } }
+          font-size: 25px; }
+      .service-main-details .media-body {
+        float: left;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin-top: 10px; }
+      .service-main-details .icon-feature {
+        margin-left: 85px;
+        width: 64px;
+        height: 64px; } }
   .service-main-details .service-description {
     padding: 60px; }
     .service-main-details .service-description h1 {

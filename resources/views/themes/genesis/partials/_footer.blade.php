@@ -11,7 +11,7 @@
                 <div class="row ">
                     <div class="col-sm-12" >
                         <p class="footer-intro">
-                            Puedes conocer más de mi en:</p>
+                            Puede encontrar más información en:</p>
                     </div>
                 </div>
                 @foreach(array_chunk($socialItems, 3) as $row)
@@ -66,7 +66,7 @@
                         <p class="footer-text" data-icon="&#xe642"> Teléfono: <a href="tel:aaa">{{$profile->phone}}</a></p>
                         <p class="footer-text" data-icon="&#xe658"> Celular: <a href="tel:aaa">{{$profile->cellular}}</a></p>
                         <p class="footer-text" data-icon="&#xe785"> Email: <a href="mailto:aaa">{{$profile->user->email}}</a></p>
-                        <p class="footer-text">Además, no dudes en <a href="/{{$profile->user->username}}/contacto">escribirme</a>. Será un gusto conocerte.</p>
+                        <p class="footer-text">Además, no dudes en <a href="/{{$profile->user->username}}/contacto">escribirme</a>. Será un gusto responder sus inquitudes.</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 <!--p class="footer-text copy-right">Este sitio es generado desde <a href="">www.profesional.xyz</a>. Visítalo!.
                     El mejor lugar para proyectar tu imagen profesional en Internet.</p-->
                 <p class="footer-text copy-right">Desarrollado orgullosamente con <a target="_blank" href="http://laravel.com/">LARAVEL</a> framework</p>
-                <p class="footer-text copy-right ">Derechos reservados &#169; <span >Juan Andrade Álvarez - 2015 </span></p>
+                <p class="footer-text copy-right ">Derechos reservados &#169; <span >Juan Francisco Andrade Álvarez - 2015 </span></p>
 
 
             </div>

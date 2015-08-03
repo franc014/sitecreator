@@ -7,6 +7,7 @@ use App\Repositories\Client\ContenttypeRepository;
 use App\Repositories\ResumeRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller {
 
@@ -27,6 +28,8 @@ class HomeController extends Controller {
     }
 
     public function index($userName,$version=null){
+
+
         $homeItem = $this->contenttypeRepository->getHomeItemByUserName($userName);
         /*if($version==null) {
             $version = $this->resumeRepository->defaultByUserName($userName)->version;

@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\App;
         $message->to("jfandradea@gmail.com")->subject("SITECREATOR EMAIL DE PRUEBA");
     });
 });*/
-
+Route::get('test_env',function(){
+    dd(app()->environment());
+});
 
 Route::get('home', ['middleware'=>['auth'],'uses'=> 'HomeController@index']);
 Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);

@@ -18,7 +18,8 @@
         //dd($saleables->all());
         $username = $data["username"];
         $isContactPage = false;
-        //dd($saleables->isEmpty());
+        $isDedicated = Config::get("app_parametters.isDedicated");
+
     ?>
     <div class="container site-container2" >
         <div class="row">
@@ -39,7 +40,18 @@
                                         </div>
                                         <div class="panel-footer" >
                                             <a href="#contact-form" class="btn btn-success btn-md" href="#">Solicitar</a>
-                                            <a href="/{{$username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}" class="pull-right know-more">Conocer en detalle</a>
+                                            @if(!$isDedicated)
+                                                <a href="/{{$username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}"
+                                                   class="pull-right know-more">
+                                                    Conocer en detalle
+                                                </a>
+                                            @else
+                                                <a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}"
+                                                   class="pull-right know-more">
+                                                    Conocer en detalle
+                                                </a>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>

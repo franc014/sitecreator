@@ -36,7 +36,7 @@
                         @if(!$isDedicated)
                             <a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a>
                         @else
-                            <a href="{{$item->url}}">{{$item->menualias}}</a>
+                            <a href="/{{$item->url}}">{{$item->menualias}}</a>
                         @endif
                     </li>
                     @endforeach
@@ -46,7 +46,7 @@
                             @if(!$isDedicated)
                                 <a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a>
                             @else
-                                <a href="{{$item->url}}">{{$item->menualias}}</a>
+                                <a href="/{{$item->url}}">{{$item->menualias}}</a>
                             @endif
                         </li>
                     @endforeach

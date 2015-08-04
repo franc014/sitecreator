@@ -1,5 +1,6 @@
 <?php
 $restsaleables = $data["restsaleables"];
+$isDedicated = Config::get("app_parametters.isDedicated");
 ?>
 @if(!$restsaleables->isEmpty())
 <div class="saleable-services-container" id="services">
@@ -30,7 +31,15 @@ $restsaleables = $data["restsaleables"];
                                 </div>
                                 <div class="panel-footer" >
                                     <a href="#contact-form" class="btn btn-success btn-md" href="#">Solicitar</a>
-                                    <a href="/{{$saleable->user->username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}" class="pull-right know-more">Conocer en detalle</a>
+                                    @if(!$isDedicated)
+                                        <a href="/{{$saleable->user->username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}" class="pull-right know-more">
+                                            Conocer en detalle
+                                        </a>
+                                    @else
+                                        <a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}" class="pull-right know-more">
+                                            Conocer en detalle
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Client\SaleableRepository;
@@ -7,7 +8,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 
 class SaleableController extends Controller {
-
+    use UserNameVerifier;
     /**
      * @var SaleableRepository
      */
@@ -17,23 +18,28 @@ class SaleableController extends Controller {
     function __construct(SaleableRepository $saleableRepository)
     {
         $this->saleableRepository = $saleableRepository;
-        $this->theme = Config::get('pages.theme');
+        $this->theme = Config::get('app_parametters.theme');
     }
 
-	public function index($username){
-        $featuredSaleable = $this->saleableRepository->getFeaturedSaleable($username);
+	public function index($username=""){
+
+        $user = $this->currentUserName($username);
+        $featuredSaleable = $this->saleableRepository->getFeaturedSaleable($user);
+
         if($featuredSaleable===null){
             return view($this->theme.'.productos_servicios'.'.index');
         }
 
-        return redirect("/".$username."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
-
+        if($username!=""){
+            return redirect("/".$username."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
+        }else{
+            return redirect("productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
+        }
 
     }
 
     public function detail(){
-        $theme = Config::get('pages.theme');
-        return view($theme . 'productos_servicios._detail.index');
+        return view($this->theme . 'productos_servicios._detail.index');
     }
 
 }

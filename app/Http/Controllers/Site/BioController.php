@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class BioController extends Controller {
+    use UserNameVerifier;
     private $theme;
     /**
      * @var BiographyRepository
@@ -22,14 +24,17 @@ class BioController extends Controller {
 
     function __construct(BiographyRepository $biographyRepository,Guard $auth)
     {
-        $this->theme = Config::get('pages.theme');
+        $this->theme = Config::get('app_parametters.theme');
         $this->biographyRepository = $biographyRepository;
         $this->auth = $auth;
     }
 
-    public function index($userName){
+    public function index($userName=""){
+
+        $user = $this->currentUserName($userName);
+
         try{
-            $bio = $this->biographyRepository->getDefaultBioByUserName($userName);
+            $bio = $this->biographyRepository->getDefaultBioByUserName($user);
             return view($this->theme . "acercade" . '.index')->with("biography",$bio);
         }catch (ModelNotFoundException $ne){
             abort(404);

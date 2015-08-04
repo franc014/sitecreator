@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -8,10 +9,11 @@ use App\Repositories\ResumeRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 class HomeController extends Controller {
-
-
+    //Trait: checks to see if user name is passed in the url
+    use UserNameVerifier;
     /**
      * @var ContenttypeRepository
      */
@@ -27,18 +29,25 @@ class HomeController extends Controller {
         $this->resumeRepository = $resumeRepository;
     }
 
-    public function index($userName,$version=null){
+    public function index($userName=""){
 
 
-        $homeItem = $this->contenttypeRepository->getHomeItemByUserName($userName);
+        //$homeItem = $this->contenttypeRepository->getHomeItemByUserName($userName);
         /*if($version==null) {
             $version = $this->resumeRepository->defaultByUserName($userName)->version;
         }*/
 
+        $user = $this->currentUserName($userName);
         try {
-            return redirect($userName ."/". $homeItem->url);
+            $homeItem = $this->contenttypeRepository->getHomeItemByUserName($user);
+            if($userName==""){
+                return redirect($homeItem->url);
+            }else{
+                return redirect($userName ."/". $homeItem->url);
+            }
+
         }catch (ModelNotFoundException $mnfe){
-            return redirect()->home();
+            abort(404);//return redirect()->home();
         }
 
     }

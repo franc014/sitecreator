@@ -13,6 +13,7 @@
 @section('content')
     <?php
     $resume = $data["resume"];
+
     if($resume!=null){
         $experiences = $resume->experiences;
         $educations = $resume->educations;

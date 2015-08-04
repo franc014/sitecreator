@@ -13,7 +13,7 @@ class PagesController extends Controller {
 
     function __construct()
     {
-        $this->theme = Config::get('pages.theme');
+        $this->theme = Config::get('app_parametters.theme');
     }
 
     /*public function index($userName,$version, $page){
@@ -37,7 +37,7 @@ class PagesController extends Controller {
         return redirect("/".$userName."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
     }*/
 
-    public function contacto($userName){
+    public function contacto($userName=""){
         return view($this->theme . "contacto" . '.index');
     }
 

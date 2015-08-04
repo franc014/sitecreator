@@ -7,6 +7,7 @@
  */
 namespace App\Http\ViewComposers;
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Repositories\Client\ContenttypeRepository;
 use App\Repositories\Client\ProfileRepository;
 use App\Repositories\ResumeRepository;
@@ -15,8 +16,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
 class ProfileComposer extends CurrentRoute{
-    //Trait to extract from the route the username of queried user
-    //use UrlUserParams;
+    use UserNameVerifier;
     /**
      * @var ProfileRepository
      */
@@ -47,10 +47,15 @@ class ProfileComposer extends CurrentRoute{
     }
 
     public function compose(View $view){
-        $profile = $this->profileRepository->getProfileByUserName($this->getRouteParameter('username'));
+
+        $urlUserName = $this->getRouteParameter('username');
+        $user = $this->currentUserName($urlUserName);
+
+        $profile = $this->profileRepository->getProfileByUserName($user);
 
         $socialItems = $this->getSocialItems($profile);
-        $homeItem = $this->contenttypeRepository->getHomeItemByUserName($this->getRouteParameter('username'));
+        $homeItem = $this->contenttypeRepository->getHomeItemByUserName($user);
+
         $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems];
         $view->with("data",$data);
     }

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\URL;
 
 class ResumeController extends Controller {
 
-
+    use UserNameVerifier;
     /**
      * @var ResumeRepository
      */
@@ -20,12 +21,15 @@ class ResumeController extends Controller {
     function __construct(ResumeRepository $resumeRepository)
     {
         $this->resumeRepository = $resumeRepository;
-        $this->theme = Config::get('pages.theme');
+        $this->theme = Config::get('app_parametters.theme');
     }
 
-    public function index($username){
-            //dd($username);
-            $resume = $this->resumeRepository->getResumeAndSections($username);
+    public function index($username=""){
+
+            $user = $this->currentUserName($username);
+
+            $resume = $this->resumeRepository->getResumeAndSections($user);
+
             $data = ["resume" => $resume];
             return view($this->theme . 'resume' . '.index')->with("data",$data);
 

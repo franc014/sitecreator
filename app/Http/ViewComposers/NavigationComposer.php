@@ -9,11 +9,13 @@
 namespace App\Http\ViewComposers;
 
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Repositories\Client\ContenttypeRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
 class NavigationComposer extends CurrentRoute{
+    use UserNameVerifier;
     /**
      * @var ContenttypeRepository
      */
@@ -26,8 +28,10 @@ class NavigationComposer extends CurrentRoute{
     }
 
     public function compose(View $view){
+        $urlUserName = $this->getRouteParameter('username');
+        $user = $this->currentUserName($urlUserName);
         $navigationItems = $this->contenttypeRepository
-                                ->getAllContentItemsByUserName($this->getRouteParameter('username'));
+                                ->getAllContentItemsByUserName($user);
         return $view->with("navItems",$navigationItems);
     }
 }

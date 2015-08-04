@@ -3,6 +3,7 @@
         $profile = $data["profile"];
         //dd($profile->user->username);
         $homeItem = $data["home_item"];
+        $isDedicated = Config::get("app_parametters.isDedicated");
         //$version = $data["version"];
     //dd($homeItem);
     ?>
@@ -31,11 +32,23 @@
 
                 @if (Auth::guest())
                     @foreach($navItems as $item)
-                    <li data-anijs="if: load,on: window, do: fadeInDown animated"><a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a></li>
+                    <li data-anijs="if: load,on: window, do: fadeInDown animated">
+                        @if(!$isDedicated)
+                            <a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a>
+                        @else
+                            <a href="{{$item->url}}">{{$item->menualias}}</a>
+                        @endif
+                    </li>
                     @endforeach
                 @else
                     @foreach($navItems as $item)
-                        <li data-anijs="if: load,on: window, do: fadeInDown animated"><a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a></li>
+                        <li data-anijs="if: load,on: window, do: fadeInDown animated">
+                            @if(!$isDedicated)
+                                <a href="/{{$profile->user->username}}/{{$item->url}}">{{$item->menualias}}</a>
+                            @else
+                                <a href="{{$item->url}}">{{$item->menualias}}</a>
+                            @endif
+                        </li>
                     @endforeach
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

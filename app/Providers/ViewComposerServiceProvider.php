@@ -10,7 +10,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 
     function __construct()
     {
-        $this->themeDirectory = Config::get('pages.theme');
+        $this->themeDirectory = Config::get('app_parametters.theme');
         $partialsLayout = $this->themeDirectory."partials";
         $this->layoutPartials = $partialsLayout;
     }
@@ -26,7 +26,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         $this->composeNavigation();
         $this->composeSaleableLists();
         $this->composeSaleableDetail();
-        $this->composeResume();
+        //$this->composeResume();
         //$this->composeContactPage();
 	}
 

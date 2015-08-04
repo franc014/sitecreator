@@ -9,11 +9,13 @@
 namespace App\Http\ViewComposers;
 
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Repositories\Client\SaleableRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Route;
 class SaleablesComposer extends CurrentRoute{
+    use UserNameVerifier;
 
     /**
      * @var SaleableRepository
@@ -29,8 +31,11 @@ class SaleablesComposer extends CurrentRoute{
 
     public function compose(View $view){
         try {
-            $saleables = $this->saleableRepository->getAllByUserName($this->getRouteParameter('username'));
-            $data = ["saleables" => $saleables, "username" => $this->getRouteParameter('username')];
+            $urlUserName = $this->getRouteParameter('username');
+            $user = $this->currentUserName($urlUserName);
+
+            $saleables = $this->saleableRepository->getAllByUserName($user);
+            $data = ["saleables" => $saleables, "username" => $user];
             $view->with("data", $data);
         }catch (ModelNotFoundException $mnfe){
             abort(404);

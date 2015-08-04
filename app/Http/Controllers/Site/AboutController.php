@@ -16,7 +16,7 @@ class AboutController extends Controller {
 
     function __construct(ResumeRepository $resumeRepository)
     {
-        $this->theme = Config::get('pages.theme');
+        $this->theme = Config::get('app_parametters.theme');
         $this->resumeRepository = $resumeRepository;
     }
 

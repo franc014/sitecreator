@@ -9,6 +9,7 @@
 namespace App\Http\ViewComposers;
 
 
+use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Repositories\Client\SaleableDetailRepository;
 use App\Repositories\Client\SaleableRepository;
 use App\Repositories\SaleablePriceRepository;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 use Psy\Exception\ErrorException;
 
 class SaleableDetailComposer extends CurrentRoute{
-
+    use UserNameVerifier;
 
     /**
      * @var SaleableDetailRepository
@@ -46,13 +47,16 @@ class SaleableDetailComposer extends CurrentRoute{
     }
 
     public function compose(View $view){
+
+            $urlUserName = $this->getRouteParameter('username');
+            $user = $this->currentUserName($urlUserName);
             try{
-                $saleable = $this->saleableRepository->getSaleable($this->getRouteParameter('username'), $this->getRouteParameter('saleable_id'));
+                $saleable = $this->saleableRepository->getSaleable($user, $this->getRouteParameter('saleable_id'));
                 $details = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 0);
                 $targets = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 1);
                 $ventages = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 2);
                 $prices = $this->saleablePriceRepository->getPriceList($this->getRouteParameter('saleable_id'));
-                $restSaleables = $this->saleableRepository->getSaleablesExcept($this->getRouteParameter('username'), $this->getRouteParameter('saleable_id'));
+                $restSaleables = $this->saleableRepository->getSaleablesExcept($user, $this->getRouteParameter('saleable_id'));
                 $data = [
                     "saleable" => $saleable,
                     "details" => $details,

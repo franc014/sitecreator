@@ -16,7 +16,10 @@ class CurrentRoute {
 
     public function getRouteParameter($parameter){
         $params = $this->route->parameters();
-        return  $params[$parameter];
+        if(array_key_exists($parameter,$params)){
+            return  $params[$parameter];
+        }
+        return "";
     }
 
 

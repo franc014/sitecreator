@@ -15,14 +15,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/{{$profile->user->username}}/{{$homeItem->url}}" data-anijs="if: load,on: window, do: fadeInDown animated">
-                <img src="{{$profile->user->gravatar}}" width="50" height="50" class="brand-icon">
-                @if($profile->firstname!="" && $profile->lastname!="")
-                    <span class="brand-name">{{$profile->firstname." ".$profile->lastname}}</span>
-                @else
-                    <span class="brand-name">{{$profile->user->username}}</span>
-                @endif
-            </a>
+
+            @if(!$isDedicated)
+                <a class="navbar-brand" href="/{{$profile->user->username}}/{{$homeItem->url}}" data-anijs="if: load,on: window, do: fadeInDown animated">
+                    <img src="{{$profile->user->gravatar}}" width="50" height="50" class="brand-icon">
+                    @if($profile->firstname!="" && $profile->lastname!="")
+                        <span class="brand-name">{{$profile->firstname." ".$profile->lastname}}</span>
+                    @else
+                        <span class="brand-name">{{$profile->user->username}}</span>
+                    @endif
+                </a>
+            @else
+                <a class="navbar-brand" href="/{{$homeItem->url}}" data-anijs="if: load,on: window, do: fadeInDown animated">
+                    <img src="{{$profile->user->gravatar}}" width="50" height="50" class="brand-icon">
+                    @if($profile->firstname!="" && $profile->lastname!="")
+                        <span class="brand-name">{{$profile->firstname." ".$profile->lastname}}</span>
+                    @else
+                        <span class="brand-name">{{$profile->user->username}}</span>
+                    @endif
+                </a>
+            @endif
 
         </div>
 

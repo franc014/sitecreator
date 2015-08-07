@@ -13,7 +13,7 @@
 
     <div class="container-fluid site-container">
         <div id="bg">
-            <img class="img-responsive" src="/css/themes/genesis/img/page_images/bg_main.png" alt="">
+            <img class="img-responsive" src="/css/themes/genesis/img/page_images/bg_main.jpg" alt="">
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2">

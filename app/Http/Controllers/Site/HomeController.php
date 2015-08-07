@@ -25,6 +25,7 @@ class HomeController extends Controller {
 
     function __construct(ContenttypeRepository $contenttypeRepository,ResumeRepository $resumeRepository)
     {
+        $this->theme = Config::get('app_parametters.theme');
         $this->contenttypeRepository = $contenttypeRepository;
         $this->resumeRepository = $resumeRepository;
     }
@@ -50,6 +51,17 @@ class HomeController extends Controller {
             abort(404);//return redirect()->home();
         }
 
+    }
+
+    public function home($userName=""){
+        $user = $this->currentUserName($userName);
+
+        try{
+            //$bio = $this->biographyRepository->getDefaultBioByUserName($user);
+            return view($this->theme . "home" . '.index')->with("isHome",true);
+        }catch (ModelNotFoundException $ne){
+            abort(404);
+        }
     }
 
 }

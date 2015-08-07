@@ -1,4 +1,5 @@
-<footer class="user-footer" >
+
+<footer class="user-footer" style="z-index: 20000; position: absolute; width: 100%">
     <?php
         $profile = $data["profile"];
         $socialItems = $data["socialitems"];
@@ -73,7 +74,7 @@
         </div>
     </div>
 </footer>
-<footer class="owner-footer">
+<footer class="owner-footer" >
     <div class="container footer-content">
         <div class="row ">
             <div class="col-sm-6 col-sm-offset-4" data-anijs="if: load,on: window, do: fadeInDown animated">

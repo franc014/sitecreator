@@ -18,7 +18,9 @@
     //dd($bio);
     //$isContactPage = false;
     ?>
-    <div class="container-fluid site-container">
+
+    <div class="container site-container">
+
         <div class="row about-content" >
             @if($bio->detail!="")
             <div class="col-sm-7 about-text" >
@@ -71,4 +73,4 @@
         </div>
     </div>
 
-@endsection
+@overwrite

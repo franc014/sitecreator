@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" >
+<nav class="navbar navbar-default navbar-fixed-top"  >
     <?php
         $profile = $data["profile"];
         //dd($profile->user->username);

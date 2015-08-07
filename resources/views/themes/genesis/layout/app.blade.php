@@ -23,6 +23,7 @@
 	<![endif]-->
 </head>
 <body>
+
     @include('themes.genesis.partials._header')
 
     <div id="messageSet" class="none {{ Session::has('flash-success-message') ? 'flash-success-message':''  }}"></div>
@@ -36,8 +37,9 @@
         </div>
     @endif
     @yield('content')
-    @include('themes.genesis.partials._footer')
-
+    @unless(isset($isHome) && $isHome==true)
+        @include('themes.genesis.partials._footer')
+    @endunless
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

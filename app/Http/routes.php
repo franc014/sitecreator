@@ -20,6 +20,7 @@
 
 if(Config::get("app_parametters.isDedicated")){
     Route::get('/', 'Site\HomeController@index');
+    Route::get('home', 'Site\HomeController@home');
     Route::get('acercade', 'Site\BioController@index');
 
     Route::get('user_resume', 'Site\ResumeController@index');

@@ -45,6 +45,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer([$this->layoutPartials."._header",
                           $this->layoutPartials."._footer",
                           $this->themeDirectory."acercade.index",
+                          $this->themeDirectory."home.index",
                           $this->layoutPartials.".contact_info._contact_form",
                           $this->layoutPartials.".contact_info._contact_widget"
                           ],'App\Http\ViewComposers\ProfileComposer');

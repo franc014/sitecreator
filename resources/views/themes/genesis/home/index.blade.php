@@ -21,8 +21,7 @@
             <div class="col-sm-8 col-md-8">
                 <div class="home-jumbotron" >
                     <p >
-                        Presencia en Internet, Aplicaciones Web, y otros Servicios Tecnológicos que le otorgarán valor a
-                        su Empresa, Organización o Negocio. Es un gusto plasmar sus ideas en productos de calidad.
+                        {{$profile->biography}}
                     </p>
                     <div class="row">
                         @if($isDedicated)

@@ -12,13 +12,19 @@
 */
 
 
+use App\User;
 
-
-    Route::get('home', ['middleware' => ['auth'], 'uses' => 'HomeController@index']);
+Route::get('home', ['middleware' => ['auth'], 'uses' => 'HomeController@index']);
 
 /*user web client*/
 
 if(Config::get("app_parametters.isDedicated")){
+
+    Route::get("/verApi",function(){
+        $users = User::all();
+        return Response::json($users,200);
+    });
+
     Route::get('/', 'Site\HomeController@index');
     Route::get('home', 'Site\HomeController@home');
     Route::get('acercade', 'Site\BioController@index');

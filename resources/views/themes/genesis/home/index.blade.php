@@ -21,8 +21,7 @@
             <div class="col-sm-12 col-md-12">
                 <div class="home-jumbotron" >
                     <p >
-                        Lorem ipsum dolor sit amet, aeque possit his te, placerat euripidis delicatissimi ex per. Fabellas consetetur no vim, ne purto accusata atomorum duo. Rebum impedit epicurei cu mel, causae detraxit ut mel. Exerci quaeque deleniti et sea, eu detraxit disputando necessitatibus pro. Amet platonem mel at. Ipsum malorum duo te.
-
+                        {{$profile->biography}}
                     </p>
                     <div class="home-jumbotron-callouts">
                         @if($isDedicated)

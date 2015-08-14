@@ -22,7 +22,6 @@
                 <div class="home-jumbotron" >
                     <p >
                         {{$profile->biography}}
-                        Nisl docendi facilisis mel ut, ad habeo tibique pertinax cum, mei id alia ancillae. Eum at brute dicam intellegam. Numquam delenit mei ea, ex ignota viderer minimum usu, ut quo nonumy everti menandri. Vel vero interpretaris cu.
 
                     </p>
                     <div class="home-jumbotron-callouts">

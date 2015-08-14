@@ -23,8 +23,24 @@
 	<![endif]-->
 </head>
 <body>
+    @if(isset($isHome) && $isHome)
+        <nav class="navbar-home navbar-default navbar-fixed-top"  >
+    @else
+        <nav class="navbar navbar-default navbar-fixed-top"  >
+    @endif
 
-    @include('themes.genesis.partials._header')
+        @include('themes.genesis.partials._header')
+    </nav>
+    <section class=" subheader"  >
+
+        <div data-anijs="if: load,on: window, do: flipInY animated">
+            @yield('page_title')
+            @yield('content_intro')
+
+        </div>
+
+
+    </section>
 
     <div id="messageSet" class="none {{ Session::has('flash-success-message') ? 'flash-success-message':''  }}"></div>
     @if($errors->any())

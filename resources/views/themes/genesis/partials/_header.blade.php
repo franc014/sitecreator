@@ -1,12 +1,15 @@
-<nav class="navbar navbar-default navbar-fixed-top"  >
-    <?php
-        $profile = $data["profile"];
-        //dd($profile->user->username);
-        $homeItem = $data["home_item"];
-        $isDedicated = Config::get("app_parametters.isDedicated");
-        //$version = $data["version"];
-    //dd($homeItem);
-    ?>
+<?php
+$profile = $data["profile"];
+//dd($profile->user->username);
+$homeItem = $data["home_item"];
+$isDedicated = Config::get("app_parametters.isDedicated");
+//$version = $data["version"];
+
+?>
+
+
+
+
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -73,14 +76,3 @@
         </div>
     </div>
 
-</nav>
-<section class=" subheader"  >
-
-            <div data-anijs="if: load,on: window, do: flipInY animated">
-                @yield('page_title')
-                @yield('content_intro')
-
-            </div>
-
-
-</section>

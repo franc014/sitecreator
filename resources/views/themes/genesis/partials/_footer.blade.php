@@ -64,9 +64,9 @@
                 </div>
                 <div class="row ">
                     <div class="col-sm-12">
-                        <p class="footer-text" data-icon="&#xe642"> Teléfono: <a href="tel:aaa">{{$profile->phone}}</a></p>
-                        <p class="footer-text" data-icon="&#xe658"> Celular: <a href="tel:aaa">{{$profile->cellular}}</a></p>
-                        <p class="footer-text" data-icon="&#xe785"> Email: <a href="mailto:aaa">{{$profile->user->email}}</a></p>
+                        <p class="footer-text" data-icon="&#xe642"> Teléfono: <a href="tel:{{$profile->phone}}">{{$profile->phone}}</a></p>
+                        <p class="footer-text" data-icon="&#xe658"> Celular: <a href="tel:{{$profile->cellular}}">{{$profile->cellular}}</a></p>
+                        <p class="footer-text" data-icon="&#xe785"> Email: <a href="mailto:{{$profile->user->email}}">{{$profile->user->email}}</a></p>
                         <p class="footer-text">Además, no dude en <a href="/{{$profile->user->username}}/contacto">escribirme</a>. Será un gusto responder sus inquitudes.</p>
                     </div>
                 </div>

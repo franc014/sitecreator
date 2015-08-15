@@ -67,7 +67,7 @@
                         <p class="footer-text" data-icon="&#xe642"> Teléfono: <a href="tel:{{$profile->phone}}">{{$profile->phone}}</a></p>
                         <p class="footer-text" data-icon="&#xe658"> Celular: <a href="tel:{{$profile->cellular}}">{{$profile->cellular}}</a></p>
                         <p class="footer-text" data-icon="&#xe785"> Email: <a href="mailto:{{$profile->user->email}}">{{$profile->user->email}}</a></p>
-                        <p class="footer-text">Además, no dude en <a href="/{{$profile->user->username}}/contacto">escribirme</a>. Será un gusto responder sus inquitudes.</p>
+                        <p class="footer-text" data-icon="&#xe648"> Quito-Ecuador</p>
                     </div>
                 </div>
             </div>

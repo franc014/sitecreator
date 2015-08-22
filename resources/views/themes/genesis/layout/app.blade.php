@@ -72,6 +72,8 @@
         var body = "{!! session('flash-success-message') !!}";
     </script>
     <script src="/js/themes/genesis/alerts.js"></script>
+    <script src="/js/themes/genesis/jquery.mixitup.min.js"></script>
     <script src="/js/themes/genesis/ganalytics.js"></script>
+
 </body>
 </html>

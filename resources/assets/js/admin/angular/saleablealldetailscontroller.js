@@ -1,19 +1,14 @@
 var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,MessageService,FileProcessor){
+
     $scope.onFileSelect = function($files) {
         $scope.files = $files;
-        console.log($scope.files);
+
     };
-
-
-    /*var reset = function(){
-        $scope.saleableDetailForm.$setPristine();
-        $scope.detail = angular.copy({});
-    }*/
-
+    $scope.hasIcon = false;
     var saleable_id = $scope.saleable.id;
     var details = SaleableDetailsService.$search({saleable_id:saleable_id}).$then(function(data){
         var items_number = data.length;
-        console.log(items_number);
+
         if(items_number==0){
             //var linkToNew = ". Crea ya uno nuevo!";
             MessageService.setNoItemsInfoMessage($scope,"detalles"," .Crea uno nuevo!");
@@ -36,6 +31,7 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
     }
 
     $scope.editDetail=function(detail){
+        $scope.files = [];
         //download detail icon to load
         FileProcessor.download($scope,'/saleabledetail/'+detail.id+'/icon');
         //$scope.descriptiveIcon = "";
@@ -46,15 +42,20 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
                 var meta = data.$metadata.meta;
                 MessageService.setAlertMessage($scope,meta);
                 //upload file
-                FileProcessor.upload($scope,'/uploadSaleableDetailIcon',data.id);
+                if($scope.files.length > 0){
+                    FileProcessor.upload($scope,'/uploadSaleableDetailIcon',data.id);
+                    $scope.files = [];
+                }
 
             });
         }
     }
 
     $scope.newDetail = function(){
+        $scope.hasIcon = false;
         $scope.showDetailForm = true;
-
+        $scope.files = [];
+        console.log($scope.files.length);
         //$scope.saleableDetailForm.$setPristine();
         var detail = SaleableDetailsService.$build();
         detail.saleable_id = saleable_id;
@@ -66,8 +67,11 @@ var saleableAllDetails = function($scope,$rootScope,SaleableDetailsService,Messa
                 var meta = data.$metadata.meta;
                 MessageService.setAlertMessage($scope,meta);
                 details.$refresh();
-                FileProcessor.upload($scope,'/uploadSaleableDetailIcon',data.id);
-                //$scope.showDetailForm = false;
+                if($scope.files.length > 0){
+                    FileProcessor.upload($scope,'/uploadSaleableDetailIcon',data.id);
+                    $scope.files = [];
+                }
+
 
             });
         }

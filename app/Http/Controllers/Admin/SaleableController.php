@@ -62,7 +62,8 @@ class SaleableController extends Controller {
             "type"=>$request->input('type'),
             "featured"=>$request->input('featured')
         ];
-        $result = $this->saleableRepository->saveModel($data);
+        $categories = $request->get('categories');
+        $result = $this->saleableRepository->saveSaleable($data,$categories);
         $dataResponse = [
             "saleable"=>$result,
             "meta"=>["result"=>"success","message"=>"El servicio o producto ha sido guardado exitosamente"]
@@ -94,17 +95,25 @@ class SaleableController extends Controller {
 		//
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @param Request $request
+     * @return Response
+     */
 	public function update($id, Request $request)
 	{
-        $saleable = $this->saleableRepository->updateModel($id,$request->except(['tagtype','details','prices','detailed','layouttype','isfeatured']));
+        $data = [
+            "title"=>$request->input('title'),
+            "description"=>$request->input('description'),
+            "type"=>$request->input('type'),
+            "featured"=>$request->input('featured')
+        ];
+        $categories = $request->get('categories');
+        $saleable = $this->saleableRepository->updateSaleable($id,$data,$categories);
         $dataResponse = [
-            "profile"=>$saleable,
+            "saleable"=>$saleable,
             "meta"=>["result"=>"success","message"=>"Los datos han sido actualizados exitosamente"]
         ];
         return Response::json($dataResponse,200);
@@ -121,5 +130,16 @@ class SaleableController extends Controller {
         $result = $this->saleableRepository->remove($id);
         return Response::json($result,200);//response($result,200);
 	}
+
+    public function listAllCategories(){
+        $categories = $this->saleableRepository->listAllCategories($this->auth->user()->id);
+        $data = ["categories"=>$categories,"meta"=>["message"=>"ok"]];
+        return response($data,200);
+    }
+    public function listSaleableCategories($saleableId){
+        $categories = $this->saleableRepository->listSaleableCategories($saleableId);
+        $data = ["categories"=>$categories,"meta"=>["message"=>"ok"]];
+        return response($data,200);
+    }
 
 }

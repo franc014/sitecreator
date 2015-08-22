@@ -9,11 +9,14 @@
 namespace App\Http\ViewComposers;
 
 
+use App\Category;
 use App\Http\Controllers\Traits\UserNameVerifier;
 use App\Repositories\Client\SaleableDetailRepository;
 use App\Repositories\Client\SaleableRepository;
 use App\Repositories\SaleablePriceRepository;
+use App\Saleable;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Route;
 use Psy\Exception\ErrorException;
@@ -57,13 +60,45 @@ class SaleableDetailComposer extends CurrentRoute{
                 $ventages = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 2);
                 $prices = $this->saleablePriceRepository->getPriceList($this->getRouteParameter('saleable_id'));
                 $restSaleables = $this->saleableRepository->getSaleablesExcept($user, $this->getRouteParameter('saleable_id'));
+                $catSaleables = $this->saleableRepository->getSaleableCategories($user, $this->getRouteParameter('saleable_id'));
+
+
+                //$restSaleables = $this->saleableRepository->getSaleablesExceptFiltered($user, $this->getRouteParameter('saleable_id'));
+                /*$cats = Category::whereHas('saleables',function($q){
+                    $q->where('user_id',88);
+                })->with('saleables')->get()->toArray();
+
+                $sals = Saleable::whereHas('categories',function($q){
+                    $q->where('user_id',88);
+                })->get()->toArray();
+                $sals2 = collect([]);
+                foreach($cats as $cat){
+                    foreach($cat['saleables'] as $sa){
+                        /*if($sa['id']!= $this->getRouteParameter('saleable_id')){
+                            $sals2->push($sa);
+                        }*/
+                    //}
+                //}
+
+
+                /*$sales = collect([]);
+
+                foreach($restSaleables as $sal){
+                    foreach($sal->categories as $cat){
+                        $sales->push($cat);
+                    }
+                }
+                $unique = $sales->unique('name');
+                dd($unique->values()->all());*/
                 $data = [
                     "saleable" => $saleable,
                     "details" => $details,
                     "targets" => $targets,
                     "ventages" => $ventages,
                     "prices" => $prices,
-                    "restsaleables" => $restSaleables
+                    "restsaleables" => $restSaleables,
+                    "salcategories"=>$catSaleables
+
                 ];
                 return $view->with("data", $data);
             }catch(ModelNotFoundException $e){

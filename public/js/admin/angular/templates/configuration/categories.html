@@ -1,0 +1,95 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading4">
+        <h3 class="panel-title" id="-collapsible-list-group-">
+            <a class="" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4">
+                Categorías
+            </a>
+            <a class="pull-right" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4"><span data-icon="&#xe6be"></span></a></h3>
+    </div>
+    <div id="collapseListGroup4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4" aria-expanded="true">
+        <div >
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+            <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Categorías<span ><a href="" data-icon="&#xe70a" ng-click="newCategory()" class="btn btn-md btn-success pull-right">Nueva</a></span> </h4>
+
+                </div>
+                <div class="panel-body" >
+                    <!--div ng-show="showedExperienceForm"-->
+                        <div ng-show="formShown">
+                        <form class="form-block"  role="form"  id="categoryForm" name="categoryForm" ng-submit="updateCategory()"  >
+                            <h3>
+                                <span class="wizard-title" ng-if="!category.id">Nueva categoría</span>
+                                <span ng-if="category.id" class="wizard-title">Editando categoría</span>
+                            </h3>
+                            <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="title">Categoría</label><br>
+                                    <input type="text" class="form-control" id="title" name="title" ng-model="category.name" required >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="detail">Descripción </label><br>
+                                    <textarea cols="80" rows="15" id="detail" name="detail" ng-model="category.description"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                                    <div class="col-sm-4"><a href="" ng-click="closeForm()" class="pull-right">Cancelar</a></div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <hr>
+                    </div>
+
+
+                    <table class="table table-responsive" data-toggle="table" ng-show = "gridShown" >
+                        <thead>
+                        <tr>
+                            <th data-field="title">Categoría</th>
+                            <th data-field="Descripción">Descripción</th>
+                            <!--th data-field="disable">Habilitar / Deshabilitar</th-->
+                            <th data-field="edit"></th>
+                            <th data-field="delete"></th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="category in categories" class="item-list">
+                        <tr >
+                            <td ng-bind="category.name"></td>
+                            <td >
+                                <span ng-bind="category.description | limitTo : 50 : 0"></span>
+                                <a href="" ng-click="editCategory(category)" ng-if="category.description.length >= 50">Ver todo...</a>
+                            </td>
+                            <!--td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="status" ng-click="changeStatus($event,category)"
+                                           ng-checked="category.statusbool" ng-model="category.statusbool"
+                                            />
+
+                                </div>
+                            </td-->
+                            <td><a href="" ng-click="editCategory(category)" data-icon="&#xe606">Editar</a></td>
+                            <td><a href="" ng-click = "removeCategory(category)" data-icon="&#xe6ac">Eliminar</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>

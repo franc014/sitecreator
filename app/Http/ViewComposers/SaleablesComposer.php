@@ -33,9 +33,11 @@ class SaleablesComposer extends CurrentRoute{
         try {
             $urlUserName = $this->getRouteParameter('username');
             $user = $this->currentUserName($urlUserName);
-
             $saleables = $this->saleableRepository->getAllByUserName($user);
-            $data = ["saleables" => $saleables, "username" => $user];
+            $categories = $this->saleableRepository->getSaleableCategories($user,0);
+            $data = ["saleables" => $saleables,
+                     "username" => $user,
+                     "salcategories"=>$categories];
             $view->with("data", $data);
         }catch (ModelNotFoundException $mnfe){
             abort(404);

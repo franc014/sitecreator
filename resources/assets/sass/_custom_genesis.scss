@@ -468,8 +468,11 @@ body{
 }
 /*candidate to replace site-container class*/
 .site-container2{
-
+  min-height: 800px;
   margin-top: 270px;
+  @media (max-width: 767px) {
+    &{margin-top: 320px;}
+  }
   .intro-content{
     background-color: $intro-container;
     padding: 20px;
@@ -517,6 +520,7 @@ body{
   }
 }
 .saleable-services-container{
+  min-height: 800px;
   h1{
     color: #7D8C87;
     font-weight: 400;
@@ -527,6 +531,7 @@ body{
   background-color: $yellow-sand;
   .services-content{
     padding: 20px;
+    min-height: 700px!important;
   }
 }
 .targets-container{
@@ -921,11 +926,26 @@ a.link-to-site{
      }
   }
 
-
-
-
-
  }
+
+ /* mix it up*/
+
+#content-filtered{
+  margin-top: 20px;
+}
+#content-filtered .mix{
+  display: none;
+}
+.cat-filters{
+  border-bottom: 2px solid #D35400;
+  padding-bottom: 5px;
+}
+.cat-filter{
+  background-color: $blue-genesis;
+  color: $genesis-contrast;
+
+}
+
 
 
 

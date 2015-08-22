@@ -14,6 +14,7 @@
 
 use App\User;
 
+
 Route::get('home', ['middleware' => ['auth'], 'uses' => 'HomeController@index']);
 
 /*user web client*/
@@ -73,7 +74,8 @@ Route::post('lead', 'Site\GuestController@storeLead');
     Route::get('saleabledetail/{id}/icon', 'Admin\SaleableDetailController@getUploadedIcon');
     Route::post('uploadSaleableDetailIcon', 'Admin\SaleableDetailController@uploadDescriptionIcon');
 
-
+    Route::get('catlist','Admin\SaleableController@listAllCategories');
+    Route::get('salcatlist/{id}','Admin\SaleableController@listSaleableCategories');
     Route::post('/biography/setDefault/{id}', 'Admin\BiographyController@setDefault');
     Route::get('bio_drop_list', 'Admin\BiographyController@getBioDropList');
     Route::get('resume_drop_list', 'Admin\ResumeController@getResumeDropList');
@@ -81,7 +83,9 @@ Route::post('lead', 'Site\GuestController@storeLead');
     Route::post('publish_resume/{id}', 'Admin\ResumeController@publishResume');
     Route::post('default_resume/{id}', 'Admin\ResumeController@setAsDefault');
     Route::post('clone_resume/{id}', 'Admin\ResumeController@cloneResume');
+
     /*resources*/
+
     Route::resource('bio', 'Admin\BiographyController');
     Route::resource('profile', 'Admin\ProfileController');
     Route::resource('user', 'Admin\UserController');
@@ -97,6 +101,8 @@ Route::post('lead', 'Site\GuestController@storeLead');
     Route::resource('language', 'Admin\LanguageController');
     Route::resource('interest', 'Admin\ProfinterestController');
 
+/*configuration*/
+    Route::resource('cat', 'Admin\CategoryController');
 //TODO contact admin implementation
 
 

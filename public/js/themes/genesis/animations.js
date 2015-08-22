@@ -1,3 +1,12 @@
+$(function(){
+    $('#content-filtered').mixItUp({
+        animation: {
+            animateChangeLayout: false
+        }
+    });
+
+});
+
 var t = new Trianglify({
     x_gradient: ['#ECF8F1','#EEB868'],
 

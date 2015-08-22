@@ -59,6 +59,17 @@
             </div>
         </div>
 
+        <div class="row" >
+                <div class="form-group col-sm-12">
+                    <label class="control-label" for="featured">Categorías</label><br>
+                    <div >
+                        <select id="resume-drop-list"  multiple ng-multiple="true"  ng-model="saleable.categories"
+                                ng-options="key as value for (key, value) in catoptions ">
+
+                        </select>
+                    </div>
+                </div>
+        </div>
         <!--div class="row">
             <div class="form-group col-sm-2" ng-class="{'has-error':errorBody}">
                 <label class="control-label" for="simple">Despliegue simple</label>

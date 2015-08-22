@@ -128,18 +128,22 @@ var numberFormat = require('./admin/angular/services/formatfilterservice');
 var fileProcessor = require('./admin/angular/services/fileprocessor');
 var resumeService = require('./admin/angular/services/resumeservice');
 var resumeHelper = require('./admin/angular/services/resumehelper');
+var saleableHelper = require('./admin/angular/services/saleablehelper');
 var experienceService = require('./admin/angular/services/experience');
 var helpersService = require('./admin/angular/services/helpers');
 var educationService = require('./admin/angular/services/education');
 var skillService = require('./admin/angular/services/skill');
 var languageService = require('./admin/angular/services/language');
 var interestService = require('./admin/angular/services/interest');
+var categoryService = require('./admin/angular/services/category');
+
 
 var alertDirective = require('./admin/angular/directives/alertdirective');
 var closeContentDirective = require('./admin/angular/directives/closecontentdirective');
 var contentSelectorDirective = require('./admin/angular/directives/contentselector');
 var prodileMenuDirective = require('./admin/angular/directives/profilemenu');
 var configMenuDirective = require('./admin/angular/directives/configmenu');
+var categoryDirective = require('./admin/angular/directives/configuration/category');
 
 var resumeSelectorDirective = require('./admin/angular/directives/resume/resumeselector');
 var resumeDirective = require('./admin/angular/directives/resume/resumedirective');
@@ -177,11 +181,13 @@ prfXyzApp.factory('FileProcessor',['$upload','$http','MessageService',fileProces
 prfXyzApp.factory('Resume',['restmod',resumeService]);
 prfXyzApp.factory('Experience',['restmod',experienceService]);
 prfXyzApp.factory('ResumeHelper',['$http','MessageService',resumeHelper]);
+prfXyzApp.factory('SaleableHelper',['$http','MessageService',saleableHelper]);
 prfXyzApp.factory('Helper',[helpersService]);
 prfXyzApp.factory('Education',['restmod',educationService]);
 prfXyzApp.factory('Skill',['restmod',skillService]);
 prfXyzApp.factory('Language',['restmod',languageService]);
 prfXyzApp.factory('Interest',['restmod',interestService]);
+prfXyzApp.factory('Category',['restmod',categoryService]);
 
 prfXyzApp.directive('alert',[alertDirective]);
 prfXyzApp.directive('closeContent',[closeContentDirective]);
@@ -205,6 +211,7 @@ prfXyzApp.directive('resumeLanguage',['MessageService','Language','$timeout','He
 prfXyzApp.directive('resumeInterest',['MessageService','Interest','$timeout','Helper',resumeInterest]);
 prfXyzApp.directive('biography',['MessageService','BiographyService','$timeout','Helper','$http',bioDirective]);
 prfXyzApp.directive('resumeList',['MessageService','Resume','$timeout','Helper',resumeList]);
+prfXyzApp.directive('categoryManager',['MessageService','Category','$timeout','Helper',categoryDirective]);
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);
@@ -213,7 +220,7 @@ prfXyzApp.controller('ConfigCtrl',['$scope','$timeout','MessageService','UserCon
 
 prfXyzApp.controller('SaleableCtrl',['$scope','$rootScope','$timeout','SaleableService','MessageService','SaleableDetailsService',saleableController]);
 prfXyzApp.controller('SaleableDetailCtrl',['$scope','$rootScope','SaleableService','MessageService','$element','$compile',saleableDetailController]);
-prfXyzApp.controller('saleableBasicCtrl',['$scope','$rootScope','SaleableService','MessageService',saleableBasicController]);
+prfXyzApp.controller('saleableBasicCtrl',['$scope','$rootScope','SaleableService','MessageService','SaleableHelper',saleableBasicController]);
 prfXyzApp.controller('saleableAllDetailsCtrl',['$scope','$rootScope','SaleableDetailsService','MessageService','FileProcessor',saleableAllDetailsController]);
 prfXyzApp.controller('saleablePriceCtrl',['$scope','$rootScope','SaleablePriceService','MessageService',saleablePriceController]);
 prfXyzApp.controller('resumeCtrl',['$scope','$rootScope','ResumeHelper','MessageService',resumeController]);

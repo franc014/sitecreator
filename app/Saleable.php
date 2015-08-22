@@ -53,6 +53,10 @@ class Saleable extends Model {
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function categories(){
+        return $this->belongsToMany('App\Category','saleable_categories')->withTimestamps();
+    }
     public function delete(){
         $this->details()->delete();
         $this->prices()->delete();

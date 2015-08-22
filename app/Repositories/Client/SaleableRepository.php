@@ -9,6 +9,8 @@
 namespace App\Repositories\Client;
 
 
+use App\Category;
+use App\Repositories\CategoryRepository;
 use App\Saleable;
 
 class SaleableRepository {
@@ -20,11 +22,16 @@ class SaleableRepository {
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
-    function __construct(Saleable $model, UserRepository $userRepository)
+    function __construct(Saleable $model, UserRepository $userRepository,CategoryRepository $categoryRepository)
     {
         $this->model = $model;
         $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function getFeaturedSaleable($userName){
@@ -52,12 +59,31 @@ class SaleableRepository {
     public function getSaleablesExcept($userName,$saleableId){
         $user = $this->userRepository->getUserByUserName($userName);
         //TODO: Pagination on all saleables
-        $saleables = $this->model->with("user")->userId($user->id)->where("id","<>",$saleableId)->get();
+        $saleables = $this->model->with(['user','categories'])
+            ->userId($user->id)->where("id","<>",$saleableId)->get();
         return $saleables;
     }
+    /*public function getSaleablesExceptFiltered($userName,$saleableId){
+        $cats = Category::whereHas('saleables',function($q){
+                    $q->where('user_id',88);
+                })->with('saleables')->get()->toArray();
 
 
+                $sals2 = collect([]);
+                foreach($cats as $cat){
+                    foreach($cat['saleables'] as $sa){
+                        if($sa['id']!= $saleableId){
+                            $sals2->push($sa);
+                        }
+                    }
+                }
+        return $sals2;
+    }*/
 
-
+    public function getSaleableCategories($userName,$saleableId){
+        $user = $this->userRepository->getUserByUserName($userName);
+        $cats = $this->categoryRepository->saleableCategories($user->id);
+        return $cats;
+    }
 
 }

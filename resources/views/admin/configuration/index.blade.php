@@ -11,7 +11,7 @@
                 @include('admin.configuration.partials._body')
             </div>
             <div class="col-md-4 col-lg-4">
-                <div config-menu></div>
+                <div config-menu ></div>
             </div>
 
         </div>

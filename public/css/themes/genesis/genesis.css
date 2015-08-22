@@ -5059,7 +5059,11 @@ body {
 
 /*candidate to replace site-container class*/
 .site-container2 {
+  min-height: 800px;
   margin-top: 270px; }
+  @media (max-width: 767px) {
+    .site-container2 {
+      margin-top: 320px; } }
   .site-container2 .intro-content {
     background-color: #456990;
     padding: 20px;
@@ -5132,6 +5136,7 @@ body {
     font-weight: 400; }
 
 .saleable-services-container {
+  min-height: 800px;
   background-color: #EFF0F0; }
   .saleable-services-container h1 {
     color: #7D8C87;
@@ -5159,7 +5164,8 @@ body {
 .services-container {
   background-color: #EEB868; }
   .services-container .services-content {
-    padding: 20px; }
+    padding: 20px;
+    min-height: 700px !important; }
 
 .targets-container {
   background-color: #456990;
@@ -5785,3 +5791,18 @@ a.link-to-site {
           width: 45%;
           font-size: 12px;
           margin-bottom: 2px; } }
+
+/* mix it up*/
+#content-filtered {
+  margin-top: 20px; }
+
+#content-filtered .mix {
+  display: none; }
+
+.cat-filters {
+  border-bottom: 2px solid #D35400;
+  padding-bottom: 5px; }
+
+.cat-filter {
+  background-color: #456990;
+  color: #EFF0F0; }

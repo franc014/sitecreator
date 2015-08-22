@@ -11,6 +11,12 @@
 
         </div>
     </div>
+    <div class="row" id="navigation">
+        <div class="col-md-12 col-lg-12">
+            <div category-manager id="categories"> </div>
+
+        </div>
+    </div>
 
 
 </div>

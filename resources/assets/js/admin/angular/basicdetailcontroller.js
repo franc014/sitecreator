@@ -1,6 +1,8 @@
-var saleableBasicCtrl = function($scope,$rootScope,SaleableService,MessageService){
+var saleableBasicCtrl = function($scope,$rootScope,SaleableService,MessageService,SaleableHelper){
 
     $rootScope.$on("newBasicDetail",function(event){
+        SaleableHelper.categoryList('/catlist',$scope);
+
         //var numberOfSaleables = $scope.$parent.saleables.length;
         var saleable = SaleableService.$build();
         saleable.type =0;
@@ -21,6 +23,7 @@ var saleableBasicCtrl = function($scope,$rootScope,SaleableService,MessageServic
             }else{
                 $scope.saleable.featured = 0;
             }
+            console.log($scope.saleable.categories);
             saleable.$save().$then(function(data){
                 var meta = data.$metadata.meta;
                 MessageService.setAlertMessage($scope,meta);
@@ -32,6 +35,8 @@ var saleableBasicCtrl = function($scope,$rootScope,SaleableService,MessageServic
     });
 
     $rootScope.$on("editBasicDetail",function(event,saleable){
+        SaleableHelper.categoryList('/catlist',$scope);
+        SaleableHelper.salCategoryList('/salcatlist/'+saleable.id,$scope);
         $scope.saleable = saleable;
         $scope.updateSaleable = function(){
 

@@ -3,6 +3,7 @@ var fileProcessor = function($upload,$http,MessageService){
         upload:function(scope,path,data){
 
                 var files = scope.files[0];
+                console.log(files);
                 var numberOfFiles = scope.files.length;
                 if(numberOfFiles > 1 && numberOfFiles < 8) {
                     files = scope.files;
@@ -11,7 +12,7 @@ var fileProcessor = function($upload,$http,MessageService){
                 }
                 //for (var i = 0; i < scope.files.length; i++) {
                 //var file = scope.files[i];
-                var file = scope.files;
+                //var file = scope.files;
                 scope.upload = $upload.upload({
                     url: path, //upload.php script, node.js route, or servlet url
                     method: 'POST', //or 'PUT',
@@ -22,7 +23,11 @@ var fileProcessor = function($upload,$http,MessageService){
                         return parseInt(100.0 * evt.loaded / evt.total);
                     }
                 }).success(function(data) {
+                    scope.hasIcon = true;
                     scope.descriptiveIcon = data.img;
+                    scope.getPercentage=function () {
+                        return 0;
+                    };
                 }).error(function(data){
                     MessageService.setServerValidationMessage(scope);
                     scope.errors = data;

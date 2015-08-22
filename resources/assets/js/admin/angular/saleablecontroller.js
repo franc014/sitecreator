@@ -42,7 +42,7 @@ var saleableController = function($scope,$rootScope,$timeout,
     //close wizard
     $scope.closeWizard = function(){
         $scope.showDetails = false;
-        console.log("x");
+        location.href = '/admin/services';
     }
 
 

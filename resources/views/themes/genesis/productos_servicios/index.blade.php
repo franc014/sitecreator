@@ -22,42 +22,15 @@
 
     ?>
     <div class="container site-container2" >
+
+        @include('themes.genesis.productos_servicios._detail.partials._cat_tabs')
+
         <div class="row">
             <div class="col-sm-9 col-md-9 service-content">
                 @if(!$saleables->isEmpty())
-                @foreach(array_chunk($saleables->all(), 3) as $row)
-                    <div class="row " >
-                        @foreach( $row as $saleable)
-                                <div class="col-sm-4 ">
-                                    <div class="panel panel-default service-box " >
-                                        <div class="panel-body">
-                                            <!--img src="http://lorempixel.com/50/50/" class="center-block"-->
-                                            <h3>{{$saleable->title}}</h3>
-                                            <p >
-                                                {!!str_limit($saleable->description,100,"...")!!}<a href="/{{$username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
-                                            </p>
-
-                                        </div>
-                                        <div class="panel-footer" >
-                                            <a href="#contact-form" class="btn btn-success btn-md" href="#">Solicitar</a>
-                                            @if(!$isDedicated)
-                                                <a href="/{{$username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}"
-                                                   class="pull-right know-more">
-                                                    Conocer en detalle
-                                                </a>
-                                            @else
-                                                <a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}"
-                                                   class="pull-right know-more">
-                                                    Conocer en detalle
-                                                </a>
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                </div>
-                        @endforeach
+                    <div id="content-filtered">
+                        @include('themes.genesis.productos_servicios.partials._services_list')
                     </div>
-                @endforeach
                 @else
                     @include("themes.genesis.partials.alerts.no_items")
                 @endif

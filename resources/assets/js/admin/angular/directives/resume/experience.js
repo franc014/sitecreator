@@ -2,10 +2,13 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
     return {
         templateUrl:"../../js/admin/angular/templates/resume/experience.html",
         restrict:"EA",
-
+        scope:{},
 
         controller:function($scope,$rootScope){
-
+            $scope.closeForm = function(){
+                Helper.enableForm($scope,false);
+            };
+            Helper.enableForm($scope,false);
 
 
             $rootScope.$on('resumeChange',function(event,args){
@@ -112,5 +115,5 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
         }
     }
 
-}
+};
 module.exports = experienceDirective;

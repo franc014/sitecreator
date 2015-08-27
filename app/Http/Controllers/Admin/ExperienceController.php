@@ -34,6 +34,7 @@ class ExperienceController extends Controller {
             "value"=>$request->get('resume_id')
         ];
         $results = $this->experienceRepository->getAllByParentId($parent);
+
         $data = ["experiences"=>$results,"meta"=>["message"=>"ok"]];
         return response($data,200);
 	}

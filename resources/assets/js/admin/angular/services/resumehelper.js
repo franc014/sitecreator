@@ -4,7 +4,7 @@ var resumeHelper = function($http,MessageService){
         dropDownList:function(path,scope){
             $http.get(path).success(function(data){
                 scope.resumes = data.resumes;
-                scope.resume = scope.resumes[5];
+                scope.resume = scope.resumes[89];
             }).error();
         },
         bioDropDownList:function(path,scope){
@@ -12,14 +12,17 @@ var resumeHelper = function($http,MessageService){
                 scope.bios = data.bios;
             }).error();
         },
-        getResume:function(scope,rootScope,path){
-            $http.get(path).then(function(data){
-                var resume = data.data.resume;
+        getResumePub:function(scope,rootScope,path){
+
+            $http.get(path).success(function(data){
+
+                var resume = data.resume;
 
                 if(resume === null) {
                     rootScope.$emit("noResumeFound");
                 }else{
-                    rootScope.$emit("resumeChange", data.data);
+
+                    rootScope.$emit("resumeChange", data);
                 }
             });
 

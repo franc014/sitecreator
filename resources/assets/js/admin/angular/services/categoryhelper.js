@@ -1,4 +1,4 @@
-var saleableHelper = function($http,MessageService){
+var categoryHelper = function($http){
 
     return {
         categoryList:function(path,scope){
@@ -11,8 +11,15 @@ var saleableHelper = function($http,MessageService){
                 var cats = data.categories;
                 scope.saleable.categories = cats;
             }).error();
-        }
+        },
+        projectCategoryList:function(path,scope){
+        $http.get(path).success(function(data){
+            var cats = data.categories;
+            scope.project.categories = cats;
+        }).error();
+    }
+
     }
 }
 
-module.exports = saleableHelper;
+module.exports = categoryHelper;

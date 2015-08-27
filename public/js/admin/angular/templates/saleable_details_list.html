@@ -11,7 +11,7 @@
         <div class="panel-body">
             <div ng-show="showDetailForm">
 
-                <form  class ="saleable-detail-form" role="form"  id="saleableDetailForm" name="saleableDetailForm" ng-submit="updateDetail()"  >
+                <form  class ="wizard-detail-form" role="form"  id="saleableDetailForm" name="saleableDetailForm" ng-submit="updateDetail()"  >
                     <h3>
                         <span class="wizard-title" ng-if="!detail.id">Nueva característica</span>
                         <span ng-if="detail.id" class="wizard-title">Editando característica</span>
@@ -79,7 +79,7 @@
 
                         <div class="form-group col-sm-6">
                             <div ng-if="hasIcon">
-                                <img ng-src="data:image/png;base64,{{descriptiveIcon}}">
+                                <img ng-src="data:image/png;base64,{{descriptiveImage}}">
                             </div>
                         </div>
 

@@ -36,7 +36,7 @@ trait ImageRetriever {
         $data = ["img"=>$img,
             "width"=>$this->x_image_size,
             "height"=>$this->y_image_size,
-            "message"=>"Tu foto ha sido cargada exitosamente!"
+            "message"=>"La imagen ha sido cargada exitosamente!"
         ];
         return Response::json($data,200,$headers);
 

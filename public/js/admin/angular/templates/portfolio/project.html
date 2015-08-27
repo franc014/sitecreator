@@ -1,0 +1,98 @@
+<div class="wizard-details-container">
+<hr>
+    <form  class="wizard-form"  role="form"  id="projectForm" name="projectForm" ng-submit="updateProject()"  >
+        <h2>
+            <span ng-if="!project.id" class="wizard-title">Información básica </span>
+            <span ng-if="project.id" class="wizard-title">Editando información básica</span>
+        </h2>
+
+        <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+        <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert">
+
+        </div>
+        <ul class="list-group" ng-repeat="(key, value) in errors">
+            <li class="list-group-item list-group-item-danger"> {{value[0]}} </li>
+        </ul>
+
+        <div ng-class="{'alert alert-success': has_success}" ng-bind="success_msg"></div>
+
+        <div class="row">
+            <div class="form-group col-sm-6" ng-class="{'has-error':errorBody}">
+                <label class="control-label" for="title">Título</label><br>
+                <div>
+                    <input class="form-control" type="text" name="title" id="title" ng-model="project.title" required >
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12" ng-class="{'has-error':errorBody}">
+                <label class="control-label" for="description">Descripción</label><br>
+                <text-angular ng-model="project.description" id="description" name="description" required></text-angular>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12" ng-class="{'has-error':errorBody}">
+                <label class="control-label" for="fimage">Imagen principal</label><br>
+                <div >
+                    <input ngf-keep="false" type="file" id="fimage" ng-file-select="onFileSelect($files)" >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{getPercentage()}}"
+                         aria-valuemin="0" aria-valuemax="100"
+                         ng-style="{width : ( getPercentage() + '%' ) }">
+                        {{getPercentage()}}% Completado
+                    </div>
+                </div>
+                <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+                <ul class="list-group" ng-repeat="fileerror in fileerrors">
+                    <li class="list-group-item list-group-item-danger" ng-show="showFileError=true"> {{fileerror.filename}} : {{fileerror.errors.file[0]}}</li>
+                </ul>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <div >
+                    <img width="150" height="150" ng-src="data:image/png;base64,{{descriptiveImage}}">
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--div class="row" >
+            <div class="form-group col-sm-12">
+                <label class="control-label" for="featured">Establecer como destacado</label><br>
+                <div >
+                    <input  type="checkbox" id="featured" ng-checked="project.featured"
+                            ng-model="project.isfeatured"/>
+                </div>
+            </div>
+        </div-->
+
+        <div class="row" >
+                <div class="form-group col-sm-12">
+                    <label class="control-label" for="featured">Categorías</label><br>
+                    <div >
+                        <select   multiple ng-multiple="true"  ng-model="project.categories"
+                                ng-options="key as value for (key, value) in catoptions ">
+
+                        </select>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12" >
+                <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+            </div>
+        </div>
+
+    </form>
+    <hr>
+</div>
+

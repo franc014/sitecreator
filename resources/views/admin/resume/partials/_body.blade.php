@@ -13,7 +13,21 @@
     <div class="row" id="basic-data-content">
         <div class="col-md-12 col-lg-12">
             <div resume-sections></div>
-
+            <section id="experience">
+                <div resume-experience ></div>
+            </section>
+            <section id="study">
+                <div resume-education ></div>
+            </section>
+            <section id="skills">
+                <div resume-skill ></div>
+            </section>
+            <section id="languages">
+                <div resume-language ></div>
+            </section>
+            <section id="personal">
+                <div resume-interest ></div>
+            </section>
         </div>
     </div>
 

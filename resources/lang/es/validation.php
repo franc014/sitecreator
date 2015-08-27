@@ -95,7 +95,8 @@ return array(
 
 	'attributes' => array(
         "names"=>"Nombres",
-        "phone"=>"teléfono"
+        "phone"=>"teléfono",
+        "file"=>"archivo"
     ),
 
 );

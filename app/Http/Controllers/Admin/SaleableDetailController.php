@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Validator;
+
 class SaleableDetailController extends Controller {
 
     use ImageRetriever;
@@ -108,12 +110,13 @@ class SaleableDetailController extends Controller {
 		//
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @param Request $request
+     * @return Response
+     */
 	public function update($id,Request $request)
 	{
         $data = [
@@ -142,9 +145,19 @@ class SaleableDetailController extends Controller {
 	}
 
 
-    public function uploadDescriptionIcon(DetailIconStoreRequest $request,Filesystem $fileSystem){
-        //$uploadedFile = Input::file("photo");//$request->only(["photo"]);
+    public function uploadDescriptionIcon(Request $request,Filesystem $fileSystem){
+
         $uploadedFile = $request->file("file");
+        $fileName = $uploadedFile->getClientOriginalName();
+        $v = Validator::make($request->all(), [
+            "file"=>"image | max:10240"
+        ]);
+
+        if ($v->fails())
+        {
+            $errors = ['filename'=>$fileName,'errors'=>$v->errors()];
+            return response($errors,502);
+        }
 
         $saleableId = $request->get('data');
         $file = new FileUploaded($uploadedFile);

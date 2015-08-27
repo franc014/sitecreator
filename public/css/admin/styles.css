@@ -1047,12 +1047,12 @@ switch check box
 .wizard-title{
     color: #6F8AB7;
 }
-.saleable-form{
+.wizard-form{
     padding: 30px;
     background-color: #FFFBF6;
 }
 
-.saleable-detail-form{
+.wizard-detail-form{
     background-color: #FFFBF6;
     padding: 20px;
 }
@@ -1135,3 +1135,20 @@ switch check box
     white-space: normal;
 }
 
+.progress-bar{
+    color:#000000;
+}
+
+.gallery-image-container {
+    background-color: #6F8AB7;
+
+}
+.gallery-image-container a{
+    color: white;
+}
+.gallery-image-container a:hover{
+    color: #FFDFBD;
+}
+.gallery-image {
+    width: 100%;
+}

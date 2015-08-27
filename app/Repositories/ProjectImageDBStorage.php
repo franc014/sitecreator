@@ -10,10 +10,13 @@ namespace App\Repositories;
 
 
 use App\Events\RemoveFile;
+use App\Gallery;
 use App\Imageresource;
+use App\Project;
+use App\Projectimage;
 use Illuminate\Support\Facades\Event;
 
-class DetailIconDBStorage implements PhotoDBStorage{
+class ProjectImageDBStorage implements PhotoDBStorage{
 
 
     /**
@@ -23,24 +26,24 @@ class DetailIconDBStorage implements PhotoDBStorage{
     /**
      * @var
      */
-    protected $saleableId;
+    protected $projectId;
 
-    function __construct($path, $saleableId)
+    function __construct($path, $projectId)
     {
         $this->path = $path;
-        $this->saleableId = $saleableId;
-        $this->model = new Imageresource();
+        $this->projectId = $projectId;
+        $this->model = new Projectimage();
     }
 
     function store()
     {
         $imageData = [
             "path"=>$this->path,
-            "imageable_id"=>$this->saleableId,
-            "imageable_type"=>'App\Saleabledetail'
+            "imageable_id"=>$this->projectId,
+            "imageable_type"=>'App\Project'
         ];
         //dd($photoData);
-        $image = $this->model->where('imageable_id',$this->saleableId)->first();
+        $image = $this->model->where('imageable_id',$this->projectId)->first();
 
         if($image!==null){
             Event::fire(new RemoveFile($image->path));

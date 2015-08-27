@@ -1,0 +1,60 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading4">
+        <h3 class="panel-title" id="-collapsible-list-group-">
+            <a class="" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4">
+                Proyectos
+            </a>
+            <a class="pull-right" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4"><span data-icon="&#xe6be"></span></a></h3>
+    </div>
+    <div id="collapseListGroup4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4" aria-expanded="true">
+        <div >
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+            <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Proyectos<span ><a href="" data-icon="&#xe70a" ng-click="newProject()" class="btn btn-md btn-success pull-right">Nuevo</a></span> </h4>
+                </div>
+                <div class="panel-body" >
+                    <table class="table table-responsive" data-toggle="table"  >
+                        <thead>
+                            <tr>
+                                <th data-field="title">Idioma</th>
+                                <th data-field="Description">Descripción</th>
+                                <th data-field="disable">Habilitar / Deshabilitar</th>
+                                <th data-field="edit"></th>
+                                <th data-field="delete"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody ng-repeat="project in projects" class="item-list">
+
+                        <tr >
+                            <td ng-bind="project.title"></td>
+                            <td >
+                                <span ng-bind-html="project.description | limitTo : 50 : 0"></span>
+                                <a href="" ng-click="editProject(project)" ng-if="project.description.length >= 50">Ver todo...</a>
+                            </td>
+                            <td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="status" ng-click="changeStatus($event,project)"
+                                           ng-checked="project.statusbool" ng-model="project.statusbool"
+                                            />
+
+                                </div>
+                            </td>
+                            <td><a href="" ng-click="editProject(project)" data-icon="&#xe606">Editar</a></td>
+                            <td><a href="" ng-click = "removeProject(project)" data-icon="&#xe6ac">Eliminar</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>
+

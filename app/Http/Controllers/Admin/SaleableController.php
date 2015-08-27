@@ -1,28 +1,36 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Traits\CategoryListing;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Repositories\CategoryRepository;
 use App\Repositories\SaleableRepository;
 use App\Saleable;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 class SaleableController extends Controller {
+    use CategoryListing;
     /**
      * @var SaleableRepository
      */
-    private $saleableRepository;
+    private $mainRepository;
     /**
      * @var Guard
      */
     private $auth;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
-    function __construct(SaleableRepository $saleableRepository, Guard $auth)
+    function __construct(SaleableRepository $mainRepository,CategoryRepository $categoryRepository, Guard $auth)
     {
         $this->middleware('auth');
-        $this->saleableRepository = $saleableRepository;
+        $this->mainRepository = $mainRepository;
         $this->auth = $auth;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -32,7 +40,7 @@ class SaleableController extends Controller {
 	 */
 	public function index()
 	{
-		$results = $this->saleableRepository->getAllByUserId($this->auth->user()->id);
+		$results = $this->mainRepository->getAllByUserId($this->auth->user()->id);
         $data = ["saleables"=>$results,"meta"=>["message"=>"ok"]];
         return response($data,200);
 	}
@@ -63,7 +71,7 @@ class SaleableController extends Controller {
             "featured"=>$request->input('featured')
         ];
         $categories = $request->get('categories');
-        $result = $this->saleableRepository->saveSaleable($data,$categories);
+        $result = $this->mainRepository->saveWithCategories($data,$categories);
         $dataResponse = [
             "saleable"=>$result,
             "meta"=>["result"=>"success","message"=>"El servicio o producto ha sido guardado exitosamente"]
@@ -79,7 +87,7 @@ class SaleableController extends Controller {
 	 */
 	public function show($id)
 	{
-		$saleable = $this->saleableRepository->getById($id);
+		$saleable = $this->mainRepository->getById($id);
         $data = ["saleable"=>$saleable,"meta"=>["message"=>"ok"]];
         return Response::json($data,200);
 	}
@@ -111,7 +119,7 @@ class SaleableController extends Controller {
             "featured"=>$request->input('featured')
         ];
         $categories = $request->get('categories');
-        $saleable = $this->saleableRepository->updateSaleable($id,$data,$categories);
+        $saleable = $this->mainRepository->updateWithCategories($id,$data,$categories);
         $dataResponse = [
             "saleable"=>$saleable,
             "meta"=>["result"=>"success","message"=>"Los datos han sido actualizados exitosamente"]
@@ -127,19 +135,10 @@ class SaleableController extends Controller {
 	 */
 	public function destroy($id)
 	{
-        $result = $this->saleableRepository->remove($id);
+        $result = $this->mainRepository->remove($id);
         return Response::json($result,200);//response($result,200);
 	}
 
-    public function listAllCategories(){
-        $categories = $this->saleableRepository->listAllCategories($this->auth->user()->id);
-        $data = ["categories"=>$categories,"meta"=>["message"=>"ok"]];
-        return response($data,200);
-    }
-    public function listSaleableCategories($saleableId){
-        $categories = $this->saleableRepository->listSaleableCategories($saleableId);
-        $data = ["categories"=>$categories,"meta"=>["message"=>"ok"]];
-        return response($data,200);
-    }
+
 
 }

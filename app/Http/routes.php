@@ -73,9 +73,17 @@ Route::post('lead', 'Site\GuestController@storeLead');
 
     Route::get('saleabledetail/{id}/icon', 'Admin\SaleableDetailController@getUploadedIcon');
     Route::post('uploadSaleableDetailIcon', 'Admin\SaleableDetailController@uploadDescriptionIcon');
+    Route::post('uploadProjectFeatureImage', 'Admin\ProjectController@uploadProjectFeatureImage');
+    Route::post('uploadProjectGalleryImage', 'Admin\ProjectController@uploadProjectImageGallery');
+    Route::get('projectimage/{id}', 'Admin\ProjectController@getUploadedProjectImage');
 
-    Route::get('catlist','Admin\SaleableController@listAllCategories');
-    Route::get('salcatlist/{id}','Admin\SaleableController@listSaleableCategories');
+    //categorization
+    Route::get('salcatlist','Admin\SaleableController@listAllCategories');
+    Route::get('salcatlistselected/{id}','Admin\SaleableController@listModelCategories');
+    Route::get('projectcatlist','Admin\ProjectController@listAllCategories');
+    Route::get('projectcatlistselected/{id}','Admin\ProjectController@listModelCategories');
+
+
     Route::post('/biography/setDefault/{id}', 'Admin\BiographyController@setDefault');
     Route::get('bio_drop_list', 'Admin\BiographyController@getBioDropList');
     Route::get('resume_drop_list', 'Admin\ResumeController@getResumeDropList');
@@ -93,6 +101,8 @@ Route::post('lead', 'Site\GuestController@storeLead');
     Route::resource('saleable', 'Admin\SaleableController');
     Route::resource('saleabledetail', 'Admin\SaleableDetailController');
     Route::resource('saleableprice', 'Admin\SaleablePriceController');
+    Route::resource('project', 'Admin\ProjectController');
+    Route::resource('galimage', 'Admin\GalleryController');
 
     Route::resource('resume', 'Admin\ResumeController');
     Route::resource('experience', 'Admin\ExperienceController');

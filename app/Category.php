@@ -14,4 +14,7 @@ class Category extends Model {
     public function saleables(){
         return $this->belongsToMany('App\Saleable','saleable_categories');
     }
+    public function projects(){
+        return $this->belongsToMany('App\Project','portfolio_categories');
+    }
 }

@@ -2,10 +2,12 @@ var resumeDirective = function(MessageService,Resume,$timeout,ResumeHelper){
     return {
         templateUrl:"../../js/admin/angular/templates/resume/resume.html",
         restrict:"EA",
+
         scope:{
 
         },
         controller:function($scope,$rootScope){
+
             $rootScope.$on('noResumeFound',function(){
                 MessageService.setNoItemsInfoMessage($scope, " résumés",
                     ". Pulsa el botón Nuevo para crear");

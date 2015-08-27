@@ -2,13 +2,14 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
     return {
         templateUrl:"../../js/admin/angular/templates/resume/experience.html",
         restrict:"EA",
-        scope:{},
+
+
         controller:function($scope,$rootScope){
-            $scope.closeForm = function(){
-                Helper.enableForm($scope,false);
-            }
-            Helper.enableForm($scope,false);
+
+
+
             $rootScope.$on('resumeChange',function(event,args){
+
                 if(typeof args.resume !== "undefined") {
                     var resumeId = args.resume.id;
                     var experiences = Experience.$search({resume_id: resumeId}).$then(function (data) {
@@ -21,6 +22,7 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
                     });
                     //new
                     $scope.newExperience = function () {
+                        console.log('aqio');
                         Helper.enableForm($scope, true);
                         var experience = Experience.$build({resume_id: resumeId, initdate: '', enddate: ''});
                         $scope.experience = experience;
@@ -107,9 +109,6 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
                 }
             });
 
-        },
-        link:function(scope,element){
-            //$(element).effect("highlight", {}, 3000);
         }
     }
 

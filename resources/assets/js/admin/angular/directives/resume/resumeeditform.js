@@ -9,8 +9,7 @@ var resumeEditDirective = function(MessageService,Resume,ResumeHelper,$timeout){
         controller:function($scope,$rootScope){
 
             $rootScope.$on("editResume",function(event,resume){
-                console.log(resume  );
-                //biographies dropdown list
+                                //biographies dropdown list
                 ResumeHelper.bioDropDownList('/bio_drop_list',$scope);
                 $scope.resume = resume;
                 var bioId = resume.biographyId;

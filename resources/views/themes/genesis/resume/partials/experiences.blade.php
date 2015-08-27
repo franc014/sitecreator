@@ -17,7 +17,7 @@
         <div id="collapseExperiences" class="collapse in">
             <!-- Nested media object -->
             @if(!$experiences->isEmpty())
-                @foreach($experiences as $experience)
+                @foreach($experiences->sortByDesc('enddate') as $experience)
                     @if($experience->status==1)
                         <div class="media media-section-item">
                             <div class="media-left">

@@ -1,0 +1,64 @@
+<div class="project-details-container">
+<hr>
+    <form  class="wizard-form"  role="form"  id="projectForm" name="projectForm" ng-submit="updateProject()"  >
+        <h2>
+            <span ng-if="project.id" class="wizard-title">Gallería de imágenes sobre el Proyecto {{project.title}}</span>
+        </h2>
+
+        <div class="row">
+            <div class="form-group col-sm-12" ng-class="{'has-error':errorBody}">
+                <label class="control-label" for="fimage">Selecciona las imágenes</label><br>
+
+
+                <div >
+                    <input ngf-keep="false" type="file" multiple id="fimage" ng-file-select="onFileSelect($files)" >
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{getPercentage()}}"
+                         aria-valuemin="0" aria-valuemax="100"
+                         ng-style="{width : ( getPercentage() + '%' ) }">
+                        {{getPercentage()}}% Completado
+                    </div>
+                </div>
+                <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+                <ul class="list-group" ng-repeat="fileerror in fileerrors">
+                    <li class="list-group-item list-group-item-danger" ng-show="showFileError=true"> {{fileerror.filename}} : {{fileerror.errors.file[0]}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 " ng-repeat="image in images" style="margin-top: 20px">
+                <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+                <div class="thumbnail gallery-image-container">
+                    <a href="" ng-click="openLightboxModal($index)">
+                        <img ng-src="{{image.cloudpath}}" style="width: 100%" class="gallery-image">
+                    </a>
+                    <div class="caption">
+                        <a href="" data-icon="&#xe6ac" ng-click="removeImage(image)">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </form>
+    <hr>
+</div>
+<!--<div class="row " ng-repeat="i in images.range()" style="margin-top: 20px">
+    <div class="col-md-4 " ng-repeat="image in images.slice(i,i+3)">
+        <img ng-src="{{image.cloudpath}}" style="width: 100%">
+    </div>
+</div>-->
+
+
+

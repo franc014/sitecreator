@@ -36,7 +36,7 @@
                                     <div class="item-body">
 
                                         <p class="media-object-paragraph">
-                                            {{$skill->detail}}
+                                            {!!$skill->detail!!}
                                         </p>
                                     </div>
 

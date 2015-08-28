@@ -20,7 +20,7 @@ var nganimate = require('./../vendor/angular_animate/angular-animate.min.js');
 
 
 var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages',
-    'textAngular','angularFileUpload','ngAnimate','ui','ui.sortable','angular-sortable-view']);
+    'textAngular','angularFileUpload','ngAnimate']);
 
 prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function(restmodProvider, $httpProvider,ngFabFormProvider) {
     restmodProvider.rebase('AMSApi');

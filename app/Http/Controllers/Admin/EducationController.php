@@ -58,8 +58,7 @@ class EducationController extends Controller {
 	{
         $result = $this->educationRepository->saveEducation
         (
-            $request->except(["initmonth","inityear","endmonth","endyear"]
-            )
+            $request->all()
         );
         return Response::json($result,200);
 	}
@@ -97,7 +96,7 @@ class EducationController extends Controller {
 	{
         $result = $this->educationRepository->updateEducation(
             $id,
-            $request->except(["initmonth","inityear","endmonth","endyear"])
+            $request->all()
         );
         return Response::json($result,200);
 	}

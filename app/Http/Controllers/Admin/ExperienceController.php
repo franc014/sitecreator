@@ -59,8 +59,7 @@ class ExperienceController extends Controller {
 	{
         $result = $this->experienceRepository->
         saveExperience(
-            $request->except(["initmonth","inityear","endmonth","endyear"]
-            )
+            $request->all()
         );
         return Response::json($result,200);
 	}
@@ -96,9 +95,10 @@ class ExperienceController extends Controller {
      */
 	public function update($id,Request $request)
 	{
+
         $result = $this->experienceRepository->updateExperience(
             $id,
-            $request->except(["initmonth","inityear","endmonth","endyear"])
+            $request->all()
         );
         return Response::json($result,200);
 	}

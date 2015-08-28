@@ -120,8 +120,11 @@
                             <th data-field="delete"></th>
                         </tr>
                         </thead>
-                        <tbody ng-repeat="experience in experiences" class="item-list">
-                        <tr >
+                        <tbody sv-root sv-on-stop="baz($item, $part, $index)" sv-part="experiences"   class="item-list" ng-model="experiences">
+                        <tr style="cursor: move;" ng-repeat="experience in experiences" sv-element="opts" >
+                            <div sv-helper>
+                                custom helper {{item}}
+                            </div>
                             <td ng-bind="experience.title"></td>
                             <td ng-bind="experience.place"></td>
                             <td >

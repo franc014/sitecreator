@@ -37,12 +37,14 @@
 
 
 @section('javascripts')
+    <script src="/js/admin/jquery-1.11.1.min.js"></script>
+    <script src="/js/admin/jquery-ui.min.js"></script>
 <script src="/js/abundle.js"></script>
-<script src="/js/admin/jquery-1.11.1.min.js"></script>
-<script src="/js/admin/jquery-ui.min.js"></script>
+
 <script src="/js/admin/bootstrap.min.js"></script>
-
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+<script src="/js/admin/angular/sortable.js"></script>
+    <script src="/js/admin/angular/angular-sortable-view.min.js"></script>
 <script>
 
 
@@ -56,7 +58,7 @@
 
     $(window).on('resize', function () {
         if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-    })
+    });
     $(window).on('resize', function () {
         if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })

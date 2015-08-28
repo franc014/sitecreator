@@ -10,6 +10,8 @@ namespace App\Repositories;
 
 
 use App\Experience;
+use App\Services\DateTime\DateHelper;
+use Carbon\Carbon;
 
 class ExperienceRepository extends DBRepository{
 
@@ -24,6 +26,7 @@ class ExperienceRepository extends DBRepository{
     }
 
     public function saveExperience($data){
+        $data['endtimestamp']=DateHelper::getUnixTimeStamp('spanish',$data['endyear'],$data['endmonth']);
         $experience = $this->saveModel($data);
         return $dataResponse = [
             "experience"=>$experience,
@@ -32,6 +35,7 @@ class ExperienceRepository extends DBRepository{
     }
 
     public function updateExperience($id,$data){
+        $data['endtimestamp']=DateHelper::getUnixTimeStamp('spanish',$data['endyear'],$data['endmonth']);
         $result = $this->updateModel($id,$data);
         return $dataResponse = [
             "experience"=>$result,

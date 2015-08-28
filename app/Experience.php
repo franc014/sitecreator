@@ -3,8 +3,11 @@
 
 
 
+use Carbon\Carbon;
+
 class Experience extends ResumeSectionCommons {
-    protected $guarded = ["id","imonth","iyear","emonth","eyear","statusbool","currentplace"];
+    protected $fillable = ['title','place','locality','initdate','enddate','detail',
+                           'status','resume_id','current','endtimestamp'];
     protected $appends = ["imonth","iyear","emonth","eyear","statusbool","currentplace"];
 
     public function getCurrentplaceAttribute(){
@@ -14,5 +17,6 @@ class Experience extends ResumeSectionCommons {
         }
         return false;
     }
+
 
 }

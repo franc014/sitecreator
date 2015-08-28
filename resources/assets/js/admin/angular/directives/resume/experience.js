@@ -13,6 +13,91 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
 
             $rootScope.$on('resumeChange',function(event,args){
 
+                /*$scope.sortingLog = [];
+                var tmpList = [];
+                $scope.sortableOrder = [];
+                for (var i = 1; i <= 6; i++){
+                    tmpList.push({
+                        text: 'Item ' + i,
+                        value: i
+                    });
+                }
+                $scope.sortableOptions = {
+                    activate: function() {
+                        console.log("activate");
+                    },
+                    beforeStop: function() {
+                        console.log("beforeStop");
+                    },
+                    change: function() {
+                        console.log("change");
+                    },
+                    create: function() {
+                        console.log("create");
+                    },
+                    deactivate: function() {
+                        console.log("deactivate");
+                    },
+                    out: function() {
+                        console.log("out");
+                    },
+                    over: function() {
+                        console.log("over");
+                    },
+                    receive: function() {
+                        console.log("receive");
+                    },
+                    remove: function() {
+                        console.log("remove");
+                    },
+                    sort: function() {
+                        console.log("sort");
+                    },
+                    start: function() {
+                        console.log("start");
+                    },
+                    update: function(e, ui) {
+                        $scope.$apply();
+                        console.log(this);
+
+                        var logEntry = tmpList.map(function(i){
+                            return i.value;
+                        }).join(', ');
+                        $scope.sortingLog.push('Update: ' + logEntry);
+                        console.log($scope.sortingLog);
+                    },
+                    stop: function(e, ui) {
+
+                        var $list=ui.item.parent();
+                        console.log($list);
+                        $scope.sortableOrder = $list.sortable('toArray');
+                        console.log($scope.sortableOrder);
+                        // this callback has the changed model
+                        var logEntry = tmpList.map(function(i){
+                            return i.value;
+                        }).join(', ');
+                        $scope.sortingLog.push('Stop: ' + logEntry);
+                        console.log($scope.sortingLog);
+                    }
+                };*/
+                /*var exp = [];
+                exp  = $scope.experiences;
+                $scope.bar = function($item, $partFrom, $partTo, $indexFrom, $indexTo){
+                    console.log($scope.experiences);
+                    console.log($indexFrom);
+                    console.log($indexTo);
+                    console.log($partFrom);
+                    console.log($partTo);
+                };
+
+                $scope.baz = function($item, $part, $index){
+                    console.log($item);
+                    console.log($part);
+                    console.log($index);
+
+                };*/
+
+
                 if(typeof args.resume !== "undefined") {
                     var resumeId = args.resume.id;
                     var experiences = Experience.$search({resume_id: resumeId}).$then(function (data) {

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var JQuery = require('jquery');
 var angular = require('./../vendor/angular/angular-index.js');
 var angular_restmod = require('./../vendor/angular-restmod/dist/angular-restmod-bundle.js');
@@ -20,7 +20,7 @@ var nganimate = require('./../vendor/angular_animate/angular-animate.min.js');
 
 
 var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages',
-    'textAngular','angularFileUpload','ngAnimate']);
+    'textAngular','angularFileUpload','ngAnimate','ui','ui.sortable','angular-sortable-view']);
 
 prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function(restmodProvider, $httpProvider,ngFabFormProvider) {
     restmodProvider.rebase('AMSApi');

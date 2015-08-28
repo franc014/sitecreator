@@ -4,7 +4,8 @@
 
 class Education extends ResumeSectionCommons {
     protected $table = "educations";
-    protected $guarded = ["id","imonth","iyear","emonth","eyear","statusbool","currentplace"];
+    protected $fillable = ['title','field','place','locality','initdate','enddate','detail','activities',
+    'status','resume_id','current','endtimestamp'];
     protected $appends = ["imonth","iyear","emonth","eyear","statusbool","currentplace"];
     public function getCurrentplaceAttribute(){
         $current = $this->getAttribute("current");

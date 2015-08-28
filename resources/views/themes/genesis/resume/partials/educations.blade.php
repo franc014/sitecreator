@@ -17,7 +17,7 @@
         <div id="collapseEducations" class="collapse in">
             <!-- Nested media object -->
             @if(!$educations->isEmpty())
-                @foreach($educations as $education)
+                @foreach($educations->sortByDesc('endtimestamp') as $education)
                     @if($education->status==1)
                         <div class="media media-section-item">
                             <div class="media-left">

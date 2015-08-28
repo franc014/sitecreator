@@ -42,9 +42,8 @@
 <script src="/js/abundle.js"></script>
 
 <script src="/js/admin/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
-<script src="/js/admin/angular/sortable.js"></script>
-    <script src="/js/admin/angular/angular-sortable-view.min.js"></script>
+
+
 <script>
 
 

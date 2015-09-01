@@ -5728,7 +5728,7 @@ a.section-jumper {
         line-height: 1;
         font-size: 16px; }
       .media-section .media-heading {
-        font-size: 26.66667px; } }
+        font-size: 21.33333px; } }
 
 .media-section-item {
   margin-bottom: 2px; }
@@ -5761,7 +5761,7 @@ a.section-jumper {
         line-height: 1;
         font-size: 12px; }
       .media-section-item .media-heading {
-        font-size: 20px; } }
+        font-size: 16px; } }
   @media (max-width: 767px) {
     .media-section-item {
       margin-left: -80px !important;

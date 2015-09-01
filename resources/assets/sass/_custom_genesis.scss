@@ -856,6 +856,13 @@ a.section-jumper{
   @media (max-width: 767px) {
     margin-left: -80px!important;
     padding: 0!important;
+    .item-body {
+
+      p{
+
+        word-wrap: break-word;
+      }
+    }
 
   }
 

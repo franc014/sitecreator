@@ -26,6 +26,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         $this->composeNavigation();
         $this->composeSaleableLists();
         $this->composeSaleableDetail();
+        $this->composeProjectDetail();
         //$this->composeResume();
         //$this->composeContactPage();
 	}
@@ -88,6 +89,14 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer([
             $this->themeDirectory."resume.index"
         ],'App\Http\ViewComposers\ResumeComposer');
+    }
+
+    public function composeProjectDetail()
+    {
+        view()->composer([
+            $this->themeDirectory."portfolio._detail.index",
+
+        ],'App\Http\ViewComposers\ProjectDetailComposer');
     }
 
 }

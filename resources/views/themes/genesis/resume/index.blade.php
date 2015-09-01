@@ -13,6 +13,7 @@
 @section('content')
     <?php
     $resume = $data["resume"];
+    $icon_item_list = '&#xe711;';
 
     if($resume!=null){
         $experiences = $resume->experiences;

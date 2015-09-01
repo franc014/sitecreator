@@ -9,6 +9,7 @@ return array(
     //if installation is dedicated
     "isDedicated" => true,
     //dedicated user name for db queries in dedicated installation
+    //AFTER INSTALLATION: CREATE ACCOUNT WITH THIS USER NAME
     "dedicatedUserName" => "jandrade"
 );
 

@@ -58,4 +58,18 @@ abstract class DBRepository {
         return $result;
     }
 
+    public function getCategories($model,$userName){
+        $user = $this->userRepository->getUserByUserName($userName);
+        $cats = $this->categoryRepository->modelCategories($model,$user->id,$except=0);
+        return $cats;
+    }
+
+    public function getModel($userName,$id){
+        $user = $this->userRepository->getUserByUserName($userName);
+        $model = $this->model->where('user_id',$user->id)
+            ->where('id',$id)
+            ->firstOrFail();
+        return $model;
+    }
+
 }

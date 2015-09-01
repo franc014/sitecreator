@@ -33,24 +33,26 @@ if(Config::get("app_parametters.isDedicated")){
     Route::get('user_resume', 'Site\ResumeController@index');
     Route::get('contacto', 'Site\PagesController@contacto');
 
-
     Route::get('productos_servicios', 'Site\SaleableController@index');
     Route::get('productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
 
-
+    Route::get('portafolio', 'Site\PortfolioController@index');
+    Route::get('project/{projectname}/{project_id}', 'Site\PortfolioController@detail');
 
 }else{
+
     Route::get('{username}', 'Site\HomeController@index');
     Route::get('{username}/acercade', 'Site\BioController@index');
 
-    Route::get('{username}/resume', 'Site\ResumeController@index');
+    Route::get('{username}/user_resume', 'Site\ResumeController@index');
     Route::get('{username}/contacto/', 'Site\PagesController@contacto');
 
 
     Route::get('{username}/productos_servicios', 'Site\SaleableController@index');
     Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
 
-
+    Route::get('{username}/portafolio', 'Site\PortfolioController@index');
+    Route::get('{username}/project/{projectname}/{project_id}', 'Site\PortfolioController@detail');
 
 }
 Route::post('lead', 'Site\GuestController@storeLead');

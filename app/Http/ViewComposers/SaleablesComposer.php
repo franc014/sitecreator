@@ -34,7 +34,7 @@ class SaleablesComposer extends CurrentRoute{
             $urlUserName = $this->getRouteParameter('username');
             $user = $this->currentUserName($urlUserName);
             $saleables = $this->saleableRepository->getAllByUserName($user);
-            $categories = $this->saleableRepository->getSaleableCategories($user,0);
+            $categories = $this->saleableRepository->getCategories('saleables',$user);
             $data = ["saleables" => $saleables,
                      "username" => $user,
                      "salcategories"=>$categories];

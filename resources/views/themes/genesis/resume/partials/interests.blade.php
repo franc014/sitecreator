@@ -23,7 +23,7 @@
                             <div class="media-left">
                                 <a class="no-scroll media-object-icon" role="button" data-toggle="collapse"
                                    href="#collapseInterest-{{$interest->id}}" aria-expanded="false"
-                                   aria-controls="collapseInterest-{{$interest->id}}" data-icon="&#xe646" >
+                                   aria-controls="collapseInterest-{{$interest->id}}" data-icon="{!!$icon_item_list!!}" >
                                 </a>
                             </div>
                             <div class="media-body">
@@ -36,7 +36,7 @@
                                     <div class="item-body">
 
                                         <p class="media-object-paragraph">
-                                            {{$interest->detail}}
+                                            {!!$interest->detail!!}
                                         </p>
                                     </div>
 

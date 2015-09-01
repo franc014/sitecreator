@@ -23,7 +23,7 @@
                             <div class="media-left">
                                 <a class="no-scroll media-object-icon" role="button" data-toggle="collapse"
                                    href="#collapseEducation-{{$education->id}}" aria-expanded="false"
-                                   aria-controls="collapseEducation-{{$education->id}}" data-icon="&#xe646" >
+                                   aria-controls="collapseEducation-{{$education->id}}" data-icon="{!!$icon_item_list!!}" >
                                 </a>
                             </div>
                             <div class="media-body">

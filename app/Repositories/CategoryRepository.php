@@ -48,13 +48,13 @@ class CategoryRepository extends DBRepository{
         return $categories;
     }
 
-    public function saleableCategories($userId,$except=0){
-        $categories = $this->model->whereHas('saleables',function($q) use ($userId){
+    public function modelCategories($model,$userId,$except=0){
+        $categories = $this->model->whereHas($model,function($q) use ($userId){
             $q->where('user_id',$userId);
-        })->with('saleables')->get();
+        })->with($model)->get();
 
         foreach($categories as $cat){
-            foreach($cat['saleables'] as $sa){
+            foreach($cat[$model] as $sa){
                 if($except!=0){
                     if($sa['id']!= $except){
                         $categories->pull($cat);
@@ -64,6 +64,8 @@ class CategoryRepository extends DBRepository{
         }
         return $categories;
     }
+
+
 
 
 

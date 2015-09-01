@@ -1,0 +1,34 @@
+{
+  "name": "lighterbox",
+  "title": "lighterbox",
+  "description": "A lighterweight lightbox gallery module for modern desktop and mobile browsers.",
+  "keywords": [
+    "jquery",
+    "jqueryplugin",
+    "lightbox",
+    "mobile",
+    "shadowbox",
+    "fancybox",
+    "colorbox",
+    "gallery",
+    "dialog",
+    "image"
+  ],
+  "version": "0.0.2",
+  "author": {
+    "name": "Adam Henson",
+    "url": "https://github.com/adamhenson"
+  },
+
+  "licenses": [
+    {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "homepage": "https://github.com/adamhenson/lighterbox",
+  "bugs": "https://github.com/adamhenson/lighterbox/issues",
+  "dependencies": {
+    "jquery": ">= 1.7"
+  }
+}

@@ -4,8 +4,10 @@ $(function(){
             animateChangeLayout: false
         }
     });
+    $(".lighterbox").lighterbox({ overlayColor : "white" });
 
 });
+
 
 var t = new Trianglify({
     x_gradient: ['#ECF8F1','#EEB868'],

@@ -11,21 +11,22 @@ namespace App\Repositories\Client;
 
 use App\Category;
 use App\Repositories\CategoryRepository;
+use App\Repositories\DBRepository;
 use App\Saleable;
 
-class SaleableRepository {
+class SaleableRepository extends DBRepository{
     /**
      * @var Saleable
      */
-    private $model;
+    protected $model;
     /**
      * @var UserRepository
      */
-    private $userRepository;
+    protected $userRepository;
     /**
      * @var CategoryRepository
      */
-    private $categoryRepository;
+    protected $categoryRepository;
 
     function __construct(Saleable $model, UserRepository $userRepository,CategoryRepository $categoryRepository)
     {
@@ -48,13 +49,7 @@ class SaleableRepository {
         return $saleables;
     }
 
-    public function getSaleable($userName,$saleableId){
-        $user = $this->userRepository->getUserByUserName($userName);
-        $saleable = $this->model->userId($user->id)
-                                ->whereId($saleableId)
-                                ->firstOrFail();
-        return $saleable;
-    }
+
 
     public function getSaleablesExcept($userName,$saleableId){
         $user = $this->userRepository->getUserByUserName($userName);
@@ -80,10 +75,6 @@ class SaleableRepository {
         return $sals2;
     }*/
 
-    public function getSaleableCategories($userName,$saleableId){
-        $user = $this->userRepository->getUserByUserName($userName);
-        $cats = $this->categoryRepository->saleableCategories($user->id);
-        return $cats;
-    }
+
 
 }

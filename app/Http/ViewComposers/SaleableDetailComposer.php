@@ -54,13 +54,13 @@ class SaleableDetailComposer extends CurrentRoute{
             $urlUserName = $this->getRouteParameter('username');
             $user = $this->currentUserName($urlUserName);
             try{
-                $saleable = $this->saleableRepository->getSaleable($user, $this->getRouteParameter('saleable_id'));
+                $saleable = $this->saleableRepository->getModel($user, $this->getRouteParameter('saleable_id'));
                 $details = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 0);
                 $targets = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 1);
                 $ventages = $this->saleableDetailRepository->getDetails($this->getRouteParameter('saleable_id'), 2);
                 $prices = $this->saleablePriceRepository->getPriceList($this->getRouteParameter('saleable_id'));
                 $restSaleables = $this->saleableRepository->getSaleablesExcept($user, $this->getRouteParameter('saleable_id'));
-                $catSaleables = $this->saleableRepository->getSaleableCategories($user, $this->getRouteParameter('saleable_id'));
+                $catSaleables = $this->saleableRepository->getCategories('saleables',$user,$this->getRouteParameter('saleable_id'));
 
 
                 //$restSaleables = $this->saleableRepository->getSaleablesExceptFiltered($user, $this->getRouteParameter('saleable_id'));

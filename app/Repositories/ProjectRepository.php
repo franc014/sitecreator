@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 
 use App\Project;
+use App\Repositories\Client\UserRepository;
 
 class ProjectRepository extends DBRepository{
 
@@ -19,10 +20,20 @@ class ProjectRepository extends DBRepository{
      * @var Education
      */
     protected $model;
+    /**
+     * @var UserRepository
+     */
+    protected $userRepository;
+    /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
 
-    function __construct(Project $model)
+    function __construct(Project $model,UserRepository $userRepository,CategoryRepository $categoryRepository)
     {
         $this->model = $model;
+        $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     function getAllByUserId($userId){
@@ -34,6 +45,16 @@ class ProjectRepository extends DBRepository{
         $project = $this->model->find($id);
         return $project->photo;
     }
+
+    public function getAllByUserName($userName){
+        $user = $this->userRepository->getUserByUserName($userName);
+        //TODO: Pagination on portfolio
+        $portfolio = $this->model->where('user_id',$user->id)->where('status',1)->get();
+        return $portfolio;
+    }
+
+
+
 
 
 

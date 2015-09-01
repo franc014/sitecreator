@@ -414,7 +414,22 @@ body{
 }*/
 .service-box{
   @include card-box(#7F8C8D);
+
 }
+.project-box{
+  @include card-box(#7F8C8D);
+  position: relative;
+
+}
+.project-box * {
+  position: relative;
+  /* hack */
+}
+
+
+
+
+
 .price-box{
   @include card-box(#34495E);
 }
@@ -815,11 +830,11 @@ a.section-jumper{
 
 .media-section{
 
-  @include media-box(32px,$title-text-color,saturate($yellow-sand,60%))
+  @include media-box(32px,$title-text-color,$title-text-color)
 }
 
 .media-section-item{
-  @include media-box(24px,$title-text-color,#E67E22)
+  @include media-box(24px,#B98161,#B98161)
 }
 /*link inside alert box bootstrap*/
 a.link-to-site{
@@ -943,9 +958,70 @@ a.link-to-site{
 .cat-filter{
   background-color: $blue-genesis;
   color: $genesis-contrast;
+}
+//project listl item overlay
 
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
+
+.box {
+  width:100%;
+  height:100%;
+  border:1px solid grey;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+
+  position: relative;
+}
+
+.overlay {
+  position: relative;
+}
+
+.overlay:before{
+  position: absolute;
+  content:" ";
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display: none;
+  z-index:0;
+}
+
+.overlay:hover:before{
+  display: block;
+}
+
+.red:before {
+  background-color: rgba(211,83,0,0.9);
+}
+
+
+
+.box * {
+  position: relative;
+  /* hack */
+}
+
+
+
+.portfolio-gallery-container{
+  h2,h3{
+    color:#7D8C87
+  }
+  padding: 0 0 20px 50px;
+}
+.gallery-separator{
+  border: solid #D35400  1px;
+
+}
 
 
 

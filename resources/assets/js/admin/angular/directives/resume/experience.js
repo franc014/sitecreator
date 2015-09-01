@@ -183,6 +183,7 @@ var experienceDirective = function(MessageService,Experience,$timeout,Helper){
 
                     //change status
                     $scope.changeStatus = function ($event, experience) {
+                        /*console.log(experience);*/
                         var checkbox = $event.target;
                         var action = (checkbox.checked ? true : false);
 

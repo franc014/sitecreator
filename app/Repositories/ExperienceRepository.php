@@ -26,6 +26,7 @@ class ExperienceRepository extends DBRepository{
     }
 
     public function saveExperience($data){
+
         $data['endtimestamp']=DateHelper::getUnixTimeStamp('spanish',$data['endyear'],$data['endmonth']);
         $experience = $this->saveModel($data);
         return $dataResponse = [
@@ -35,7 +36,8 @@ class ExperienceRepository extends DBRepository{
     }
 
     public function updateExperience($id,$data){
-        $data['endtimestamp']=DateHelper::getUnixTimeStamp('spanish',$data['endyear'],$data['endmonth']);
+
+        $data['endtimestamp']=DateHelper::getUnixTimeStamp('spanish',$data['eyear'],$data['emonth']);
         $result = $this->updateModel($id,$data);
         return $dataResponse = [
             "experience"=>$result,

@@ -246,6 +246,22 @@ body { overflow-x: hidden;}
         font-style: oblique;
       }
   }
+
+  @media (max-width: 767px) {
+    margin-left: -30px!important;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    .media-header-paragraph{
+      line-height: 1;
+      font-size: $media-object-font-size / 2;
+    }
+
+    .media-heading{
+      font-size: $media-object-font-size / 1.2;
+
+    }
+  }
 }
 
 h1 {
@@ -826,15 +842,23 @@ a.section-jumper{
 /* resume */
 .resume-sections{
   @include side-navigation($brand-primary, $genesis-contrast, saturate($yellow-sand,60%));
+  width: 120%;
 }
 
 .media-section{
 
-  @include media-box(32px,$title-text-color,$title-text-color)
+  @include media-box(32px,$title-text-color,$title-text-color);
+
 }
 
 .media-section-item{
-  @include media-box(24px,#B98161,#B98161)
+  @include media-box(24px,#B98161,#B98161);
+  @media (max-width: 767px) {
+    margin-left: -80px!important;
+    padding: 0!important;
+
+  }
+
 }
 /*link inside alert box bootstrap*/
 a.link-to-site{

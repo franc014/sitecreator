@@ -5767,6 +5767,7 @@ a.section-jumper {
       margin-left: -80px !important;
       padding: 0 !important; }
       .media-section-item .item-body p {
+        width: 80%;
         word-wrap: break-word; } }
 
 /*link inside alert box bootstrap*/

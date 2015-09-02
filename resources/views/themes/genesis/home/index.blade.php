@@ -7,13 +7,21 @@
 @section('content')
     <?php
     $profile = $data["profile"];
+    $callouts = $profile->homecalls;
+
     $homeItem = $data["home_item"];
     $isDedicated = Config::get("app_parametters.isDedicated");
     ?>
 
     <div class="container-fluid ">
         <div id="bg">
-            <img class="img-responsive" src="/css/themes/genesis/img/page_images/bg_main2.jpg" alt="">
+            @if($callouts->isEmpty())
+                <img class="img-responsive" src="/css/themes/genesis/img/page_images/bg_main2.jpg" alt="">
+            @else
+                @foreach($callouts as $callout)
+                    <img class="img-responsive" src="{{$callout->photo->cloudpath}}" alt="{{$callout->message}}">
+                @endforeach
+            @endif
             <div class="after">This is some content</div>
         </div>
         <div class="row">

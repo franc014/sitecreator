@@ -30,7 +30,7 @@ class ProfileRepository {
 
     public function getProfileByUserName($userName){
         $user = $this->userRepository->getUserByUserName($userName);
-        $profile = $this->model->whereUser_id($user->id)->with("photo", "user")->first();
+        $profile = $this->model->whereUser_id($user->id)->with("photo", "user","homecalls")->first();
         return $profile;
     }
 }

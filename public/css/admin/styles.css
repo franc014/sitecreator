@@ -1,3 +1,4 @@
+
 /*
 Lumino Admin Bootstrap Template by Medialoot
 URL: http://medialoot.com/item/lumino-admin-bootstrap-template/
@@ -1151,4 +1152,21 @@ switch check box
 }
 .gallery-image {
     width: 100%;
+}
+.panel-heading{
+    height: 100%;
+}
+
+.home-page-active-content-selection{
+    margin-left: 20px;
+
+}
+
+.home-page-active-content-selection span{
+    margin-left: 20px;
+
+}
+
+.home-page-active-content-selection .control-label{
+    color: #2980B9;
 }

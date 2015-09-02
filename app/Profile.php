@@ -26,4 +26,8 @@ class Profile extends Model {
         return "";
     }
 
+    public function homecalls(){
+        return $this->hasMany('App\Homecall');
+    }
+
 }

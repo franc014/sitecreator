@@ -78,6 +78,8 @@ Route::post('lead', 'Site\GuestController@storeLead');
     Route::post('uploadProjectFeatureImage', 'Admin\ProjectController@uploadProjectFeatureImage');
     Route::post('uploadProjectGalleryImage', 'Admin\ProjectController@uploadProjectImageGallery');
     Route::get('projectimage/{id}', 'Admin\ProjectController@getUploadedProjectImage');
+    Route::post('uploadHomeImage', 'Admin\HomepageController@uploadHomeImage');
+    Route::get('homeimage/{id}', 'Admin\HomepageController@getUploadedHomeImage');
 
     //categorization
     Route::get('salcatlist','Admin\SaleableController@listAllCategories');
@@ -115,8 +117,11 @@ Route::post('lead', 'Site\GuestController@storeLead');
 
 /*configuration*/
     Route::resource('cat', 'Admin\CategoryController');
-//TODO contact admin implementation
 
+//TODO contact admin implementation
+/*home page config:callouts*/
+    Route::get('activecontent', 'Admin\HomepageController@getActiveContent');
+    Route::resource('homecallout', 'Admin\HomepageController');
 
 
 

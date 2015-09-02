@@ -140,6 +140,7 @@ var interestService = require('./admin/angular/services/interest');
 var categoryService = require('./admin/angular/services/category');
 var projectService = require('./admin/angular/services/project');
 var galleryService = require('./admin/angular/services/gallery');
+var homeCalloutService = require('./admin/angular/services/homecallout');
 
 var alertDirective = require('./admin/angular/directives/alertdirective');
 var closeContentDirective = require('./admin/angular/directives/closecontentdirective');
@@ -151,6 +152,7 @@ var projectListDirective = require('./admin/angular/directives/portfolio/project
 var projectWizardDirective = require('./admin/angular/directives/portfolio/projectwizard');
 var projectDirective = require('./admin/angular/directives/portfolio/project');
 var projectGalleryDirective = require('./admin/angular/directives/portfolio/projectgallery');
+var homePageDirective = require('./admin/angular/directives/homepage/homecalls');
 
 var resumeSelectorDirective = require('./admin/angular/directives/resume/resumeselector');
 var resumeDirective = require('./admin/angular/directives/resume/resumedirective');
@@ -197,6 +199,7 @@ prfXyzApp.factory('Interest',['restmod',interestService]);
 prfXyzApp.factory('Category',['restmod',categoryService]);
 prfXyzApp.factory('Project',['restmod',projectService]);
 prfXyzApp.factory('Gallery',['restmod',galleryService]);
+prfXyzApp.factory('Homecallout',['restmod',homeCalloutService]);
 
 prfXyzApp.directive('alert',[alertDirective]);
 prfXyzApp.directive('closeContent',[closeContentDirective]);
@@ -225,6 +228,7 @@ prfXyzApp.directive('projectList',['MessageService','Project','$timeout','Helper
 prfXyzApp.directive('projectWizard',['MessageService','Project','$timeout','Helper',projectWizardDirective]);
 prfXyzApp.directive('project',['MessageService','Project','$timeout','CategoryHelper','FileProcessor','Helper',projectDirective]);
 prfXyzApp.directive('projectGallery',['MessageService','Project','$timeout','FileProcessor','Gallery',projectGalleryDirective]);
+prfXyzApp.directive('homePage',['MessageService','Homecallout','$timeout','Helper','FileProcessor','$http',homePageDirective]);
 
 prfXyzApp.controller('HomeCtrl',['$scope','UserService','UserContentType',homeController]);
 prfXyzApp.controller('BioCtrl',['$scope','BiographyService','MessageService',bioController]);

@@ -17,6 +17,11 @@
 
         </div>
     </div>
+    <div class="row" id="navigation">
+        <div class="col-md-12 col-lg-12">
+            <div home-page id="homepage"> </div>
+        </div>
+    </div>
 
 
 </div>

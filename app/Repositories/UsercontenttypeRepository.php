@@ -113,5 +113,9 @@ class UsercontenttypeRepository {
         $this->model->where("user_id",$userId)->where("contenttype_id",$defaultContent->id)->update(["ashome"=>1]);
     }
 
+    public function listOfActiveContent($userId){
+        return $this->model->where('user_id',$userId)->where('active',1)->get();
+    }
+
 
 }

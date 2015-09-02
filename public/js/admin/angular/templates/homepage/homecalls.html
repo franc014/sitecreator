@@ -1,0 +1,143 @@
+<div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading4">
+        <h3 class="panel-title" id="-collapsible-list-group-">
+            <a class="" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4">
+                Home
+            </a>
+            <a class="pull-right" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="true" aria-controls="collapseListGroup4"><span data-icon="&#xe6be"></span></a></h3>
+    </div>
+    <div id="collapseListGroup4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4" aria-expanded="true">
+        <div >
+            <div alert class="alert alert-info " msge="result" ng-show="showNoItemsAlert"></div>
+            <div alert class="alert alert-{{result.result}} message" msge="result.message" ng-show="ShowResultAlert"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Home <span ><a href="" data-icon="&#xe70a" ng-click="newHomecallout()" class="btn btn-md btn-success pull-right" ng-hide = 'hideIfOne'>Nuevo</a></span> </h4>
+
+                </div>
+                <div class="panel-body" >
+                    <!--div ng-show="showedExperienceForm"-->
+                    <div ng-show="formShown">
+                        <form class="form-block"  role="form"  id="calloutForm" name="calloutForm" ng-submit="updateHomecallout()"  >
+                            <h3>
+                                <span class="wizard-title" ng-if="!callout.id">Nuevo </span>
+                                <span ng-if="callout.id" class="wizard-title">Editando </span>
+                            </h3>
+                            <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="message">Mensaje</label><br>
+                                    <textarea cols="60" rows="5" id="message" name="message" ng-model="callout.message"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <label class="control-label" for="buttonmessage">Mensaje en botón</label><br>
+                                    <input type="text" class="form-control" id="buttonmessage" name="buttonmessage" ng-model="callout.buttonmessage" required >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-6" >
+                                    <label class="control-label" for="det">Link Call Out:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <ul class="list-unstyled">
+                                        <li ng-repeat="content in contents" class="home-page-active-content-selection">
+                                            <label class="control-label" for="det">{{content.menualias}}</label>
+                                            <span >
+                                                <input type="radio" name="type" value="{{content.url}}" id="det" ng-model="callout.buttonlink" >
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" ng-class="{'has-error':errorBody}">
+                                    <label class="control-label" for="photo">Imagen o Ícono descriptivo</label><br>
+                                    <div >
+                                        <input ngf-keep="false" type="file" id="photo" ng-file-select="onFileSelect($files)" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="{{getPercentage()}}"
+                                             aria-valuemin="0" aria-valuemax="100"
+                                             ng-style="{width : ( getPercentage() + '%' ) }">
+                                            {{getPercentage()}}% Completado
+                                        </div>
+                                    </div>
+                                    <div alert class="alert alert-danger" msge="result" ng-show="ShowServerErrors"></div>
+
+                                    <ul class="list-group" ng-repeat="(key, value) in errors">
+                                        <li class="list-group-item list-group-item-danger"> {{value[0]}} </li>
+                                    </ul>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <div >
+                                        <img width="150" height="150" ng-src="data:image/png;base64,{{descriptiveImage}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12" >
+                                    <div class="col-sm-4"><button type="submit" class="btn btn-primary"  >Guardar</button></div>
+                                    <div class="col-sm-4"><a href="" ng-click="closeForm()" class="pull-right">Cancelar</a></div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <hr>
+                    </div>
+
+
+                    <table class="table table-responsive" data-toggle="table" ng-show = "gridShown" >
+                        <thead>
+                        <tr>
+
+                            <th data-field="Mensaje">Mensaje</th>
+                            <th data-field="disable">Habilitar / Deshabilitar</th>
+                            <th data-field="edit"></th>
+                            <th data-field="delete"></th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="callout in callouts" class="item-list">
+                        <tr >
+
+                            <td >
+                                <span ng-bind="callout.message | limitTo : 50 : 0"></span>
+                                <a href="" ng-click="editHomecallout(callout)" ng-if="callout.message.length >= 50">Ver todo...</a>
+                            </td>
+                            <td>
+                                <div  class="checkbox data-grid-checkbox" >
+                                    <input type="checkbox" id="status" ng-click="changeStatus($event,callout)"
+                                           ng-checked="callout.statusbool" ng-model="callout.statusbool"
+                                            />
+
+                                </div>
+                            </td>
+                            <td><a href="" ng-click="editHomecallout(callout)" data-icon="&#xe606">Editar</a></td>
+                            <td><a href="" ng-click = "removeHomecallout(callout)" data-icon="&#xe6ac">Eliminar</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>

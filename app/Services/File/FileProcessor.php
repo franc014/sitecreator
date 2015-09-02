@@ -72,14 +72,20 @@ class FileProcessor {
     }
 
     public function process(){
-        foreach($this->typeOfTransformations as $typeOfTransformation){
-            $transformedFile = $this->applyFilter($typeOfTransformation);
-            $this->setTransformableFile($transformedFile);
+        //TODO: upload without filter
+        if(!empty($this->typeOfTransformations)) {
+            foreach ($this->typeOfTransformations as $typeOfTransformation) {
+                $transformedFile = $this->applyFilter($typeOfTransformation);
+                $this->setTransformableFile($transformedFile);
+            }
+            $this->upload($transformedFile->file());
+            $s =  $this->photoDBStorage->store();
+            return $s;
         }
-        //dd($transformedFile);
-        $this->upload($transformedFile->file());
-        $s =  $this->photoDBStorage->store();
-        return $s;
+        //dd($this->getTransformableFile());
+        //$this->upload($this->getTransformableFile());
+        /*$s =  $this->photoDBStorage->store();
+        return $s;*/
         //dd($s->path);
     }
 

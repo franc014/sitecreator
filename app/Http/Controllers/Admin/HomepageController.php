@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\HomeImageDBStorage;
 use App\Repositories\HomepageRepository;
 use App\Repositories\UsercontenttypeRepository;
+use App\Services\File\ImageInterlace;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -164,8 +165,9 @@ class HomepageController extends Controller {
         $calloutId = $request->get('data');
         $file = new FileUploaded($uploadedFile);
 
-        $resizing = new ImageResizer($this->x_image_size,$this->y_image_size);
-        $transformation = [$resizing];
+        //$resizing = new ImageResizer($this->x_image_size,$this->y_image_size);
+        $interlace = new ImageInterlace();
+        $transformation = [$interlace];
         $prefix = Config::get('directories.prefix.home_image').$calloutId;
 
         $relativePath = Config::get('directories.upload.home_image');

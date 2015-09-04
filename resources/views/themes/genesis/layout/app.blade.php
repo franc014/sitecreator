@@ -31,12 +31,15 @@
 <body>
     @if(isset($isHome) && $isHome)
         <nav class="navbar-home navbar-default navbar-fixed-top"  >
+            @include('themes.genesis.partials._header')
+        </nav>
     @else
         <nav class="navbar navbar-default navbar-fixed-top"  >
+            @include('themes.genesis.partials._header')
+        </nav>
     @endif
 
-        @include('themes.genesis.partials._header')
-    </nav>
+
     <section class=" subheader"  >
 
         <div data-anijs="if: load,on: window, do: flipInY animated">
@@ -62,6 +65,7 @@
     @unless(isset($isHome) && $isHome==true)
         @include('themes.genesis.partials._footer')
     @endunless
+
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

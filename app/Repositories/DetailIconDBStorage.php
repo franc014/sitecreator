@@ -34,13 +34,16 @@ class DetailIconDBStorage implements PhotoDBStorage{
 
     function store()
     {
+        $imageable_type = 'App\Saleabledetail';
         $imageData = [
             "path"=>$this->path,
             "imageable_id"=>$this->saleableId,
-            "imageable_type"=>'App\Saleabledetail'
+            "imageable_type"=>$imageable_type
         ];
         //dd($photoData);
-        $image = $this->model->where('imageable_id',$this->saleableId)->first();
+        $image = $this->model->where('imageable_id',$this->saleableId)
+            ->where('imageable_type',$imageable_type)
+            ->first();
 
         if($image!==null){
             Event::fire(new RemoveFile($image->path));

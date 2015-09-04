@@ -34,13 +34,16 @@ class HomeImageDBStorage implements PhotoDBStorage{
 
     function store()
     {
+        $imageable_type = 'App\Homecall';
         $imageData = [
             "path"=>$this->path,
             "imageable_id"=>$this->calloutId,
-            "imageable_type"=>'App\Homecall'
+            "imageable_type"=> $imageable_type
         ];
         //dd($photoData);
-        $image = $this->model->where('imageable_id',$this->calloutId)->first();
+        $image = $this->model->where('imageable_id',$this->calloutId)
+            ->where('imageable_type',$imageable_type)
+            ->first();
 
         if($image!==null){
             Event::fire(new RemoveFile($image->path));

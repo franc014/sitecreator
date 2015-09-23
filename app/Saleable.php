@@ -68,9 +68,9 @@ class Saleable extends Model {
     public function getTagtypeAttribute(){
         $type = $this->getAttribute('type');
         if($type==0){
-            return "Producto";
+            return "producto";
         }
-        return "Servicio";
+        return "servicio";
     }
 
     public function getLayouttypeAttribute(){

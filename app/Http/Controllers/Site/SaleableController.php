@@ -26,14 +26,15 @@ class SaleableController extends Controller {
         $user = $this->currentUserName($username);
         $featuredSaleable = $this->saleableRepository->getFeaturedSaleable($user);
 
+
         if($featuredSaleable===null){
             return view($this->theme.'.productos_servicios'.'.index');
         }
 
         if($username!=""){
-            return redirect("/".$username."/productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
+            return redirect("/".$username."/".$featuredSaleable->tagtype."/".$featuredSaleable->slug);
         }else{
-            return redirect("productos_servicios/".$featuredSaleable->title."/".$featuredSaleable->id);
+            return redirect("/".$featuredSaleable->tagtype."/".$featuredSaleable->slug);
         }
 
     }

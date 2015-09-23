@@ -37,6 +37,13 @@ class SaleableDetailRepository {
                                ->get();
         return $details;
     }
+    public function getDetailsByTitle($title,$type){
+        $details = $this->model
+            ->where("title",$title)
+            ->where("type",$type)
+            ->get();
+        return $details;
+    }
 
 
 }

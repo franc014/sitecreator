@@ -33,8 +33,10 @@ if(Config::get("app_parametters.isDedicated")){
     Route::get('user_resume', 'Site\ResumeController@index');
     Route::get('contacto', 'Site\PagesController@contacto');
 
-    Route::get('productos_servicios', 'Site\SaleableController@index');
-    Route::get('productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
+    Route::get('productos-y-servicios', 'Site\SaleableController@index');
+    //Route::get('servicios', 'Site\SaleableController@index');
+    Route::get('producto/{saleable}', 'Site\SaleableController@detail');
+    Route::get('servicio/{saleable}', 'Site\SaleableController@detail');
 
     Route::get('portafolio', 'Site\PortfolioController@index');
     Route::get('project/{projectname}/{project_id}', 'Site\PortfolioController@detail');

@@ -72,4 +72,15 @@ abstract class DBRepository {
         return $model;
     }
 
+    public function getModelByTitle($userName,$title){
+        $user = $this->userRepository->getUserByUserName($userName);
+        $title = str_replace('-',' ',$title);
+
+        $model = $this->model->where('user_id',$user->id)
+            ->where('title',$title)
+            ->firstOrFail();
+
+        return $model;
+    }
+
 }

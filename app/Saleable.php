@@ -9,7 +9,7 @@ class Saleable extends Model {
     use SoftDeletes;
     use ScopesTrait;
     protected $dates = ['deleted_at'];
-    protected $appends = ["tagtype","layouttype","isfeatured"];
+    protected $appends = ["tagtype","layouttype","isfeatured","slug"];
     protected $guarded = ["id"];
 
     public static function boot(){
@@ -89,6 +89,13 @@ class Saleable extends Model {
         }
         return false;
 
+    }
+
+    public function getSlugAttribute(){
+        $title = $this->getAttribute('title');
+        $slug = str_replace(' ','-',$title);
+
+        return $slug;
     }
 
 

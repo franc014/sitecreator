@@ -58,6 +58,7 @@ class SaleableRepository extends DBRepository{
             ->userId($user->id)->where("id","<>",$saleableId)->get();
         return $saleables;
     }
+
     /*public function getSaleablesExceptFiltered($userName,$saleableId){
         $cats = Category::whereHas('saleables',function($q){
                     $q->where('user_id',88);

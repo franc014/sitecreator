@@ -11,28 +11,54 @@
                         <!--img src="http://lorempixel.com/50/50/" class="center-block"-->
                         <h3>{{$saleable->title}}</h3>
                         @if(!$isDedicated)
-                        <p >
-                            {!!str_limit($saleable->description,100,"...")!!}<a href="/{{$username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
-                        </p>
+                            @if($saleable->type==0)
+                                <p >
+                                    {!!str_limit($saleable->description,100,"...")!!}<a href="/{{$username}}/producto/{{$saleable->slug}}">Leer más</a>
+                                </p>
+                            @else
+                                <p >
+                                    {!!str_limit($saleable->description,100,"...")!!}<a href="/{{$username}}/servicio/{{$saleable->slug}}">Leer más</a>
+                                </p>
+                            @endif
                         @else
-                            <p >
-                                {!!str_limit($saleable->description,100,"...")!!}<a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
-                            </p>
+                            @if($saleable->type==0)
+                                <p >
+                                    {!!str_limit($saleable->description,100,"...")!!}<a href="/producto/{{$saleable->slug}}">Leer más</a>
+                                </p>
+                            @else
+                                <p >
+                                    {!!str_limit($saleable->description,100,"...")!!}<a href="/servicio/{{$saleable->slug}}">Leer más</a>
+                                </p>
+                            @endif
                         @endif
 
                     </div>
                     <div class="panel-footer" >
                         <a href="#contact-form" class="btn btn-success btn-md" href="#">Solicitar</a>
                         @if(!$isDedicated)
-                            <a href="/{{$username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}"
-                               class="pull-right know-more">
-                                Conocer en detalle
-                            </a>
+                            @if($saleable->type==0)
+                                <a href="/{{$username}}/producto/{{$saleable->slug}}"
+                                   class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @else
+                                <a href="/{{$username}}/servicio/{{$saleable->slug}}"
+                                   class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @endif
                         @else
-                            <a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}"
-                               class="pull-right know-more">
-                                Conocer en detalle
-                            </a>
+                            @if($saleable->type==0)
+                                <a href="/producto/{{$saleable->slug}}"
+                                   class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @else
+                                <a href="/servicio/{{$saleable->slug}}"
+                                   class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @endif
                         @endif
 
                     </div>

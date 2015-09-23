@@ -12,9 +12,17 @@
                         <h3>{{$saleable->title}}</h3>
                         <p >
                             @if(!$isDedicated)
-                                {!!str_limit($saleable->description,80,"...")!!}<a href="/{{$saleable->user->username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
+                                @if($saleable->type==0)
+                                    {!!str_limit($saleable->description,80,"...")!!}<a href="/{{$saleable->user->username}}/producto/{{$saleable->slug}}">Leer más</a>
+                                @else
+                                    {!!str_limit($saleable->description,80,"...")!!}<a href="/{{$saleable->user->username}}/servicio/{{$saleable->slug}}">Leer más</a>
+                                @endif
                             @else
-                                {!!str_limit($saleable->description,80,"...")!!}<a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}">Leer más</a>
+                                @if($saleable->type==0)
+                                    {!!str_limit($saleable->description,80,"...")!!}<a href="/producto/{{$saleable->slug}}">Leer más</a>
+                                @else
+                                    {!!str_limit($saleable->description,80,"...")!!}<a href="/servicio/{{$saleable->slug}}">Leer más</a>
+                                @endif
                             @endif
                         </p>
 
@@ -22,13 +30,25 @@
                     <div class="panel-footer" >
                         <a href="#contact-form" class="btn btn-success btn-md" href="#">Solicitar</a>
                         @if(!$isDedicated)
-                            <a href="/{{$saleable->user->username}}/productos_servicios/{{$saleable->title}}/{{$saleable->id}}" class="pull-right know-more">
-                                Conocer en detalle
-                            </a>
+                            @if($saleable->type==0)
+                                <a href="/{{$saleable->user->username}}/producto/{{$saleable->slug}}" class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @else
+                                <a href="/{{$saleable->user->username}}/servicio/{{$saleable->slug}}" class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @endif
                         @else
-                            <a href="/productos_servicios/{{$saleable->title}}/{{$saleable->id}}" class="pull-right know-more">
-                                Conocer en detalle
-                            </a>
+                            @if($saleable->type==0)
+                                <a href="/producto/{{$saleable->slug}}" class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @else
+                                <a href="/servicio/{{$saleable->slug}}" class="pull-right know-more">
+                                    Conocer en detalle
+                                </a>
+                            @endif
                         @endif
                     </div>
                 </div>

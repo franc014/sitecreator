@@ -48,7 +48,7 @@ $gallery = $data["gallery"];
             @endif
         </div>
     </div>--}}
-    <hr class="gallery-separator">
+    <hr class="separator">
     <div class="row portfolio-gallery-container" >
         <div class="col-sm-12 service-content">
             @if(!$gallery->isEmpty())

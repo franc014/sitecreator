@@ -8,7 +8,7 @@ $prices = $data["prices"];
         <div class="row">
             <div class="col-sm-12">
                 <h1  data-icon="&#xe63b">Precios
-                    <a href="#characteristics" data-icon="&#xe741" class="pull-right section-jumper"></a>
+                    @include('themes.genesis.productos_servicios._detail.partials._top_jumper')
                     @include('themes.genesis.productos_servicios._detail.partials._section_nav')
                 </h1>
             </div>

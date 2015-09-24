@@ -7,13 +7,17 @@ $isContactPage = false;
     <div class="row">
 
         <div class="col-sm-7 col-md-7 service-description">
-            <h1  >{{$saleable->title}}
-
+            <h1>
+                {{$saleable->title}}
             </h1>
+            <div class="saleable-labeling">
+                <span class="label label-{{$saleable->tagtype}} " >{{$saleable->tagtype}}</span>
+                <span >@include('themes.genesis.productos_servicios._detail.partials._section_nav')</span>
+            </div>
 
             <div>
                 {!! $saleable->description !!}
-                <span>@include('themes.genesis.productos_servicios._detail.partials._section_nav')</span>
+
             </div>
             @if(!$details->isEmpty())
                 <div>

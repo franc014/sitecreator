@@ -5538,7 +5538,7 @@ a.contact-collaout {
   margin-top: 50px; }
 
 .service-main-details {
-  margin-top: 200px; }
+  margin-top: 180px; }
   @media (max-width: 767px) {
     .service-main-details {
       margin-top: 180px; }
@@ -5573,7 +5573,10 @@ a.contact-collaout {
     margin-top: 50px; }
 
 a.section-jumper {
-  font-size: 16px; }
+  font-size: 16px;
+  margin-right: 10px;
+  background-color: tomato;
+  padding: 10px; }
   a.section-jumper:hover, a.section-jumper:visited {
     text-decoration: none; }
 
@@ -5911,5 +5914,41 @@ a.link-to-site {
   .portfolio-gallery-container h2, .portfolio-gallery-container h3 {
     color: #7D8C87; }
 
-.gallery-separator {
+.separator {
   border: solid #D35400 1px; }
+
+/* labels for products or services*/
+.saleable-labeling {
+  margin-bottom: 30px;
+  border-bottom: solid #D35400 2px;
+  padding-bottom: 40px; }
+  @media (max-width: 767px) {
+    .saleable-labeling {
+      padding-bottom: 100px; } }
+
+.label-producto {
+  background-color: #2980B9;
+  padding: 7px; }
+  @media (max-width: 767px) {
+    .label-producto {
+      float: left; } }
+
+.label-servicio {
+  background-color: #8E44AD; }
+
+/* service or product section nav bar*/
+@media (max-width: 767px) {
+  .section-nav {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 0; } }
+
+.section-list-nav a {
+  font-size: 11px;
+  padding: 7px !important; }
+.section-list-nav a:hover {
+  color: #FFD9A1 !important; }
+
+.top-jumper {
+  margin-left: 2px; }

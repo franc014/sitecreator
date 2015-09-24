@@ -9,7 +9,7 @@ $isDedicated = Config::get("app_parametters.isDedicated");
         <div class="row">
             <div class="col-sm-12">
                 <h1 data-icon="&#xe6ae">Otros Servicios
-                    <a href="#characteristics" data-icon="&#xe741" class="pull-right section-jumper"></a>
+                    @include('themes.genesis.productos_servicios._detail.partials._top_jumper')
                     @include('themes.genesis.productos_servicios._detail.partials._section_nav')
                 </h1>
             </div>

@@ -11,7 +11,7 @@
 @endsection
 @section('content_intro')
     <p>
-         Su empresa o nesgocio puede beneficiarse de los siguientes servicios...
+        Presentamos los siguientes servicios profesionales.
     </p>
     <!--p >
          {!!str_limit($saleable->description,20,"...")!!}
@@ -29,10 +29,7 @@
             <div class="col-sm-9 col-md-9 form-content-section">
                 @include("themes.genesis.partials.contact_info._contact_form")
             </div>
-            <div class="col-sm-3 col-md-3 ">
-                <h1><a href="#characteristics" data-icon="&#xe741" class="pull-right section-jumper"></a>
-                @include('themes.genesis.productos_servicios._detail.partials._section_nav')</h1>
-            </div>
+
         </div>
     </div>
 

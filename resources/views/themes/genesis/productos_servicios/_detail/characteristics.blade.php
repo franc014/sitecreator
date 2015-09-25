@@ -36,14 +36,16 @@ $isContactPage = false;
                     @endforeach
                 </div>
             @endif
-            <br>
-            <div>
-                <a href="#contact-form" class="btn btn-success btn-lg " href="#">Solicitar</a>
-            </div>
+
+
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+
         </div>
 
         <div class="col-sm-5 col-md-5 targets" >
             @include('themes.genesis.productos_servicios._detail.targets')
+
         </div>
         <!--div class="col-sm-6">
 
@@ -64,17 +66,14 @@ $isContactPage = false;
     </div>
 
 
-    <div class="row ">
-        <div class="col-sm-7 service-content">
-
-
-
-                <div class="form-content animate-show" ng-show="showContactForm">
-                    @include("themes.genesis.partials.contact_info._contact_form")
-                </div>
+    <div class="row " style="padding:0 40px 10px 40px" >
+        <div class="col-sm-4 col-md-4 ">
+            <div class="pull-left">
+                <a href="#contact-form" style="border-radius: 0" class="btn btn-success btn-lg " href="#">Solicitar</a>
+            </div>
 
         </div>
-
+        @include('themes.genesis.partials.share_links')
 
     </div>
 

@@ -47,6 +47,8 @@ $ventages = $data["ventages"];
             @endforeach
 
         </div>
+
+
     </div>
 </div>
 @endif

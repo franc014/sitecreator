@@ -8,6 +8,7 @@
 namespace App\Http\ViewComposers;
 
 use App\Http\Controllers\Traits\UserNameVerifier;
+use App\Repositories\BiographyRepository;
 use App\Repositories\Client\ContenttypeRepository;
 use App\Repositories\Client\ProfileRepository;
 use App\Repositories\ResumeRepository;
@@ -31,8 +32,15 @@ class ProfileComposer extends CurrentRoute{
      */
     private $resumeRepository;
     private $version;
+    /**
+     * @var BiographyRepository
+     */
+    private $biographyRepository;
 
-    function __construct(ProfileRepository $profileRepository, ContenttypeRepository $contenttypeRepository, ResumeRepository $resumeRepository)
+    function __construct(ProfileRepository $profileRepository,
+                         ContenttypeRepository $contenttypeRepository,
+                         ResumeRepository $resumeRepository,
+                         BiographyRepository $biographyRepository)
     {   $this->resumeRepository = $resumeRepository;
         $this->route = Route::current();
         $this->profileRepository = $profileRepository;
@@ -44,6 +52,7 @@ class ProfileComposer extends CurrentRoute{
 
         $this->contenttypeRepository = $contenttypeRepository;
 
+        $this->biographyRepository = $biographyRepository;
     }
 
     public function compose(View $view){
@@ -56,7 +65,9 @@ class ProfileComposer extends CurrentRoute{
         $socialItems = $this->getSocialItems($profile);
         $homeItem = $this->contenttypeRepository->getHomeItemByUserName($user);
 
-        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems];
+        $bio = $this->biographyRepository->getDefaultBioByUserName($user);
+
+        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems,"biography"=>$bio];
         $view->with("data",$data);
     }
 

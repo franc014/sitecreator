@@ -9,7 +9,7 @@ class Saleable extends Model {
     use SoftDeletes;
     use ScopesTrait;
     protected $dates = ['deleted_at'];
-    protected $appends = ["tagtype","layouttype","isfeatured","slug"];
+    protected $appends = ["tagtype","layouttype","isfeatured","slug","hasbenefits"];
     protected $guarded = ["id"];
 
     public static function boot(){
@@ -98,6 +98,18 @@ class Saleable extends Model {
         return $slug;
     }
 
+    public function getHasbenefitsAttribute(){
+
+        $benefits = $this->whereHas('details',function($query){
+           $query->where('type',1);
+        })->where('id',$this->getAttribute('id'))->get();
+        if($benefits->count()>0){
+            return true;
+        }
+        return false;
+    }
+
+    
 
 
 

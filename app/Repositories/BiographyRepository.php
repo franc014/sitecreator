@@ -98,8 +98,12 @@ class BiographyRepository extends DBRepository{
     }
 
     public function getDefaultBioByUserName($userName){
-        $user = $this->userRepository->getUserByUserName($userName);
-        return $this->model->where("user_id",$user->id)->where("status",1)->where("default",1)->firstOrFail();
+        try {
+            $user = $this->userRepository->getUserByUserName($userName);
+            return $this->model->where("user_id", $user->id)->where("status", 1)->where("default", 1)->firstOrFail();
+        }catch (ModelNotFoundException $exception){
+             return null;
+        }
     }
 
 

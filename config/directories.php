@@ -32,5 +32,9 @@ return [
         "detail_icon"=>["x"=>100,"y"=>100],
         "project_image"=>["x"=>400,"y"=>400],
         "home_image"=>["x"=>1300,"y"=>850]
+    ],
+    "default_images"=>[
+        "characteristic_default_icon"=>"/members/saleables/details/icons/characteristic_default_icon3.png",
+        "benefit_default_icon"=>"/members/saleables/details/icons/benefit_default_icon.png"
     ]
 ];

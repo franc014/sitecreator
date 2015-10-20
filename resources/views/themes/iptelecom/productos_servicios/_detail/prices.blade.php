@@ -2,9 +2,8 @@
 $prices = $data["prices"];
 ?>
 
-<section class="content-block dark-bg content-display-detail" id="prices">
-    <div class="overlay default">
-    <div class="container  service-main-details ">
+<section class="content-block default-bg saleable-prices-container" id="price">
+    <div class="container  prices-content">
 
         <div class="row">
             <div class="col-sm-12">
@@ -64,6 +63,6 @@ $prices = $data["prices"];
             </div>
         @endif
     </div>
-    </div>
+
 
 </section>

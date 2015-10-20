@@ -5513,12 +5513,12 @@ section.content-display.content-block.default-bg {
   background-image: url('https://s3.amazonaws.com/jadevel/iptelecom/img/minimal4.png');
   background-repeat: repeat; }
 
-.thumbnail {
-  background-image: url('https://s3.amazonaws.com/jadevel/iptelecom/img/wood_02.jpg');
+/*.thumbnail{
+  background-image: url($asset-path +"img/wood_02.jpg");
   background-repeat: repeat;
   max-height: 100%;
-  max-width: 100%; }
-
+  max-width: 100%;
+}*/
 #tab-content {
   padding-top: 40px; }
 
@@ -8310,35 +8310,40 @@ ul.portfolio-filter {
           font-size: 12px;
           margin-bottom: 2px; } }
 
-.service-box-desc {
+.saleable-services-container h1 {
+  color: #FFFFFF;
+  font-weight: 400; }
+.saleable-services-container .service-box-desc {
   background-color: #EDEDED;
   background-size: cover; }
-  .service-box-desc h3 {
+  .saleable-services-container .service-box-desc h1 {
+    color: #FFFFFF !important; }
+  .saleable-services-container .service-box-desc h3 {
     color: #009ADA !important; }
-  .service-box-desc .panel-footer {
+  .saleable-services-container .service-box-desc .panel-footer {
     width: 100%; }
-    .service-box-desc .panel-footer a.know-more {
+    .saleable-services-container .service-box-desc .panel-footer a.know-more {
       color: #CA4B4D !important; }
-      .service-box-desc .panel-footer a.know-more:hover {
+      .saleable-services-container .service-box-desc .panel-footer a.know-more:hover {
         color: #d87a7c !important; }
-  .service-box-desc .panel-body p {
+  .saleable-services-container .service-box-desc .panel-body p {
     color: #888 !important;
     font-size: 15px !important;
     letter-spacing: 1px;
     z-index: 100; }
-    .service-box-desc .panel-body p a {
+    .saleable-services-container .service-box-desc .panel-body p a {
       color: #edb5b7;
       font-style: oblique;
       line-height: 0;
       font-size: 1em; }
       @media (max-width: 767px) {
-        .service-box-desc .panel-body p a {
+        .saleable-services-container .service-box-desc .panel-body p a {
           margin-top: 30px;
           float: none !important;
           clear: left;
           line-height: 10px;
           white-space: inherit; } }
-      .service-box-desc .panel-body p a:hover {
+      .saleable-services-container .service-box-desc .panel-body p a:hover {
         color: #d86467; }
 
 /* CONTACT CARD*/
@@ -8359,6 +8364,18 @@ ul.portfolio-filter {
     padding: 0; }
 
 /*Services sections*/
+.service-main-details .icon-feature {
+  padding-left: 0px;
+  width: 32px;
+  height: 32px;
+  margin-left: 0px; }
+.service-main-details .media-body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin-top: 10px; }
+  .service-main-details .media-body p {
+    margin-left: 20px; }
 @media (max-width: 767px) {
   .service-main-details .service-description h1 {
     font-size: 25px; }
@@ -8384,36 +8401,54 @@ ul.portfolio-filter {
 .service-main-details .targets {
   margin-top: 50px; }
 
-.price-box {
-  background-color: #000;
-  background-size: cover; }
-  .price-box h3 {
-    color: #009ADA !important; }
-  .price-box .panel-footer {
-    width: 100%; }
-    .price-box .panel-footer a.know-more {
-      color: #CA4B4D !important; }
-      .price-box .panel-footer a.know-more:hover {
-        color: #d87a7c !important; }
-  .price-box .panel-body p {
-    color: #888 !important;
-    font-size: 15px !important;
-    letter-spacing: 1px;
-    z-index: 100; }
-    .price-box .panel-body p a {
-      color: #edb5b7;
-      font-style: oblique;
-      line-height: 0;
-      font-size: 1em; }
-      @media (max-width: 767px) {
-        .price-box .panel-body p a {
-          margin-top: 30px;
-          float: none !important;
-          clear: left;
-          line-height: 10px;
-          white-space: inherit; } }
-      .price-box .panel-body p a:hover {
-        color: #d86467; }
+/*prices section*/
+.saleable-prices-container {
+  background-image: url("img/page_images/minimal3.jpg");
+  background-color: tomato; }
+  .saleable-prices-container h1 {
+    color: #009ADA !important;
+    font-weight: 400; }
+  .saleable-prices-container .price-box {
+    background-color: #FFFFFF;
+    background-size: cover; }
+    .saleable-prices-container .price-box h3 {
+      color: #009ADA !important; }
+    .saleable-prices-container .price-box .panel-footer {
+      width: 100%; }
+      .saleable-prices-container .price-box .panel-footer a.know-more {
+        color: #CA4B4D !important; }
+        .saleable-prices-container .price-box .panel-footer a.know-more:hover {
+          color: #d87a7c !important; }
+    .saleable-prices-container .price-box .panel-body p {
+      color: #888 !important;
+      font-size: 15px !important;
+      letter-spacing: 1px;
+      z-index: 100; }
+      .saleable-prices-container .price-box .panel-body p a {
+        color: #edb5b7;
+        font-style: oblique;
+        line-height: 0;
+        font-size: 1em; }
+        @media (max-width: 767px) {
+          .saleable-prices-container .price-box .panel-body p a {
+            margin-top: 30px;
+            float: none !important;
+            clear: left;
+            line-height: 10px;
+            white-space: inherit; } }
+        .saleable-prices-container .price-box .panel-body p a:hover {
+          color: #d86467; }
+
+/*ventages section*/
+.saleable-ventages-container p {
+  color: #888;
+  padding: 20px;
+  font-size: 16px; }
+.saleable-ventages-container .thumbnail {
+  background-color: #FFFFFF; }
+.saleable-ventages-container h1 {
+  color: #FFFFFF;
+  font-weight: 400; }
 
 /* service or product section nav bar*/
 @media (max-width: 767px) {

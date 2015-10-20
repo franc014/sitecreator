@@ -4,13 +4,13 @@ $isContactPage = false;
 
 ?>
 <section class="content-block default-bg content-display-detail" id="characteristics">
-    <div class="container service-main-details">
+    <div class="container ">
         {{--<div class="container-fluid service-main-details"  id="characteristics">--}}
-        <div class="row">
+        <div class="row service-main-details">
 
-            <div class="col-sm-7 col-md-7 service-description">
+            <div class="col-sm-9 col-md-9 service-description">
                 <h1>
-                    {{$saleable->title}}
+                    {{trim($saleable->title)}}
                 </h1>
 
                 <div class="saleable-labeling">
@@ -19,27 +19,28 @@ $isContactPage = false;
                 </div>
 
                 <div>
-                    {!! $saleable->description !!}
+                    {!!str_replace('<p><br/></p>',"",trim($saleable->description)) !!}
 
                 </div>
                 @if(!$details->isEmpty())
-                    <div>
+
                         <h2>Características</h2>
                         @foreach($details as $detail)
                             <div class="media">
-                                <div class="media-left ">
+                                <div class="media-left media-middle pull-left">
                                     <img data-anijs="if: mouseover, do: flipInY animated"
-                                         class="media-object img-circle icon-feature" width="80" height="80"
+                                         class="media-object  icon-feature "
                                          src="{{$detail->iconpath}}" alt="servicio">
                                 </div>
                                 <div class="media-body ">
+
                                     <p class="service-detail ">
-                                        {{$detail->detail}}
+                                        {!! str_replace('<p><br/></p>',"",trim($detail->detail)) !!}
                                     </p>
                                 </div>
                             </div>
                         @endforeach
-                    </div>
+
                     @endif
 
 

@@ -3,8 +3,9 @@ $restsaleables = $data["restsaleables"];
 $isDedicated = Config::get("app_parametters.isDedicated");
 ?>
 @if(!$restsaleables->isEmpty())
-    <section class="content-block default-bg content-display-detail" id="services">
-        <div class="container  ">
+    <section class="content-block dark-bg saleable-services-container" id="prices">
+        <div class="overlay default">
+            <div class="container  services-content">
             {{--<div class="saleable-services-container" id="services">
                 <div class="container ">--}}
 
@@ -29,6 +30,6 @@ $isDedicated = Config::get("app_parametters.isDedicated");
                     </div>
                 </div>
 
-
+            </div>
         </section>
 @endif

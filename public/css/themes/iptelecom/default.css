@@ -8346,6 +8346,37 @@ ul.portfolio-filter {
       .saleable-services-container .service-box-desc .panel-body p a:hover {
         color: #d86467; }
 
+.service-box-desc {
+  background-color: #EDEDED;
+  background-size: cover; }
+  .service-box-desc h3 {
+    color: #009ADA !important; }
+  .service-box-desc .panel-footer {
+    width: 100%; }
+    .service-box-desc .panel-footer a.know-more {
+      color: #CA4B4D !important; }
+      .service-box-desc .panel-footer a.know-more:hover {
+        color: #d87a7c !important; }
+  .service-box-desc .panel-body p {
+    color: #888 !important;
+    font-size: 15px !important;
+    letter-spacing: 1px;
+    z-index: 100; }
+    .service-box-desc .panel-body p a {
+      color: #edb5b7;
+      font-style: oblique;
+      line-height: 0;
+      font-size: 1em; }
+      @media (max-width: 767px) {
+        .service-box-desc .panel-body p a {
+          margin-top: 30px;
+          float: none !important;
+          clear: left;
+          line-height: 10px;
+          white-space: inherit; } }
+      .service-box-desc .panel-body p a:hover {
+        color: #d86467; }
+
 /* CONTACT CARD*/
 .contact-card {
   background-color: #d86467;

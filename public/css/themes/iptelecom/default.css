@@ -5672,12 +5672,13 @@ section.content-display-detail.content-block.default-bg {
   color: #FFFFFF;
   font-size: 40px;
   text-align: left;
-  line-height: 0.9; }
+  line-height: 0.9;
+  margin-top: 0; }
 
 p.banner-subtext {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: lighter;
-  margin-top: 15px;
+  margin-top: 5px;
   max-width: 350px;
   text-align: left;
   color: white; }
@@ -5705,15 +5706,17 @@ body {
 -------------------------------------------------- */
 #main-banner {
   height: 100%;
-  background: url('https://s3.amazonaws.com/jadevel/iptelecom/img/banners/main_banner.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; }
+  background: url('https://s3.amazonaws.com/jadevel/iptelecom/img/banners/main_banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; }
   @media (min-width: 767px) {
     #main-banner {
       background-image: url('https://s3.amazonaws.com/jadevel/iptelecom/img/banners/main_banner.jpg');
       background-repeat: no-repeat;
-      background-position: left top; } }
+      background-position: left top;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover; } }
 
 .overlay {
   min-height: 100%; }

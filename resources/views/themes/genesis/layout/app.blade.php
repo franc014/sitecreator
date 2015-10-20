@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="ZlgY77YUSaEM_HK042TwcvMNPJgkjF8u8nlk9Fz-2ms"/>
+    <meta name="google-site-verification" content="ZlgY77YUSaEM_HK042TwcvMNPJgkjF8u8nlk9Fz-2ms" />
 
     <title>Juan Andrade | @yield('page_title_window')</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('/img/favicons/genesis/favicon.ico') }}">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="/css/themes/genesis/genesis.css" rel="stylesheet">

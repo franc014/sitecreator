@@ -8,7 +8,7 @@ $isDedicated = Config::get("app_parametters.isDedicated");
 ?>
 <!-- Header
     ================================================== -->
-<header id="header">
+<header id="header" >
 
     <!-- Main Navigation -->
     <div  id="main-nav" class="navbar navbar-default hide-icons " >

@@ -21,12 +21,12 @@ $bio = $data['biography'];
                         @if($bio===null)
                             <i class="alert alert-warning fa fa-exclamation-triangle"> Aun no ha escrito una biografía.</i>
                         @else
-                            {!!str_limit($bio->detail,300,"......")!!}
+                            {!!str_limit($bio->detail,10000,"......")!!}
                         @endif
                     </div>
                     <div>
-                        <a href="/acercade" class="scroll-to btn btn-primary"><i class="fa fa-info-circle"></i>CONOCE
-                            MÁS DE IPTELECOM</a>
+                        {{--<a href="/acercade" class="scroll-to btn btn-primary"><i class="fa fa-info-circle"></i>CONOCE
+                            MÁS DE IPTELECOM</a>--}}
                         <a href="/productos-y-servicios" class="scroll-to btn btn-primary"><i
                                     class="fa fa-folder-open"></i>EXPLORA NUESTROS SERVICIOS</a>
                         <!--a href="#about" class="scroll-to btn btn-white"><i class="fa fa-print"></i>start now</a-->

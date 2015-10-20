@@ -8,16 +8,16 @@
     <?php
     $profile = $data["profile"];
     $callouts = $profile->homecalls;
-
+    $themeName = Config::get('app_parametters.theme_name');
     $homeItem = $data["home_item"];
     $isDedicated = Config::get("app_parametters.isDedicated");
     ?>
 
     <div class="container-fluid ">
         @if($callouts->isEmpty())
-            @include('themes.genesis.home.partials.defaultcallout')
+            @include('themes.'.$themeName.'.home.partials.defaultcallout')
         @else
-            @include('themes.genesis.home.partials.callouts')
+            @include('themes.'.$themeName.'.home.partials.callouts')
         @endif
     </div>
 

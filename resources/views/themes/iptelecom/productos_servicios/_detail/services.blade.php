@@ -3,7 +3,7 @@ $restsaleables = $data["restsaleables"];
 $isDedicated = Config::get("app_parametters.isDedicated");
 ?>
 @if(!$restsaleables->isEmpty())
-    <section class="content-block dark-bg saleable-services-container" id="prices">
+    <section class="content-block dark-bg saleable-services-container" id="other_saleables">
         <div class="overlay default">
             <div class="container  services-content">
             {{--<div class="saleable-services-container" id="services">

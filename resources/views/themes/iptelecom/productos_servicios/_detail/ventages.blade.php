@@ -4,7 +4,7 @@ $ventages = $data["ventages"];
 @if(!$ventages->isEmpty())
     {{--<div class="saleable-ventages-container" id="ventages">
         <div class="container ventages-content" >--}}
-    <section class="content-block dark-bg saleable-ventages-container" id="prices">
+    <section class="content-block dark-bg saleable-ventages-container" id="ventages">
         <div class="overlay default">
             <div class="container  ventages-content ">
 

@@ -1,0 +1,321 @@
+@import "custom_mixins";
+
+.separator {
+  border: 1px solid $color-1;
+  margin: 0;
+}
+
+/* logo */
+
+.ent-logo {
+  width: 60px;
+  height: 80px;
+}
+
+/* home */
+.navbar-home {
+  //border-bottom: 5px solid $brand-primary;
+  background-color: transparent;
+}
+
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+}
+
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+#bg .after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  color: #FFF;
+  display: block;
+  background: rgba(0, 0, 0, .6);
+}
+
+.home-jumbotron {
+  position: fixed;
+  width: 70%;
+  margin: 0 15%;
+  padding: 30px;
+  bottom: 5px;
+
+  p {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+  }
+  .home-jumbotron-callouts {
+    width: 100%;
+    margin: 0 30%;
+  }
+
+  @media (max-width: 991px) {
+    width: 80%;
+    margin: 0 7%;
+
+    p {
+      font-size: 20px;
+    }
+    .home-jumbotron-callouts {
+      width: 100%;
+      margin: 0 28%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    width: 90%;
+    margin: 0 3%;
+
+    p {
+      font-size: 15px;
+    }
+    .home-jumbotron-callouts {
+
+      width: 100%;
+      margin: 0 7%;
+      display: inline;
+      .btn {
+        width: 45%;
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+    }
+  }
+
+}
+
+.saleable-services-container {
+
+  
+
+  h1 {
+    color: #FFFFFF;
+    font-weight: 400;
+  }
+
+  .service-box-desc {
+    h1 {
+      color: #FFFFFF !important
+    }
+
+    @include card-box(#EDEDED);
+
+  }
+}
+.service-box-desc {
+
+  @include card-box(#EDEDED);
+
+}
+/* CONTACT CARD*/
+.contact-card {
+  background-color: lighten(#AB2B2E, 20%);
+  color: #FFFFFF;
+  .header-contact {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  .contact-item {
+    font-size: 14px;
+    & a {
+      color: #FFFFFF;
+    }
+    & a:hover {
+      color: lighten($color-2, 40%);
+    }
+  }
+  .contact-top-separator {
+    margin: 0 0 5px 0;
+    padding: 0;
+  }
+
+}
+
+/*Services sections*/
+.service-main-details {
+
+
+  .icon-feature {
+    padding-left: 0px;
+    width: 32px;
+    height: 32px;
+    margin-left: 0px;
+  }
+  .media-body {
+    font-size: 18px!important;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+    p {
+      margin-left: 20px;
+    }
+  }
+  @media (max-width: 767px) {
+
+    .service-description {
+
+      h1 {
+        font-size: 25px;
+      }
+
+    }
+  ;
+    .media-body {
+      float: left;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin-top: 10px;
+    }
+  ;
+
+    .icon-feature {
+      margin-left: 85px;
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .service-description {
+
+    padding: 20px;
+    h1 {
+
+      font-weight: bold;
+      text-transform: uppercase;
+
+    }
+  ;
+
+    p {
+      color: $text-color;
+      line-height: 1.5;
+      font-size: 18px;
+      text-align: justify;
+    }
+  }
+
+  .targets {
+    margin-top: 50px;
+  }
+
+}
+
+/*prices section*/
+.saleable-prices-container {
+
+  background-image: url("img/page_images/minimal3.jpg");
+  background-color: tomato;
+  h1 {
+    color: $color-2 !important;
+    font-weight: 400;
+  }
+  .price-box {
+    @include card-box(#FFFFFF);
+  }
+}
+
+/*ventages section*/
+.saleable-ventages-container {
+  p{
+    color: $text-color;
+    padding: 20px;
+    font-size: 16px;
+  }
+  //border-top: 1px solid $blue-genesis;
+  .thumbnail {
+    background-color: #FFFFFF;
+  }
+
+  h1 {
+    color: #FFFFFF;
+    font-weight: 400;
+  }
+}
+
+/* service or product section nav bar*/
+.section-nav {
+  @media (max-width: 767px) {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 0;
+
+  }
+}
+
+.section-list-nav {
+
+  & a {
+    font-size: 11px;
+    padding: 7px !important;
+  }
+  & a:hover {
+    color: lighten($color-2, 40%) !important;
+  }
+
+}
+
+.top-jumper {
+  margin-left: 2px;
+}
+
+/* labels for products or services*/
+.saleable-labeling {
+  margin-bottom: 30px;
+  border-bottom: solid $color-1 2px;
+  padding-bottom: 40px;
+  @media (max-width: 767px) {
+    padding-bottom: 100px;
+  }
+}
+
+.label-producto {
+  font-size: 14px;
+  background-color: #2980B9;
+  padding: 7px;
+  @media (max-width: 767px) {
+    float: left;
+
+  }
+}
+
+.label-servicio {
+  font-size: 14px;
+  background-color: #8E44AD;
+}
+
+.bio {
+  padding: 20px 0 0 0;
+  p {
+    font-size: 18px;
+    line-height: 25px;
+    text-align: justify;
+    letter-spacing: 1px;
+  }
+}
+
+
+
+
+
+

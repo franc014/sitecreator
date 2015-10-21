@@ -2,7 +2,7 @@
 $prices = $data["prices"];
 ?>
 
-<section class="content-block default-bg saleable-prices-container" id="price">
+<section class="content-block default-bg saleable-prices-container content-display-detail" id="prices">
     <div class="container  prices-content">
 
         <div class="row">
@@ -54,7 +54,7 @@ $prices = $data["prices"];
 
                             </div>
                             <div class="panel-footer" >
-                                <a href="/contacto" class="btn btn-success btn-md center-block" href="#">Contactar</a>
+                                <a href="/contacto" class="btn btn-primary btn-md center-block fa fa-envelope-o" href="#"> Contactar</a>
 
                             </div>
                         </div>

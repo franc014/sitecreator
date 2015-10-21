@@ -18,7 +18,7 @@ $isContactPage = false;
                     <span>@include('themes.iptelecom.productos_servicios._detail.partials._section_nav')</span>
                 </div>
 
-                <div>
+                <div class="saleable-description">
                     {!!str_replace('<p><br/></p>',"",trim($saleable->description)) !!}
 
                 </div>
@@ -75,8 +75,8 @@ $isContactPage = false;
         <div class="row " >
             <div class="col-sm-6 col-md-6 ">
                 <div class="pull-left">
-                    <a href="/contacto" style="border-radius: 0" class="btn btn-success btn-lg "
-                       href="#">Solicitar</a>
+                    <a href="/contacto" style="border-radius: 0" class="btn btn-primary btn-lg "
+                       href="#"><i class="fa fa-paper-plane-o"> Solicitar</i></a>
                 </div>
                 @include('themes.genesis.partials.share_links')
             </div>

@@ -89,7 +89,7 @@
                             <h1 class="no-margin-t center-block">Nuestra Empresa</h1>
                             <hr class="separator">
                             <div class="bio">{!!$bio->detail!!}</div>
-                            <div class="btn-group center-block" role="group" >
+                            <div class="btn-group" role="group" >
                                 <div class="btn-group" role="group">
                                     <a href="/productos-y-servicios" class="btn btn-md btn-primary "><i class="fa fa-folder-open-o">
                                             Conoce nuestros servicios</i></a>

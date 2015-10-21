@@ -8401,6 +8401,7 @@ ul.portfolio-filter {
   height: 32px;
   margin-left: 0px; }
 .service-main-details .media-body {
+  font-size: 18px !important;
   height: 100%;
   width: 100%;
   padding: 0;
@@ -8428,7 +8429,8 @@ ul.portfolio-filter {
   .service-main-details .service-description p {
     color: #888;
     line-height: 1.5;
-    font-size: 16px; }
+    font-size: 18px;
+    text-align: justify; }
 .service-main-details .targets {
   margin-top: 50px; }
 
@@ -8522,4 +8524,7 @@ ul.portfolio-filter {
 .bio {
   padding: 20px 0 0 0; }
   .bio p {
-    font-size: 16px; }
+    font-size: 18px;
+    line-height: 25px;
+    text-align: justify;
+    letter-spacing: 1px; }

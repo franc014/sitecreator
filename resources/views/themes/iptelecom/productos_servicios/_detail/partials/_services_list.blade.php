@@ -28,7 +28,7 @@
 
                     </div>
                     <div class="panel-footer">
-                        <a href="/contacto" class="btn btn-success btn-md" href="#">Solicitar</a>
+                        <a href="/contacto" class="btn btn-primary btn-md fa fa-paper-plane-o" href="#"> Solicitar</a>
                         @if(!$isDedicated)
 
                             <a href="/{{$saleable->user->username}}/{{$saleable->tagtype}}/{{$saleable->slug}}"

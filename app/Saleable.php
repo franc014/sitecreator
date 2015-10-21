@@ -101,7 +101,7 @@ class Saleable extends Model {
     public function getHasbenefitsAttribute(){
 
         $benefits = $this->whereHas('details',function($query){
-           $query->where('type',1);
+           $query->where('type',2);
         })->where('id',$this->getAttribute('id'))->get();
         if($benefits->count()>0){
             return true;

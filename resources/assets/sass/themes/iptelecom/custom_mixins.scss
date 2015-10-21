@@ -1,0 +1,47 @@
+/*boxes*/
+@mixin card-box($bg-card-color) {
+  background-color: $bg-card-color;
+
+  h3 {
+    color: $color-2 !important;
+  }
+
+  background-size: cover;
+
+  .panel-footer {
+    width: 100%;
+    a.know-more {
+      color: $color-1 !important;
+
+      &:hover {
+        color: lighten($color-1, 12%) !important;
+      }
+    }
+  }
+  .panel-body p {
+
+    color: $text-color !important;
+    font-size: 15px !important;
+    letter-spacing: 1px;
+    a {
+      @media (max-width: 767px) {
+        margin-top: 30px;
+        float: none !important;
+        clear: left;
+        line-height: 10px;
+        white-space: inherit;
+      }
+    ;
+      color: lighten(#AB2B2E, 40%);
+      font-style: oblique;
+      line-height: 0;
+      font-size: 1em;
+      &:hover {
+        color: lighten(#AB2B2E, 20%);
+      }
+    }
+  ;
+    z-index: 100;
+  }
+}
+

@@ -12,6 +12,6 @@
         </li>
     @endif
     <li role="presentation" class="active section-list-nav"><a data-icon="&#xe63b" href="#prices">Precios</a></li>
-    <li role="presentation" class="active section-list-nav"><a data-icon="&#xe630" href="#services">Otros Servicios</a>
+    <li role="presentation" class="active section-list-nav"><a data-icon="&#xe630" href="#other_saleables">Otros Servicios</a>
     </li>
 </ul>

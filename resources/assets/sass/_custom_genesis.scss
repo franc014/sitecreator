@@ -433,11 +433,11 @@ body{
 
 }
 .project-box{
-  min-height: 210px;
-  min-width: 210px;
+  /*min-height: 210px;
+  min-width: 210px;*/
   @include card-box(#7F8C8D);
   position: relative;
-  margin-right: 2px;
+
 
 }
 .project-box * {

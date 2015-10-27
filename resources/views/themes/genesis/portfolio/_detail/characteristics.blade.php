@@ -10,6 +10,7 @@ $gallery = $data["gallery"];
 
             </h1>
 
+
             <div class="saleable-labeling">
                 @if(!$project->categories->isEmpty())
                     @foreach($project->categories as $category)

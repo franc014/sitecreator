@@ -2,7 +2,7 @@
 $projects = $data["restofprojects"];
 ?>
 @if(!$projects->isEmpty())
-<div class="saleable-ventages-container" id="ventages">
+<div class="saleable-ventages-container" id="other-projects">
     <div class="container ventages-content" >
 
         <div class="row">

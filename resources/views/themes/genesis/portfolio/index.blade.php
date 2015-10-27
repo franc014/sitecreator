@@ -18,12 +18,14 @@
         $isDedicated = Config::get("app_parametters.isDedicated");
 
     ?>
-    <div class="container site-container2" >
+    <div class="container site-container2 " style="margin-top: 220px" >
+        <h1>Algunos de mis proyectos de Desarrollo de Aplicaciones Web y Móviles.
 
+        </h1>
         @include('themes.genesis.portfolio._detail.partials._cat_tabs')
 
         <div class="row">
-            <div class="col-sm-9 col-md-9 service-content">
+            <div class="col-sm-9 col-md-9 service-content"style="margin-top: 0">
                 @if(!$projects->isEmpty())
                     <div id="content-filtered">
                         @include('themes.genesis.portfolio.partials._projects_list')
@@ -32,11 +34,11 @@
                     @include("themes.genesis.partials.alerts.no_items")
                 @endif
             </div>
-            <div class="col-sm-3 col-md-3" >
+            {{--<div class="col-sm-3 col-md-3" >
                 <div class="contact-widget row-gap-when-top"  >
                     @include("themes.genesis.partials.contact_info._contact_widget")
                 </div>
-            </div>
+            </div>--}}
 
         </div>
 

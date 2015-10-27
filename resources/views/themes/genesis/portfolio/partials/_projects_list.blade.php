@@ -1,4 +1,4 @@
-@foreach(array_chunk($projects->all(), 3) as $row)
+@foreach(array_chunk($projects->all(), 4) as $row)
     <div class="row " >
         @foreach( $row as $project)
             <div class="col-sm-4 ">
@@ -14,15 +14,15 @@
                     <div class="panel-body" >
 
                         <!--img src="http://lorempixel.com/50/50/" class="center-block"-->
-                        <h3>{{$project->slug}}</h3>
+                        <h2>{{$project->title}}</h2>
                         <hr>
                         @if(!$isDedicated)
                         <p >
-                            {!!str_limit($project->description,100,"...")!!}<a href="/{{$username}}/project/{{$project->slug}}">Ver proyecto</a>
+                            {!!str_limit($project->description,100,"...")!!}<a href="/{{$username}}/project/{{$project->title}}">Ver proyecto</a>
                         </p>
                         @else
                             <p >
-                                {!!str_limit($project->description,100,"...")!!}<a href="/project/{{$project->slug}}">Ver proyecto</a>
+                                {!!str_limit($project->description,100,"...")!!}<a href="/project/{{$project->title}}">Ver proyecto</a>
                             </p>
                         @endif
 
@@ -30,12 +30,12 @@
                     {{--<div class="panel-footer" >
 
                         @if(!$isDedicated)
-                            <a href="/{{$username}}/project/{{$project->slug}}"
+                            <a href="/{{$username}}/project/{{$project->title}}"
                                class="pull-right know-more">
                                 Conocer en detalle
                             </a>
                         @else
-                            <a href="/project/{{$project->slug}}"
+                            <a href="/project/{{$project->title}}"
                                class="pull-right know-more">
                                 Conocer en detalle
                             </a>

@@ -6045,6 +6045,10 @@ body {
 .site-container2 {
   min-height: 800px;
   margin-top: 270px; }
+  .site-container2 h1 {
+    color: #2E4560;
+    text-transform: uppercase;
+    font-weight: bold; }
   @media (max-width: 767px) {
     .site-container2 {
       margin-top: 320px; } }

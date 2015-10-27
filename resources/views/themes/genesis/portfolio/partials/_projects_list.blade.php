@@ -1,7 +1,7 @@
 @foreach(array_chunk($projects->all(), 4) as $row)
     <div class="row " >
         @foreach( $row as $project)
-            <div class="col-sm-4 ">
+            <div class="col-sm-3 ">
                 <div style="background: linear-gradient(
                         rgba(52, 73, 94, 0.8),
                         rgba(52, 73, 94, 0.8)

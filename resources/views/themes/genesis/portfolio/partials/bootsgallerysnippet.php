@@ -20,12 +20,12 @@
                 <div class="modal-body next"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        Previous
+                        <span data-icon="&#xe744;"></span>
+                        Anterior
                     </button>
                     <button type="button" class="btn btn-primary next">
-                        Next
-                        <i class="glyphicon glyphicon-chevron-right"></i>
+                        Siguiente
+                        <span data-icon="&#xe742;"></span>
                     </button>
                 </div>
             </div>

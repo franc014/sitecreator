@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Event;
 class Project extends Model {
     use SoftDeletes;
 	protected $fillable = ['user_id','title','description','featured_image','status'];
-    protected $appends = ['statusbool'];
+    protected $appends = ['statusbool','slug'];
     public function getStatusboolAttribute(){
         $status = $this->getAttribute("status");
         if($status==1){
@@ -46,5 +46,13 @@ class Project extends Model {
         }
         parent::delete();
     }
+
+    public function getSlugAttribute(){
+        $title = $this->getAttribute('title');
+        $slug = str_replace(' ','-',$title);
+        return $slug;
+    }
+
+
 
 }

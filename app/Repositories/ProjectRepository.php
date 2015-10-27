@@ -52,6 +52,18 @@ class ProjectRepository extends DBRepository{
         $portfolio = $this->model->where('user_id',$user->id)->where('status',1)->get();
         return $portfolio;
     }
+    public function getAllByUserNameExcept($userName,$exceptProjectId){
+        $user = $this->userRepository->getUserByUserName($userName);
+        //TODO: Pagination on portfolio
+        $portfolio = $this->model->where('user_id',$user->id)->where('status',1)->where('id','<>',$exceptProjectId)->get();
+        return $portfolio;
+    }
+    public function getProjectByName($projectName){
+        $projectTitle =  str_replace('-',' ',$projectName);
+        $project = $this->model->where('title',$projectTitle)->with('gallery_images','categories')->firstOrFail();
+        return $project;
+    }
+
 
 
 

@@ -42,7 +42,7 @@ if(Config::get("app_parametters.isDedicated")){
     Route::get('servicio/{saleable}', 'Site\SaleableController@detail');
 
     Route::get('portafolio', 'Site\PortfolioController@index');
-    Route::get('project/{projectname}/{project_id}', 'Site\PortfolioController@detail');
+    Route::get('project/{projectname}', 'Site\PortfolioController@detail');
 
 }else{
 
@@ -57,7 +57,7 @@ if(Config::get("app_parametters.isDedicated")){
     Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
 
     Route::get('{username}/portafolio', 'Site\PortfolioController@index');
-    Route::get('{username}/project/{projectname}/{project_id}', 'Site\PortfolioController@detail');
+    Route::get('{username}/project/{projectname}', 'Site\PortfolioController@detail');
 
 }
 Route::post('lead', 'Site\GuestController@storeLead');

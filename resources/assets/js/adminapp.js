@@ -1,6 +1,7 @@
 'use strict';
+
 var JQuery = require('jquery');
-var angular = require('./../vendor/angular/angular-index.js');
+var angular = require('./../vendor/angular/index.js');
 var angular_restmod = require('./../vendor/angular-restmod/dist/angular-restmod-bundle.js');
 var res_style = require('./../vendor/angular-restmod/dist/styles/ams.min.js');
 var stc_messages = require('./config/messages.js');
@@ -8,19 +9,25 @@ var stc_messages = require('./config/messages.js');
 
 var ngFabForm = require('./../vendor/ng-fab-form/dist/ng-fab-form.min.js');
 var ngMessages = require('./../vendor/angular-messages/angular-messages.min.js');
-
-var textAngular = require('./../vendor/textAngular/dist/textAngular-rangy.min.js');
+/*var froala = require('./../vendor/angular-froala/src/angular-froala.js');
+var froalasan = require('./../vendor/angular-froala/src/froala-sanitize.js');*/
+/*var textAngular = require('./../vendor/textAngular/dist/textAngular-rangy.min.js');
 var sanitize = require('./../vendor/textAngular/dist/textAngular-sanitize.min.js');
-var rangy = require('./../vendor/textAngular/dist/textAngular.min.js');
-
+var rangy = require('./../vendor/textAngular/dist/textAngular.min.js');*/
+/*var sanitize = require('./../vendor/textAngular/dist/textAngular-sanitize.min.js');*/
 var uploadLibp1 = require('../vendor/angularjs-file-upload/angular-file-upload-shim.min.js');
 var uploadLibp2 = require('../vendor/angularjs-file-upload/angular-file-upload.min.js');
 
+
 var nganimate = require('./../vendor/angular_animate/angular-animate.min.js');
 
+window.rangy = require('rangy/lib/rangy-core');
+window.rangy.saveSelection = require('rangy/lib/rangy-selectionsaverestore');
 
-var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages',
-    'textAngular','angularFileUpload','ngAnimate']);
+require('textangular/dist/textAngular-sanitize.min');
+require('textangular/dist/textAngular.min');
+require('textangular/dist/textAngularSetup');
+var prfXyzApp = angular.module('prfXyzApp',['restmod','ngFabForm','ngMessages', 'angularFileUpload','ngAnimate','textAngular']);
 
 prfXyzApp.config(['restmodProvider','$httpProvider','ngFabFormProvider',function(restmodProvider, $httpProvider,ngFabFormProvider) {
     restmodProvider.rebase('AMSApi');

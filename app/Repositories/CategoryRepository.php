@@ -28,6 +28,8 @@ class CategoryRepository extends DBRepository{
 
 
     public function saveCategory($data){
+        $data = $this->addRandomLabelColor($data);
+
         $category = $this->saveModel($data);
         return $dataResponse = [
             "category"=>$category,
@@ -65,7 +67,12 @@ class CategoryRepository extends DBRepository{
         return $categories;
     }
 
-
+    private function addRandomLabelColor($data)
+    {
+        $color = getRandomHexadecimalColor();
+        $data['labelcolor'] = $color;
+        return $data;
+    }
 
 
 

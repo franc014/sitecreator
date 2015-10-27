@@ -433,8 +433,11 @@ body{
 
 }
 .project-box{
+  min-height: 210px;
+  min-width: 210px;
   @include card-box(#7F8C8D);
   position: relative;
+  margin-right: 2px;
 
 }
 .project-box * {
@@ -813,6 +816,16 @@ a.contact-collaout{
       letter-spacing: 1px;
       line-height: 1.5;
     }
+    .project-body-description{
+      a{
+        color:darken(#49BEAA,10%);
+        font-weight: bold;
+        &:hover{
+          color: lighten(#49BEAA,10%);
+        }
+      }
+    }
+
   }
   .targets{
     margin-top: 50px;
@@ -1046,6 +1059,7 @@ a.link-to-site{
 
 
 .portfolio-gallery-container{
+  margin: 0 0 0 0;
   h2,h3{
     color:#7D8C87
   }
@@ -1053,7 +1067,8 @@ a.link-to-site{
 }
 .separator{
   border: solid #D35400  1px;
-
+  padding: 0;
+  margin: 0;
 }
 
 /* labels for products or services*/
@@ -1089,7 +1104,7 @@ a.link-to-site{
 .section-list-nav{
 
   & a{
-    font-size: 11px; padding: 7px !important;
+    font-size: 12px; padding: 7px !important;
   }
   & a:hover{
     color: $link-color !important;

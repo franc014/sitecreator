@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="prfXyzApp">
+<html >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,7 @@
 
 </head>
 
-<body ng-cloak>
+<body ng-app="prfXyzApp" ng-cloak>
 @include('layouts.admin.partials._header')
 @include('layouts..admin.partials._sidebar')
 <div ng-show="showSpinner" id="spinner" class="sk-spinner sk-spinner-double-bounce place-spinner">
@@ -39,16 +39,12 @@
 @section('javascripts')
     <script src="/js/admin/jquery-1.11.1.min.js"></script>
     <script src="/js/admin/jquery-ui.min.js"></script>
-<script src="/js/abundle.js"></script>
-
+<script src="/js/adminapp.js"></script>
+    {{--<script src="/js/abundle.js"></script>--}}
 <script src="/js/admin/bootstrap.min.js"></script>
 
-
 <script>
-
-
-
-    !function ($) {
+!function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
         });

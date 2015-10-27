@@ -46,11 +46,14 @@ class ProjectDetailComposer extends CurrentRoute{
             $urlUserName = $this->getRouteParameter('username');
             $user = $this->currentUserName($urlUserName);
             try{
-                $project = $this->projectRepository->getModel($user, $this->getRouteParameter('project_id'));
+                $project = $this->projectRepository->getProjectByName($this->getRouteParameter('projectname'));
                 $gallery = $this->galleryRepository->getAllByProjectId($project->id);
+                $restOfProjects = $this->projectRepository->getAllByUserNameExcept($user,$project->id);
+
                 $data = [
                     "project" => $project,
-                    "gallery" => $gallery
+                    "gallery" => $gallery,
+                    "restofprojects"=>$restOfProjects
                 ];
                 return $view->with("data", $data);
             }catch(ModelNotFoundException $e){

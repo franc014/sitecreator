@@ -3,8 +3,8 @@
         @foreach( $row as $project)
             <div class="col-sm-4 ">
                 <div style="background: linear-gradient(
-                        rgba(41, 128, 185, 0.7),
-                        rgba(127, 140, 141, 0.7)
+                        rgba(52, 73, 94, 0.8),
+                        rgba(52, 73, 94, 0.8)
                         ), url({{$project->photo['cloudpath']}});" class="panel panel-default project-box mix
                 @foreach($project->categories as $cat)
                     category-{{$cat['id'].' '}}
@@ -14,14 +14,15 @@
                     <div class="panel-body" >
 
                         <!--img src="http://lorempixel.com/50/50/" class="center-block"-->
-                        <h3>{{$project->title}}</h3>
+                        <h3>{{$project->slug}}</h3>
+                        <hr>
                         @if(!$isDedicated)
                         <p >
-                            {!!str_limit($project->description,100,"...")!!}<a href="/{{$username}}/project/{{$project->title}}/{{$project->id}}">Leer más</a>
+                            {!!str_limit($project->description,100,"...")!!}<a href="/{{$username}}/project/{{$project->slug}}">Ver proyecto</a>
                         </p>
                         @else
                             <p >
-                                {!!str_limit($project->description,100,"...")!!}<a href="/project/{{$project->title}}/{{$project->id}}">Leer más</a>
+                                {!!str_limit($project->description,100,"...")!!}<a href="/project/{{$project->slug}}">Ver proyecto</a>
                             </p>
                         @endif
 
@@ -29,12 +30,12 @@
                     {{--<div class="panel-footer" >
 
                         @if(!$isDedicated)
-                            <a href="/{{$username}}/project/{{$project->title}}/{{$project->id}}"
+                            <a href="/{{$username}}/project/{{$project->slug}}"
                                class="pull-right know-more">
                                 Conocer en detalle
                             </a>
                         @else
-                            <a href="/project/{{$project->title}}/{{$project->id}}"
+                            <a href="/project/{{$project->slug}}"
                                class="pull-right know-more">
                                 Conocer en detalle
                             </a>

@@ -17,9 +17,11 @@
 @endsection
 
 @section('content')
-
+    <?php
+    $isDedicated = Config::get("app_parametters.isDedicated");
+    ?>
     @include('themes.genesis.portfolio._detail.characteristics')
-
+    @include('themes.genesis.portfolio._detail.other_projects')
     <div class="container-fluid form-container-option-one" id="contact-form">
         <div class="row">
             <div class="col-sm-9 col-md-9 form-content-section">

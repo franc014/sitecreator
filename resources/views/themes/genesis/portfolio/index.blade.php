@@ -25,7 +25,7 @@
         @include('themes.genesis.portfolio._detail.partials._cat_tabs')
 
         <div class="row">
-            <div class="col-sm-9 col-md-9 service-content"style="margin-top: 0">
+            <div class="col-sm-12 col-md-12 service-content"style="margin-top: 0">
                 @if(!$projects->isEmpty())
                     <div id="content-filtered">
                         @include('themes.genesis.portfolio.partials._projects_list')

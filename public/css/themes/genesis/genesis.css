@@ -5949,13 +5949,12 @@ body {
         color: #f6d8ad; }
 
 .project-box {
-  min-height: 210px;
-  min-width: 210px;
+  /*min-height: 210px;
+  min-width: 210px;*/
   background-color: #7F8C8D;
   color: white;
   background-size: cover;
-  position: relative;
-  margin-right: 2px; }
+  position: relative; }
   .project-box .panel-footer a.know-more {
     color: #D35400 !important; }
     .project-box .panel-footer a.know-more:hover {

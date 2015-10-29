@@ -21,6 +21,7 @@ class AboutController extends Controller {
     }
 
     public function index($userName,$version){
+
         try {
         $bio = $this->resumeRepository->resumeByVersion($version)->biography;
         return view($this->theme . 'acercade' . '.index')->with(["bio"=>$bio]);

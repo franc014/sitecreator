@@ -28,6 +28,24 @@
 
         <div class="row">
             <div class="form-group col-sm-12">
+                <label class="control-label" for="pagetitle">Título de la Página</label><br>
+                <div >
+                    <input class="form-control" type="text" id="pagetitle" ng-model="content.pagetitle" ng-maxlength="70" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="control-label" for="pagedescription">Descripión de la Página</label><br>
+                <div >
+                    <textarea rows="6" class="form-control" type="text" id="pagedescription"  ng-maxlength="160" ng-model="content.pagedescription" required></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
                 <label class="control-label" for="ashome">Establecer como home</label><br>
                 <div >
                     <input  type="checkbox" id="ashome" ng-checked="content.ishome"

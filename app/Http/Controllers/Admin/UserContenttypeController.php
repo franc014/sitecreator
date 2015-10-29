@@ -102,9 +102,10 @@ class UserContenttypeController extends Controller {
 		$data = [
 			"active"=>$active,
             "ashome"=>Input::get('ashome'),
-            "menualias"=>Input::get('menualias')
-
-		];
+            "menualias"=>Input::get('menualias'),
+            "pagetitle"=>Input::get('pagetitle'),
+            "pagedescription"=>Input::get('pagedescription')
+        ];
 		$updated = $this->usercontenttypeRepository->updateContent($id,$data,$this->auth->user()->id);
 
 		return Response::json($updated, 202);

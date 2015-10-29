@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="ZlgY77YUSaEM_HK042TwcvMNPJgkjF8u8nlk9Fz-2ms" />
-
-    <title>Juan Andrade | @yield('page_title_window')</title>
+    @if(env('APP_ENV')==='production')
+        <meta name="google-site-verification" content="ZlgY77YUSaEM_HK042TwcvMNPJgkjF8u8nlk9Fz-2ms"/>
+    @endif
+    <title>@yield('page_title_window')</title>
+    <meta name="description" content="@yield('page_description')">
     <link rel="shortcut icon" href="{{ asset('/img/favicons/genesis/favicon.ico') }}">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -83,9 +85,9 @@
         var body = "{!! session('flash-success-message') !!}";
     </script>
     <script src="/js/themes/genesis/alerts.js"></script>
-
-    <script src="/js/themes/genesis/ganalytics.js"></script>
-
+    @if(env('APP_ENV')=='production')
+        <script src="/js/themes/genesis/ganalytics.js"></script>
+    @endif
 
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
     <script src="/js/themes/genesis/bootsgallery/js/bootstrap-image-gallery.min.js"></script>
@@ -93,7 +95,8 @@
     <script src="/js/themes/genesis/lighterbox/jquery.lighterbox.0.0.3.min.js"></script>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5605cbe06a48a6ba" async="async"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5605cbe06a48a6ba"
+            async="async"></script>
 
 </body>
 </html>

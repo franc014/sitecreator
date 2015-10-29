@@ -1,7 +1,9 @@
+<?php
+$isContactPage = true;
+$metaInfo = $data["page_meta_info"];
+?>
 @extends('themes.genesis.layout.app')
-@section('page_title_window')
-    Contacto
-@endsection
+@include('themes.genesis.partials._header_meta_tags')
 @section('page_title')
     <h1 data-icon="&#xe607" >Contacto</h1>
 @endsection
@@ -11,10 +13,7 @@
     </p>
 @endsection
 @section('content')
-    <?php
-    $isContactPage = true;
 
-    ?>
     <div class="container site-container" >
         <div class="row " >
 
@@ -36,5 +35,4 @@
             </div>
         </div>
     </div>
-    
 @endsection

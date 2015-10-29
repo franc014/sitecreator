@@ -50,4 +50,14 @@ class ContenttypeRepository {
         return $homeItem;
     }
 
+    public function getPageMetainfo($userName, $pageName)
+    {
+        $user = $this->userRepository->getUserByUserName($userName);
+        $contentType = $this->usercontenttype->where('user_id',$user->id)
+                              ->where('url',$pageName)->firstOrFail();
+        $metaInfo['page_title'] = $contentType->pagetitle;
+        $metaInfo['page_description'] = $contentType->pagedescription;
+        return $metaInfo;
+    }
+
 }

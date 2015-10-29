@@ -1,8 +1,13 @@
-@extends('themes.genesis.layout.app')
-@section('page_title_window')
-    Productos y Servicios
+<?php
+$saleables = $data["saleables"];
+$metaInfo = $data["page_meta_info"];
+$username = $data["username"];
+$isContactPage = false;
+$isDedicated = Config::get("app_parametters.isDedicated");
 
-@endsection
+?>
+@extends('themes.genesis.layout.app')
+@include('themes.genesis.partials._header_meta_tags')
 @section('page_title')
     <h1 data-icon="&#xe6ae">Productos y Servicios</h1>
 @endsection
@@ -13,14 +18,7 @@
 </p>
 @endsection
 @section('content')
-    <?php
-        $saleables = $data["saleables"];
-        //dd($saleables->all());
-        $username = $data["username"];
-        $isContactPage = false;
-        $isDedicated = Config::get("app_parametters.isDedicated");
 
-    ?>
     <div class="container site-container2" >
 
         @include('themes.genesis.productos_servicios._detail.partials._cat_tabs')

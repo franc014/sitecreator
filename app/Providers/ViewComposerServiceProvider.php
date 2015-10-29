@@ -32,6 +32,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         /*compose iptelec theme*/
         $this->composeAboutHome();
         $this->composeSaleableListsHome();
+
     }
 
     /**
@@ -51,14 +52,17 @@ class ViewComposerServiceProvider extends ServiceProvider
             $this->layoutPartials . "._footer",
             $this->themeDirectory . "acercade.index",
             $this->themeDirectory . "home.index",
+            $this->themeDirectory . "contacto.index",
             $this->layoutPartials . ".contact_info._contact_form",
             $this->layoutPartials . ".contact_info._contact_widget"
         ], 'App\Http\ViewComposers\ProfileComposer');
     }
 
-    public function composeNavigation()
-    {
-        view()->composer([$this->layoutPartials . "._header"], 'App\Http\ViewComposers\NavigationComposer');
+
+
+    public function composeNavigation(){
+        view()->composer([
+            $this->layoutPartials . "._header"], 'App\Http\ViewComposers\NavigationComposer');
     }
 
     public function composeSaleableLists()

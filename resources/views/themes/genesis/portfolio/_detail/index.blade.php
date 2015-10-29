@@ -2,10 +2,8 @@
 <?php
     $project = $data["project"];
 ?>
-@section('page_title_window')
-    {{$project->title}}
-
-@endsection
+@section('page_title_window'){{$project->title}}@endsection
+@section('page_description'){{str_limit(strip_tags($project->description),160,"")}}@endsection
 @section('page_title')
     <h1 data-icon="&#xe6ae">Proyecto: {{--$project->title--}}</h1>
 @endsection

@@ -29,6 +29,7 @@ class NavigationComposer extends CurrentRoute{
 
     public function compose(View $view){
         $urlUserName = $this->getRouteParameter('username');
+
         $user = $this->currentUserName($urlUserName);
         $navigationItems = $this->contenttypeRepository
                                 ->getAllContentItemsByUserName($user);

@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 class ProfileComposer extends CurrentRoute{
     use UserNameVerifier;
+    use MetaInfoGetter;
+    protected $userName;
     /**
      * @var ProfileRepository
      */
@@ -58,16 +60,19 @@ class ProfileComposer extends CurrentRoute{
     public function compose(View $view){
 
         $urlUserName = $this->getRouteParameter('username');
-        $user = $this->currentUserName($urlUserName);
+        $this->userName = $this->currentUserName($urlUserName);
 
-        $profile = $this->profileRepository->getProfileByUserName($user);
+
+        $profile = $this->profileRepository->getProfileByUserName($this->userName);
 
         $socialItems = $this->getSocialItems($profile);
-        $homeItem = $this->contenttypeRepository->getHomeItemByUserName($user);
+        $homeItem = $this->contenttypeRepository->getHomeItemByUserName($this->userName);
 
-        $bio = $this->biographyRepository->getDefaultBioByUserName($user);
+        $bio = $this->biographyRepository->getDefaultBioByUserName($this->userName);
 
-        $data = ["home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems,"biography"=>$bio];
+        $pageMetaInfo = $this->getPageMetaInfo();
+
+        $data = ["page_meta_info"=>$pageMetaInfo,"home_item"=>$homeItem,"profile"=>$profile,"socialitems"=>$socialItems,"biography"=>$bio];
         $view->with("data",$data);
     }
 

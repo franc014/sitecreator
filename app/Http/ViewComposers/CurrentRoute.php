@@ -9,17 +9,32 @@
 namespace App\Http\ViewComposers;
 
 
-
-
-class CurrentRoute {
+class CurrentRoute
+{
     protected $route;
 
-    public function getRouteParameter($parameter){
+    public function getRouteParameter($parameter)
+    {
         $params = $this->route->parameters();
-        if(array_key_exists($parameter,$params)){
-            return  $params[$parameter];
+
+        if (array_key_exists($parameter, $params)) {
+            return $params[$parameter];
         }
         return "";
+    }
+
+    public function getRootPageName()
+    {
+        $uri = $this->route->uri();
+        $separatedUri = explode('/', $uri);
+        if (count($separatedUri) > 1) {
+            if ($separatedUri[0] === $this->userName) {
+                return $separatedUri[1];
+            } else {
+                return $separatedUri[0];
+            }
+        }
+        return $separatedUri[0];
     }
 
 

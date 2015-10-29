@@ -1,7 +1,18 @@
+<?php
+$resume = $data["resume"];
+$metaInfo = $data["page_meta_info"];
+$icon_item_list = '&#xe711;';
+
+if($resume!=null){
+    $experiences = $resume->experiences;
+    $educations = $resume->educations;
+    $skills = $resume->skills;
+    $languages = $resume->languages;
+    $interests = $resume->interests;
+}
+?>
 @extends('themes.genesis.layout.app')
-@section('page_title_window')
-    Résumé
-@endsection
+@include('themes.genesis.partials._header_meta_tags')
 @section('page_title')
     <h1 data-icon="&#xe671">Résumé</h1>
 @endsection
@@ -11,18 +22,7 @@
     </p>
 @endsection
 @section('content')
-    <?php
-    $resume = $data["resume"];
-    $icon_item_list = '&#xe711;';
 
-    if($resume!=null){
-        $experiences = $resume->experiences;
-        $educations = $resume->educations;
-        $skills = $resume->skills;
-        $languages = $resume->languages;
-        $interests = $resume->interests;
-    }
-    ?>
 
     <div class="container-fluid site-container">
         <div class="row" style="padding: 60px">

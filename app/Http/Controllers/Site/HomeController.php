@@ -39,6 +39,7 @@ class HomeController extends Controller {
         }*/
 
         $user = $this->currentUserName($userName);
+
         try {
             $homeItem = $this->contenttypeRepository->getHomeItemByUserName($user);
             if($userName==""){

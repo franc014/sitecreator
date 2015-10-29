@@ -34,11 +34,11 @@ $projects = $data["restofprojects"];
                                 <hr>
                                 @if(!$isDedicated)
                                     <p >
-                                        {!!str_limit($project->description,100,"...")!!}<a href="/{{$username}}/project/{{$project->title}}">Ver proyecto</a>
+                                        {!!str_limit($project->description,100,"...")!!}<a href="/{{$username}}/project/{{$project->slug}}">Ver proyecto</a>
                                     </p>
                                 @else
                                     <p >
-                                        {!!str_limit($project->description,100,"...")!!}<a href="/project/{{$project->title}}">Ver proyecto</a>
+                                        {!!str_limit($project->description,100,"...")!!}<a href="/project/{{$project->slug}}">Ver proyecto</a>
                                     </p>
                                 @endif
 

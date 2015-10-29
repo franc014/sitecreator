@@ -47,14 +47,16 @@ if(Config::get("app_parametters.isDedicated")){
 }else{
 
     Route::get('{username}', 'Site\HomeController@index');
+    Route::get('{username}/home', 'Site\HomeController@home');
     Route::get('{username}/acercade', 'Site\BioController@index');
 
     Route::get('{username}/user_resume', 'Site\ResumeController@index');
     Route::get('{username}/contacto/', 'Site\PagesController@contacto');
 
 
-    Route::get('{username}/productos_servicios', 'Site\SaleableController@index');
-    Route::get('{username}/productos_servicios/{saleable}/{saleable_id}', 'Site\SaleableController@detail');
+    Route::get('{username}/productos-y-servicios', 'Site\SaleableController@index');
+    Route::get('{username}/producto/{saleable}', 'Site\SaleableController@detail');
+    Route::get('{username}/servicio/{saleable}', 'Site\SaleableController@detail');
 
     Route::get('{username}/portafolio', 'Site\PortfolioController@index');
     Route::get('{username}/project/{projectname}', 'Site\PortfolioController@detail');

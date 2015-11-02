@@ -1,21 +1,17 @@
+<?php
+use Illuminate\Support\Facades\Config;
+$profile = $data["profile"];
+$callouts = $profile->homecalls;
+$themeName = Config::get('app_parametters.theme_name');
+
+$homeItem = $data["home_item"];
+$isDedicated = Config::get("app_parametters.isDedicated");
+$in_home = true;
+$metaInfo = $data["page_meta_info"];
+?>
 @extends('themes.iptelecom.layout.app')
-@section('page_title_window')
-    Home
-@endsection
-
-
+@include('themes.iptelecom.partials._header_meta_tags')
 @section('content')
-    <?php
-    use Illuminate\Support\Facades\Config;$profile = $data["profile"];
-    $callouts = $profile->homecalls;
-    $themeName = Config::get('app_parametters.theme_name');
-
-    $homeItem = $data["home_item"];
-    $isDedicated = Config::get("app_parametters.isDedicated");
-    $in_home = true;
-    ?>
-
-
 
 
     @include('themes.iptelecom.main.partials._banner')

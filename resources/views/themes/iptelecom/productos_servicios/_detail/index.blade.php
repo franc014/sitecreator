@@ -2,10 +2,8 @@
 <?php
     $saleable = $data["saleable"];
 ?>
-@section('page_title_window')
-    {{$saleable->title}}
-
-@endsection
+@section('page_title_window'){{$saleable->title}}@endsection
+@section('page_description'){{str_limit(strip_tags($saleable->description),160,"")}}@endsection
 @section('page_info_title')
     Servicio: {{$saleable->title}}
 @stop

@@ -31,9 +31,9 @@ $isDedicated = Config::get("app_parametters.isDedicated");
             <div class="navbar-collapse collapse">
 
                 <!-- Nav Buttons -->
-                <ul class="nav navbar-nav nav-buttons navbar-right">
+               {{-- <ul class="nav navbar-nav nav-buttons navbar-right">
                     <li><a class="nav-btn bg-1" href="/contacto"><i class="fa fa-envelope"></i><span class="xs-only">contact</span></a></li>
-                </ul>
+                </ul>--}}
                 <!-- /Nav Buttons -->
 
                 <!-- Nav Buttons -->

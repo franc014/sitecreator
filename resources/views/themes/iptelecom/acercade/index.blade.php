@@ -1,19 +1,19 @@
+<?php
+$profile = $data["profile"];
+//$version = $data["version"];
+$bio = $biography;
+//dd($bio);
+//$isContactPage = false;
+$metaInfo = $data["page_meta_info"];
+?>
 @extends('themes.iptelecom.layout.contentmaster')
 
-@section('page_title_window')
-    Acerca de Ip Telecom
-@endsection
+@include('themes.genesis.partials._header_meta_tags')
 @section('page_info_title')
     Acerca de Ip Telecom
 @stop
 @section('page_content')
-    <?php
-    $profile = $data["profile"];
-    //$version = $data["version"];
-    $bio = $biography;
-    //dd($bio);
-    //$isContactPage = false;
-    ?>
+
 
 
 

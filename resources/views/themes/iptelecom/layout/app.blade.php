@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="google-site-verification" content="JfYtPo3f1GliHrKu8JIUlQPewhIG_XkMFUYY5i0hhTo" />
-    <title>Ip Telecom | @yield('page_title_window')</title>
+    <title>@yield('page_title_window')</title>
+    <meta name="description" content="@yield('page_description')">
+    @if(env('APP_ENV')==='production')
+        <meta name="google-site-verification" content="JfYtPo3f1GliHrKu8JIUlQPewhIG_XkMFUYY5i0hhTo"/>
+    @endif
+
     <link rel="shortcut icon" href="{{ asset('/img/favicons/iptelecom/favicon.ico') }}">
     <!-- Pace
     ================================================== -->
@@ -30,7 +33,6 @@
     ================================================== -->
     <link href="/css/themes/iptelecom/animate.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/themes/iptelecom/sweet-alert.css">
-
 
 
 </head>
@@ -69,7 +71,8 @@
     var body = "{!! session('flash-success-message') !!}";
 </script>
 <script src="/js/themes/iptelecom/alerts.js"></script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5605cbe06a48a6ba" async="async"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5605cbe06a48a6ba"
+        async="async"></script>
 <!-- /JavaScript
 ================================================== -->
 </body>

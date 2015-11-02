@@ -1,9 +1,9 @@
 <?php
 //folder for themes files
 $themeFolder = "themes";
-$themeName = "genesis";
+$themeName = "iptelecom";
 //dedicated user name for db queries in dedicated installation
-$dedicatedUserName = "jandrade";
+$dedicatedUserName = "randrade";
 
 return array(
     //default theme

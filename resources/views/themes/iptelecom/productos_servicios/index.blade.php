@@ -1,23 +1,21 @@
-@extends('themes.iptelecom.layout.contentmaster')
+<?php
+$saleables = $data["saleables"];
+$username = $data["username"];
+$isContactPage = false;
+$isDedicated = Config::get("app_parametters.isDedicated");
+$in_home = false;
+$metaInfo = $data["page_meta_info"];
+?>
 
-@section('page_title_window')
-    Productos y Servicios
-@endsection
+@extends('themes.iptelecom.layout.contentmaster')
+@include('themes.genesis.partials._header_meta_tags')
+
 @section('page_info_title')
     Productos y servicios:
 @stop
 
 @section('page_content')
-    <?php
-    $saleables = $data["saleables"];
-    $username = $data["username"];
-    $isContactPage = false;
-    $isDedicated = Config::get("app_parametters.isDedicated");
-    $in_home = false;
 
-
-
-    ?>
 
     {{--<div class="container site-container2" >
 
